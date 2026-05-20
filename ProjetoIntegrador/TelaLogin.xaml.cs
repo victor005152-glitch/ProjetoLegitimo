@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,9 @@ namespace ProjetoIntegrador
         public TelaLogin()
         {
             InitializeComponent();
+
+            var strc = "Server=localhost;Database=ProjetoIntegrador;User Id=root;Password=123456789;";
+            SqlConnection conexao = new SqlConnection(strc);
         }
     }
 }
