@@ -1,16 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ProjetoIntegrador
 {
@@ -23,8 +18,20 @@ namespace ProjetoIntegrador
         {
             InitializeComponent();
 
-            var strc = "Server=localhost;Database=ProjetoIntegrador;User Id=root;Password=123456789;";
-            SqlConnection conexao = new SqlConnection(strc);
+           // var strc = "Server=localhost;Database=ProjetoIntegrador;User Id=root;Password=123456789;";
+
+           // MySqlConnection conex = new MySqlConnection(strc);
+           // conex.Open();
+
+
+
+            //var sql = "select * from aluno";
+           // string sqlInsert = "INSERT INTO aluno () VALUES ()";
+           // MySqlCommand cmd = new MySqlCommand(sqlInsert, conex);
+            //MySqlDataReader read = cmd.ExecuteReader();
+
+            //conex.Close();
+
         }
     }
 }
