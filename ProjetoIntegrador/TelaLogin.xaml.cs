@@ -1,16 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ProjetoIntegrador
 {
@@ -22,14 +17,12 @@ namespace ProjetoIntegrador
         public TelaLogin()
         {
             InitializeComponent();
-
-           // var strc = "Server=localhost;Database=ProjetoIntegrador;User Id=root;Password=123456789;";
-           // SqlConnection conexao = new SqlConnection(strc);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaCadastro());
+
         }
     }
 }
