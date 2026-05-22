@@ -14,18 +14,18 @@ using System.Windows.Shapes;
 namespace ProjetoIntegrador
 {
     /// <summary>
-    /// Interação lógica para TelaFinanceiro.xam
+    /// Interação lógica para TelaHistorico.xam
     /// </summary>
-    public partial class TelaFinanceiro : Page
+    public partial class TelaHistorico : Page
     {
-        public TelaFinanceiro()
+        public TelaHistorico()
         {
             InitializeComponent();
         }
 
-        private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new TelaHistorico());
+            NavigationService.Navigate(new TelaFinanceiro());
         }
 
         private void BotaoEstoque_Click(object sender, RoutedEventArgs e)

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 
 namespace ProjetoIntegrador
@@ -22,7 +23,7 @@ namespace ProjetoIntegrador
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             NavigationService.Navigate(new TelaCadastro());
 
@@ -31,6 +32,7 @@ namespace ProjetoIntegrador
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+
             string sql = "SELECT Nome, Senha FROM Usuario WHERE Nome = @nome AND Senha= @senha";
 
             MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao);
@@ -42,7 +44,6 @@ namespace ProjetoIntegrador
                 if (leitor.Read())
                 {
                     string nome = leitor["Nome"].ToString();
-                    MessageBox.Show($"Bem-vindo {nome}");
                     NavigationService.Navigate(new Home());
                 }
                 else
@@ -50,6 +51,14 @@ namespace ProjetoIntegrador
                     MessageBox.Show("Usuário ou senha inválidos.");
                 }
                 leitor.Close();
+
+            }
+        }
+        private void Senha1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_1(sender, e);
             }
         }
     }
