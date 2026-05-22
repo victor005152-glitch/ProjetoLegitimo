@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,21 +14,18 @@ using System.Windows.Shapes;
 namespace ProjetoIntegrador
 {
     /// <summary>
-    /// Interação lógica para TelaLogin.xam
+    /// Interação lógica para TelaCadastro.xam
     /// </summary>
-    public partial class TelaLogin : Page
+    public partial class TelaCadastro : Page
     {
-        public TelaLogin()
+        public TelaCadastro()
         {
             InitializeComponent();
-
-           // var strc = "Server=localhost;Database=ProjetoIntegrador;User Id=root;Password=123456789;";
-           // SqlConnection conexao = new SqlConnection(strc);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new TelaCadastro());
+            
         }
     }
 }

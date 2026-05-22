@@ -1,0 +1,166 @@
+﻿<Page x:Class="ProjetoIntegrador.TelaCadastro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjetoIntegrador"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TelaCadastro">
+
+    <Canvas Background="#FF0F172A">
+
+        <!-- FUNDO -->
+        <Rectangle Width="800"
+               Height="450">
+
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF0F172A" Offset="0"/>
+                    <GradientStop Color="#FF1E293B" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+
+        </Rectangle>
+
+        <!-- BOLAS DECORATIVAS -->
+        <Ellipse Width="220"
+             Height="220"
+             Canvas.Left="-80"
+             Canvas.Top="-40"
+             Fill="#227C3AED"/>
+
+        <Ellipse Width="180"
+             Height="180"
+             Canvas.Left="650"
+             Canvas.Top="320"
+             Fill="#223B82F6"/>
+
+        <!-- LADO ESQUERDO -->
+        <Canvas Width="330"
+            Height="450">
+
+            <!-- INFO CARDS -->
+
+        </Canvas>
+
+        <!-- CARD LOGIN -->
+        <Border Width="350"
+            Height="370"
+            Canvas.Left="225"
+            Canvas.Top="40"
+            Background="#CCFFFFFF"
+            CornerRadius="22"
+            BorderBrush="#33FFFFFF"
+            BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="25"
+                              ShadowDepth="0"
+                              Opacity="0.30"/>
+            </Border.Effect>
+
+            <Canvas>
+
+                <!-- TITULO -->
+                <Label Content="Criar Conta"
+                   Canvas.Left="100"
+                   Canvas.Top="28"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="#FF0F172A"/>
+
+                <Label Content="Preencha os dados abaixo"
+                   Canvas.Left="95"
+                   Canvas.Top="68"
+                   FontSize="13"
+                   Foreground="#FF64748B"/>
+
+                <!-- USUARIO -->
+                <Label Content="Usuário"
+                   Canvas.Left="42"
+                   Canvas.Top="118"
+                   FontWeight="SemiBold"
+                   FontSize="13"
+                   Foreground="#FF1E293B"/>
+
+                <Border Width="265"
+                    Height="45"
+                    Canvas.Left="42"
+                    Canvas.Top="143"
+                    Background="#FFF8FAFC"
+                    CornerRadius="12"
+                    BorderBrush="#FFE2E8F0"
+                    BorderThickness="1">
+
+                    <TextBox x:Name="txbUser"
+                         Width="240"
+                         Height="32"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         FontSize="14"
+                         Padding="8"
+                         VerticalContentAlignment="Center"/>
+                </Border>
+
+                <!-- SENHA -->
+                <Label Content="Senha"
+                   Canvas.Left="42"
+                   Canvas.Top="205"
+                   FontWeight="SemiBold"
+                   FontSize="13"
+                   Foreground="#FF1E293B"/>
+
+                <Border Width="265"
+                    Height="45"
+                    Canvas.Left="42"
+                    Canvas.Top="230"
+                    Background="#FFF8FAFC"
+                    CornerRadius="12"
+                    BorderBrush="#FFE2E8F0"
+                    BorderThickness="1">
+
+                    <PasswordBox x:Name="txbSenha"
+                             Width="240"
+                             Height="32"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             FontSize="14"
+                             Padding="8"/>
+                </Border>
+
+                <!-- CHECKBOX -->
+                <CheckBox Content="Aceito os termos do sistema"
+                      Canvas.Left="44"
+                      Canvas.Top="290"
+                      FontSize="12"
+                      Foreground="#FF475569"/>
+
+                <!-- BOTÃO -->
+                <Button x:Name="BtnCadastrarClick" Content="Criar Conta"
+                    Width="265"
+                    Height="45"
+                    Canvas.Left="42"
+                    Canvas.Top="320"
+                    Background="#FF7C3AED"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontWeight="Bold"
+                    FontSize="14"
+                    Cursor="Hand"
+                    Click="Cadastrar_Click">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                      ShadowDepth="0"
+                      Opacity="0.25"/>
+                    </Button.Effect>
+
+                </Button>
+
+            </Canvas>
+
+        </Border>
+
+    </Canvas>
+</Page>
