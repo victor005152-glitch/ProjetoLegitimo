@@ -192,7 +192,7 @@
         <!-- ================================================= -->
 
         <Canvas x:Name="HistDeVendas"
-          Visibility="Collapsed"
+          Visibility="Visible"
           Width="615"
           Height="394"
           Canvas.Left="185"
@@ -207,12 +207,11 @@
               CornerRadius="10">
 
                 <TextBox Width="160"
-                   Height="26"
                    Text="Pesquisar..."
                    Padding="8"
                    BorderThickness="0"
                    Background="Transparent"
-                   VerticalContentAlignment="Center"/>
+                   VerticalContentAlignment="Center" Margin="10,2,10,0"/>
 
             </Border>
 
@@ -293,7 +292,7 @@
         <!-- ================================================= -->
 
         <Canvas x:Name="Estoque1"
-          Visibility="Visible"
+          Visibility="Collapsed"
           Width="615"
           Height="394"
           Canvas.Left="185"
@@ -419,12 +418,11 @@
               CornerRadius="10">
 
                 <TextBox Width="160"
-                   Height="26"
                    Text="Pesquisar..."
                    Padding="8"
                    BorderThickness="0"
                    Background="Transparent"
-                   VerticalContentAlignment="Center"/>
+                   VerticalContentAlignment="Center" Margin="10,2,10,2"/>
 
             </Border>
 
