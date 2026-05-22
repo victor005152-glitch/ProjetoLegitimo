@@ -2,28 +2,35 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace ProjetoIntegrador
 {
-    internal class ConectBd
+    class ConectBd
     {
-        public string StrConex;
-        MySqlConnection conextion = new MySqlConnection();
+        public static MySqlConnection? Conexao { get; private set; }
 
-        public ConectBd()
+        public static void AbrirConexao(string banco)
         {
-            StrConex = "Server=localhost;Database=loja_de_roupas;Uid=root;Password=123456789;";
+            try
+            {
+                if (Conexao == null)
+                {
+                    Conexao = new MySqlConnection(banco);
+                    Conexao.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                Conexao = null;
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-        public void Conectar()
+        public static void FecharConexao()
         {
-            conextion.ConnectionString = StrConex;
-            conextion.Open();
-        }
-        public void Insert(string sql)
-        {
-            MySqlCommand cmd = new MySqlCommand(sql, conextion);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            if (Conexao != null && Conexao.State == System.Data.ConnectionState.Open)
+                Conexao.Close();
         }
     }
 }

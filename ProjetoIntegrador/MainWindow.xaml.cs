@@ -16,10 +16,10 @@ namespace ProjetoIntegrador
 
         public MainWindow()
         {
+            ConectBd.AbrirConexao("server=localhost;database=Loja_De_Roupas;uid=root;pwd=123456789;");
             InitializeComponent();
             MainFrame.Navigate(new TelaLogin());
 
-            ConectBd banco = new ConectBd();
 
 
             // PRODUTOS

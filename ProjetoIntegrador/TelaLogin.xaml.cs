@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ProjetoIntegrador;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -21,8 +22,35 @@ namespace ProjetoIntegrador
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
+
             NavigationService.Navigate(new TelaCadastro());
 
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string sql = "SELECT Nome, Senha FROM Usuario WHERE Nome = @nome AND Senha= @senha";
+
+            MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao);
+            comando.Parameters.AddWithValue("@nome", User1.Text);
+            comando.Parameters.AddWithValue("@senha", Senha1.Password);
+
+            using (MySqlDataReader leitor = comando.ExecuteReader())
+            {
+                if (leitor.Read())
+                {
+                    string nome = leitor["Nome"].ToString();
+                    MessageBox.Show($"Bem-vindo {nome}");
+                    NavigationService.Navigate(new Home());
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha inválidos.");
+                }
+                leitor.Close();
+            }
         }
     }
 }
