@@ -32,5 +32,20 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new Home());
         }
+        private void Pesquisa_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Pesquisa.Text == "Pesquisar...")
+            {
+                Pesquisa.Text = "";
+            }
+        }
+
+        private void Pesquisa_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Pesquisa.Text))
+            {
+                Pesquisa.Text = "Pesquisar...";
+            }
+        }
     }
 }

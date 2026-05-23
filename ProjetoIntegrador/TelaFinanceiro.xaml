@@ -8,64 +8,64 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TelaFinanceiro">
+    <Viewbox Stretch="Uniform">
+        <Canvas Background="#FF0F172A" Width="800" Height="450" HorizontalAlignment="Left" VerticalAlignment="Center" >
 
-    <Canvas Background="#FF0F172A" Width="800" Height="450" HorizontalAlignment="Left" VerticalAlignment="Center" >
-
-        <!-- FUNDO -->
-        <Rectangle Width="800"
+            <!-- FUNDO -->
+            <Rectangle Width="800"
           Height="450">
 
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF0F172A" Offset="0"/>
+                        <GradientStop Color="#FF1E293B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
 
-        </Rectangle>
+            </Rectangle>
 
-        <!-- ================================================= -->
-        <!-- MENU -->
-        <!-- ================================================= -->
+            <!-- ================================================= -->
+            <!-- MENU -->
+            <!-- ================================================= -->
 
-        <Border Width="185"
+            <Border Width="185"
        Visibility="Visible"
        Height="450"
        Background="#CC111827"
        CornerRadius="0,18,18,0">
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="20"
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
                          ShadowDepth="0"
                          Opacity="0.20"/>
-            </Border.Effect>
+                </Border.Effect>
 
-            <Canvas>
+                <Canvas>
 
-                <!-- LOGO -->
-                <Label Content="WRV CONTROL"
+                    <!-- LOGO -->
+                    <Label Content="WRV CONTROL"
               Canvas.Left="1"
               Canvas.Top="25"
               FontWeight="Bold"
               FontSize="24"
               Foreground="White" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="184"/>
 
-                <Label Content="Sistema Inteligente"
+                    <Label Content="Sistema Inteligente"
               Canvas.Left="18"
               Canvas.Top="58"
               FontSize="11"
               Foreground="#FF9CA3AF"/>
 
-                <!-- LINHA -->
-                <Rectangle Width="145"
+                    <!-- LINHA -->
+                    <Rectangle Width="145"
                   Height="1"
                   Fill="#22FFFFFF"
                   Canvas.Left="20"
                   Canvas.Top="90"/>
 
-                <!-- BOTÕES -->
+                    <!-- BOTÕES -->
 
-                <Button x:Name="BotaoEstoque"
+                    <Button x:Name="BotaoEstoque"
                Content="📦 Estoque"
                Width="145"
                Height="42"
@@ -79,15 +79,15 @@
                FontSize="13"
                Cursor="Hand" Click="BotaoEstoque_Click">
 
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="10"
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10"
                                  ShadowDepth="0"
                                  Opacity="0.20"/>
-                    </Button.Effect>
+                        </Button.Effect>
 
-                </Button>
+                    </Button>
 
-                <Button x:Name="BotaoHistorico"
+                    <Button x:Name="BotaoHistorico"
                Content="🧾 Histórico"
                Width="145"
                Height="42"
@@ -101,7 +101,7 @@
                FontSize="13"
                Cursor="Hand" Click="BotaoHistorico_Click"/>
 
-                <Button Content="💰 Financeiro"
+                    <Button Content="💰 Financeiro"
                Width="145"
                Height="42"
                Canvas.Left="20"
@@ -114,8 +114,8 @@
                FontSize="13"
                Cursor="Hand"/>
 
-                <!-- CARD INFO -->
-                <Border Width="145"
+                    <!-- CARD INFO -->
+                    <Border Width="145"
                Height="72"
                Canvas.Left="20"
                Canvas.Top="305"
@@ -124,27 +124,27 @@
                BorderBrush="#22FFFFFF"
                BorderThickness="1">
 
-                    <Canvas>
+                        <Canvas>
 
-                        <Label Content="⚡ WRV Premium"
+                            <Label Content="⚡ WRV Premium"
                       Canvas.Left="12"
                       Canvas.Top="10"
                       FontWeight="Bold"
                       FontSize="13"
                       Foreground="White"/>
 
-                        <Label Content="Sistema moderno&#x0a;e otimizado"
+                            <Label Content="Sistema moderno&#x0a;e otimizado"
                       Canvas.Left="12"
                       Canvas.Top="33"
                       FontSize="11"
                       Foreground="#FFD1D5DB"/>
 
-                    </Canvas>
+                        </Canvas>
 
-                </Border>
+                    </Border>
 
-                <!-- SAIR -->
-                <Button Content="🚪 Sair"
+                    <!-- SAIR -->
+                    <Button Content="🚪 Sair"
                Width="145"
                Height="40"
                Canvas.Left="20"
@@ -156,12 +156,12 @@
                FontSize="13"
                Cursor="Hand"/>
 
-            </Canvas>
+                </Canvas>
 
-        </Border>
+            </Border>
 
-        <!-- TOPO -->
-        <Border Canvas.Left="185"
+            <!-- TOPO -->
+            <Border Canvas.Left="185"
        Visibility="Visible"
        Width="615"
        Height="56"
@@ -169,31 +169,32 @@
        BorderBrush="#22FFFFFF"
        BorderThickness="0,0,0,1">
 
-            <Canvas>
+                <Canvas>
 
-                <Label Content="Sistema de Controle"
+                    <Label Content="Sistema de Controle"
               FontSize="20"
               FontWeight="Bold"
               Foreground="White"
               Canvas.Left="20"
               Canvas.Top="13"/>
 
-                <Label Content="Gerenciamento inteligente"
+                    <Label Content="Gerenciamento inteligente"
               FontSize="11"
               Foreground="#FFD1D5DB"
               Canvas.Left="22"
               Canvas.Top="35"/>
 
-            </Canvas>
+                </Canvas>
 
-        </Border>
+            </Border>
 
-     
-        <!-- ================================================= -->
-        <!-- FINANCEIRO -->
-        <!-- ================================================= -->
 
-        <Grid x:Name="Financeiro"
+
+            <!-- ================================================= -->
+            <!-- FINANCEIRO -->
+            <!-- ================================================= -->
+            <Grid x:Name="Financeiro"
+
        Visibility="Visible"
        Width="615"
        Height="394"
@@ -201,40 +202,41 @@
        Canvas.Top="56"
        Background="Transparent">
 
-            <Border Width="580"
+                <Border Width="580"
            Height="350"
            Canvas.Left="18"
            Canvas.Top="20"
            Background="#CCFFFFFF"
            CornerRadius="20">
 
-                <Grid>
+                    <Grid>
 
-                    <Label Content="💰 Financeiro"
+                        <Label Content="💰 Financeiro"
                   FontSize="28"
                   FontWeight="Bold"
                   Foreground="#FF1E293B"
                   Canvas.Left="170"
                   Canvas.Top="120" Margin="188,112,188,187"/>
 
-                    <Label Content="Área financeira do sistema"
+                        <Label Content="Área financeira do sistema"
                   FontSize="14"
                   Foreground="#FF64748B"
                   Canvas.Left="185"
                   Canvas.Top="170" Margin="212,150,188,174"/>
 
-
-                    <!-- GRAFICO -->
-                    <lvc:CartesianChart
+                        <!-- GRAFICO -->
+                            <lvc:CartesianChart
             Grid.Row="1"
             Series="{Binding Series}" />
 
-                </Grid>
+                    </Grid>
 
-            </Border>
+        </Border>
+
 
         </Grid>
+        </Canvas>
 
-    </Canvas>
+    </Viewbox>
 
 </Page>
