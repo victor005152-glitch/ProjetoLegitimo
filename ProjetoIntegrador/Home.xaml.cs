@@ -52,5 +52,20 @@ namespace ProjetoIntegrador
         {
 
         }
+        private void Pesquisa_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Pesquisa1.Text == "Pesquisar...")
+            {
+                Pesquisa1.Text = "";
+            }
+        }
+
+        private void Pesquisa_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Pesquisa1.Text))
+            {
+                Pesquisa1.Text = "Pesquisar...";
+            }
+        }
     }
 }

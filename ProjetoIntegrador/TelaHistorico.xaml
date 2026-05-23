@@ -7,64 +7,64 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TelaHistorico">
+    <Viewbox Stretch="Uniform">
+        <Canvas Background="#FF0F172A" Width="800" Height="450" HorizontalAlignment="Left" VerticalAlignment="Center" >
 
-    <Canvas Background="#FF0F172A" Width="800" Height="450" HorizontalAlignment="Left" VerticalAlignment="Center" >
-
-        <!-- FUNDO -->
-        <Rectangle Width="800"
+            <!-- FUNDO -->
+            <Rectangle Width="800"
            Height="450">
 
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF0F172A" Offset="0"/>
+                        <GradientStop Color="#FF1E293B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
 
-        </Rectangle>
+            </Rectangle>
 
-        <!-- ================================================= -->
-        <!-- MENU -->
-        <!-- ================================================= -->
+            <!-- ================================================= -->
+            <!-- MENU -->
+            <!-- ================================================= -->
 
-        <Border Width="185"
+            <Border Width="185"
         Visibility="Visible"
         Height="450"
         Background="#CC111827"
         CornerRadius="0,18,18,0">
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="20"
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
                           ShadowDepth="0"
                           Opacity="0.20"/>
-            </Border.Effect>
+                </Border.Effect>
 
-            <Canvas>
+                <Canvas>
 
-                <!-- LOGO -->
-                <Label Content="WRV CONTROL"
+                    <!-- LOGO -->
+                    <Label Content="WRV CONTROL"
                Canvas.Left="1"
                Canvas.Top="25"
                FontWeight="Bold"
                FontSize="24"
                Foreground="White" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="184"/>
 
-                <Label Content="Sistema Inteligente"
+                    <Label Content="Sistema Inteligente"
                Canvas.Left="18"
                Canvas.Top="58"
                FontSize="11"
                Foreground="#FF9CA3AF"/>
 
-                <!-- LINHA -->
-                <Rectangle Width="145"
+                    <!-- LINHA -->
+                    <Rectangle Width="145"
                    Height="1"
                    Fill="#22FFFFFF"
                    Canvas.Left="20"
                    Canvas.Top="90"/>
 
-                <!-- BOTÕES -->
+                    <!-- BOTÕES -->
 
-                <Button x:Name="BotaoEstoque"
+                    <Button x:Name="BotaoEstoque"
                 Content="📦 Estoque"
                 Width="145"
                 Height="42"
@@ -77,15 +77,15 @@
                 FontSize="13"
                 Cursor="Hand" Click="BotaoEstoque_Click">
 
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="10"
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10"
                                   ShadowDepth="0"
                                   Opacity="0.20"/>
-                    </Button.Effect>
+                        </Button.Effect>
 
-                </Button>
+                    </Button>
 
-                <Button x:Name="BotaoHistorico"
+                    <Button x:Name="BotaoHistorico"
                 Content="🧾 Histórico"
                 Width="145"
                 Height="42"
@@ -98,7 +98,7 @@
                 FontSize="13"
                 Cursor="Hand"/>
 
-                <Button Content="💰 Financeiro"
+                    <Button Content="💰 Financeiro"
                 Width="145"
                 Height="42"
                 Canvas.Left="20"
@@ -110,8 +110,8 @@
                 FontSize="13"
                 Cursor="Hand" Click="Button_Click"/>
 
-                <!-- CARD INFO -->
-                <Border Width="145"
+                    <!-- CARD INFO -->
+                    <Border Width="145"
                 Height="72"
                 Canvas.Left="20"
                 Canvas.Top="305"
@@ -120,27 +120,27 @@
                 BorderBrush="#22FFFFFF"
                 BorderThickness="1">
 
-                    <Canvas>
+                        <Canvas>
 
-                        <Label Content="⚡ WRV Premium"
+                            <Label Content="⚡ WRV Premium"
                        Canvas.Left="12"
                        Canvas.Top="10"
                        FontWeight="Bold"
                        FontSize="13"
                        Foreground="White"/>
 
-                        <Label Content="Sistema moderno&#x0a;e otimizado"
+                            <Label Content="Sistema moderno&#x0a;e otimizado"
                        Canvas.Left="12"
                        Canvas.Top="33"
                        FontSize="11"
                        Foreground="#FFD1D5DB"/>
 
-                    </Canvas>
+                        </Canvas>
 
-                </Border>
+                    </Border>
 
-                <!-- SAIR -->
-                <Button Content="🚪 Sair"
+                    <!-- SAIR -->
+                    <Button Content="🚪 Sair"
                 Width="145"
                 Height="40"
                 Canvas.Left="20"
@@ -152,12 +152,12 @@
                 FontSize="13"
                 Cursor="Hand"/>
 
-            </Canvas>
+                </Canvas>
 
-        </Border>
+            </Border>
 
-        <!-- TOPO -->
-        <Border Canvas.Left="185"
+            <!-- TOPO -->
+            <Border Canvas.Left="185"
         Visibility="Visible"
         Width="615"
         Height="56"
@@ -165,30 +165,30 @@
         BorderBrush="#22FFFFFF"
         BorderThickness="0,0,0,1">
 
-            <Canvas>
+                <Canvas>
 
-                <Label Content="Sistema de Controle"
+                    <Label Content="Sistema de Controle"
                FontSize="20"
                FontWeight="Bold"
                Foreground="White"
                Canvas.Left="20"
                Canvas.Top="13"/>
 
-                <Label Content="Gerenciamento inteligente"
+                    <Label Content="Gerenciamento inteligente"
                FontSize="11"
                Foreground="#FFD1D5DB"
                Canvas.Left="22"
                Canvas.Top="35"/>
 
-            </Canvas>
+                </Canvas>
 
-        </Border>
+            </Border>
 
-        <!-- ================================================= -->
-        <!-- HISTÓRICO -->
-        <!-- ================================================= -->
+            <!-- ================================================= -->
+            <!-- HISTÓRICO -->
+            <!-- ================================================= -->
 
-        <Canvas x:Name="HistDeVendas"
+            <Canvas x:Name="HistDeVendas"
         Visibility="Visible"
         Width="615"
         Height="394"
@@ -196,23 +196,27 @@
         Canvas.Top="56"
         Background="Transparent">
 
-            <Border Width="180"
+                <Border Width="180"
             Height="34"
             Canvas.Left="420"
             Canvas.Top="15"
             Background="#CCFFFFFF"
             CornerRadius="10">
 
-                <TextBox Width="160"
+                    <TextBox x:Name="Pesquisa" Width="160"
                  Text="Pesquisar..."
                  Padding="8"
                  BorderThickness="0"
+                 GotFocus="Pesquisa_GotFocus"
+                 LostFocus="Pesquisa_LostFocus"            
                  Background="Transparent"
-                 VerticalContentAlignment="Center" Margin="10,2,10,0"/>
+                 VerticalContentAlignment="Center" Margin="10,2,10,0"
+                             />
 
-            </Border>
 
-            <Button x:Name="Comprovante"
+                </Border>
+
+                <Button x:Name="Comprovante"
             Content="📄 Comprovante"
             Width="140"
             Height="36"
@@ -224,66 +228,66 @@
             FontWeight="Bold"
             Cursor="Hand">
 
-                <Button.Effect>
-                    <DropShadowEffect BlurRadius="10"
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10"
                               ShadowDepth="0"
                               Opacity="0.20"/>
-                </Button.Effect>
+                    </Button.Effect>
 
-            </Button>
+                </Button>
 
-            <Border Width="585"
+                <Border Width="585"
             Height="320"
             Canvas.Left="15"
             Canvas.Top="60"
             Background="#CCFFFFFF"
             CornerRadius="18">
 
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="18"
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="18"
                               ShadowDepth="0"
                               Opacity="0.10"/>
-                </Border.Effect>
+                    </Border.Effect>
 
-                <DataGrid x:Name="Historico1"
+                    <DataGrid x:Name="Historico1"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   BorderThickness="0"
                   Background="Transparent"
                   HeadersVisibility="Column">
 
-                    <DataGrid.Columns>
+                        <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Código"
+                            <DataGridTextColumn Header="Código"
                                     Binding="{Binding Codigo}"/>
 
-                        <DataGridTextColumn Header="Qtd"
+                            <DataGridTextColumn Header="Qtd"
                                     Binding="{Binding Qtd}"/>
 
-                        <DataGridTextColumn Header="Descrição"
+                            <DataGridTextColumn Header="Descrição"
                                     Binding="{Binding Descricao}"/>
 
-                        <DataGridTextColumn Header="Valor"
+                            <DataGridTextColumn Header="Valor"
                                     Binding="{Binding Valor}"/>
 
-                        <DataGridTextColumn Header="Data"
+                            <DataGridTextColumn Header="Data"
                                     Binding="{Binding Data, StringFormat=dd/MM/yyyy}"/>
 
-                        <DataGridTextColumn Header="Cliente"
+                            <DataGridTextColumn Header="Cliente"
                                     Binding="{Binding Cliente}"/>
 
-                        <DataGridTextColumn Header="CPF"
+                            <DataGridTextColumn Header="CPF"
                                     Binding="{Binding CPF}"/>
 
-                    </DataGrid.Columns>
+                        </DataGrid.Columns>
 
-                </DataGrid>
+                    </DataGrid>
 
-            </Border>
+                </Border>
+
+            </Canvas>
 
         </Canvas>
-
-       
-
-    </Canvas>
+        
+    </Viewbox>
 </Page>
