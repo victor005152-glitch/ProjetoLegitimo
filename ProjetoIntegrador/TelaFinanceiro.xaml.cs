@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +20,24 @@ namespace ProjetoIntegrador
     /// </summary>
     public partial class TelaFinanceiro : Page
     {
+        public ISeries[] Series { get; set; }
         public TelaFinanceiro()
         {
+
             InitializeComponent();
+
+            Series = new ISeries[]
+            {
+            new ColumnSeries<double>
+        {
+            Values = new double[]
+            {
+                12, 25, 40, 18, 50, 70
+            }
+        }
+            };
+
+            DataContext = this;
         }
     }
 }

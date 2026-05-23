@@ -37,6 +37,8 @@ namespace ProjetoIntegrador
             comando.Parameters.AddWithValue("@nome", User1.Text);
             comando.Parameters.AddWithValue("@senha", Senha1.Password);
 
+
+
             using (MySqlDataReader leitor = comando.ExecuteReader())
             {
                 if (leitor.Read())

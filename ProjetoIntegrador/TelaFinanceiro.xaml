@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjetoIntegrador"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TelaFinanceiro">
@@ -70,7 +71,6 @@
                Height="42"
                Canvas.Left="20"
                Canvas.Top="120"
-               Click="BotaoEstoque_Click"
                Background="#FF7C3AED"
                Foreground="White"
                BorderThickness="0"
@@ -92,7 +92,6 @@
                Height="42"
                Canvas.Left="20"
                Canvas.Top="175"
-               Click="Button_Click_1"
                Background="#FF1F2937"
                Foreground="White"
                BorderBrush="#223B82F6"
@@ -105,7 +104,6 @@
                Height="42"
                Canvas.Left="20"
                Canvas.Top="230"
-               Click="Button_Click_2"
                Background="#FF1F2937"
                Foreground="White"
                BorderBrush="#223B82F6"
@@ -192,7 +190,7 @@
         <!-- FINANCEIRO -->
         <!-- ================================================= -->
 
-        <Canvas x:Name="Financeiro"
+        <Grid x:Name="Financeiro"
        Visibility="Visible"
        Width="615"
        Height="394"
@@ -207,26 +205,32 @@
            Background="#CCFFFFFF"
            CornerRadius="20">
 
-                <Canvas>
+                <Grid>
 
                     <Label Content="💰 Financeiro"
                   FontSize="28"
                   FontWeight="Bold"
                   Foreground="#FF1E293B"
                   Canvas.Left="170"
-                  Canvas.Top="120"/>
+                  Canvas.Top="120" Margin="188,112,188,187"/>
 
                     <Label Content="Área financeira do sistema"
                   FontSize="14"
                   Foreground="#FF64748B"
                   Canvas.Left="185"
-                  Canvas.Top="170"/>
+                  Canvas.Top="170" Margin="212,150,188,174"/>
 
-                </Canvas>
+
+                    <!-- GRAFICO -->
+                    <lvc:CartesianChart
+            Grid.Row="1"
+            Series="{Binding Series}" />
+
+                </Grid>
 
             </Border>
 
-        </Canvas>
+        </Grid>
 
     </Canvas>
 
