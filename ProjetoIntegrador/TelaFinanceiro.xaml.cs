@@ -39,5 +39,15 @@ namespace ProjetoIntegrador
 
             DataContext = this;
         }
+
+        private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaHistorico());
+        }
+
+        private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Home());
+        }
     }
 }
