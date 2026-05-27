@@ -154,7 +154,7 @@
                BorderThickness="0"
                FontWeight="Bold"
                FontSize="13"
-               Cursor="Hand"/>
+               Cursor="Hand" Click="Button_Click"/>
 
                 </Canvas>
 
@@ -225,16 +225,15 @@
                   Canvas.Top="170" Margin="212,150,188,174"/>
 
                         <!-- GRAFICO -->
-                            <lvc:CartesianChart
-            Grid.Row="1"
-            Series="{Binding Series}" />
-
+                        <lvc:CartesianChart
+                        Grid.Row="1"
+                         Series="{Binding Series}" />
                     </Grid>
 
-        </Border>
+                </Border>
 
 
-        </Grid>
+            </Grid>
         </Canvas>
 
     </Viewbox>

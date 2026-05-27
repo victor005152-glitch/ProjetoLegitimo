@@ -67,5 +67,10 @@ namespace ProjetoIntegrador
                 Pesquisa1.Text = "Pesquisar...";
             }
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaLogin());
+        }
     }
 }
