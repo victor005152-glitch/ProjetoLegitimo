@@ -292,7 +292,7 @@
               Height="36"
               Canvas.Left="15"
               Canvas.Top="105"
-              Click="Cad_Click"
+              Click="Cad_Click1"
               Background="#FF22C55E"
               Foreground="White"
               BorderThickness="0"
@@ -345,28 +345,205 @@
                                 Opacity="0.10"/>
                     </Border.Effect>
 
-                    <DataGrid x:Name="DGestoque"
+                    <DataGrid x:Name="DGestoque" Visibility="Collapsed"
                     AutoGenerateColumns="False"
                     IsReadOnly="True"
                     BorderThickness="0"
                     Background="Transparent">
 
                         <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="CollumCodigo" Header="Código"
+                                      Binding="{Binding CodigoBarras}"/>
 
-                            <DataGridTextColumn Header="Nome"
-                                      Binding="{Binding nome}"/>
+                            <DataGridTextColumn x:Name="CollumNome" Header="Nome"
+                                      Binding="{Binding Nome}"/>
 
-                            <DataGridTextColumn Header="Quantidade"
-                                      Binding="{Binding qnt}"/>
+                            <DataGridTextColumn x:Name="CollumCategoria" Header="Categoria"
+                                      Binding="{Binding Categoria}"/>
 
-                            <DataGridTextColumn Header="Código de Barras"
-                                      Binding="{Binding codbarras}"/>
+                            <DataGridTextColumn x:Name="CollumMarca" Header="Marca"
+                                      Binding="{Binding Marca}"/>
+
+                            <DataGridTextColumn x:Name="CollumQuantidade" Header="Quantidade"
+                                      Binding="{Binding QuantidadeEstoque}"/>
+
+                            <DataGridTextColumn x:Name="CollumCusto" Header="Custo"
+                                      Binding="{Binding ValorCusto}"/>
+
+                            <DataGridTextColumn x:Name="CollumVenda" Header="Venda"
+                                      Binding="{Binding ValorVenda}"/>
 
                         </DataGrid.Columns>
 
                     </DataGrid>
 
+                    <!--=============================-->
+                    <!-- TELA DE CADASTRO DE PRODUTO -->
+                    <!--=============================-->
+
                 </Border>
+
+                <Canvas x:Name="Cadastro" Visibility="Hidden" >
+                    <Border Width="334"
+                    Height="410"
+                    Canvas.Left="52"
+                    Canvas.Top="-36"
+                    CornerRadius="18" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF2D334C">
+
+
+                        <Border Width="180"
+                            Height="36"
+                            Background="#CCFFFFFF"
+                            CornerRadius="10" Margin="77,10,77,364">
+
+
+
+                            <TextBox x:Name="Codigo1" Width="160"
+                                Padding="8"
+                                BorderThickness="0"
+                                GotFocus="Pesquisa_GotFocus"
+                                LostFocus="Pesquisa_LostFocus"
+                                Background="Transparent"
+                                VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+
+                        </Border>
+                    </Border>
+
+                    <Border Width="180"
+                    Height="36"
+                    Background="#CCFFFFFF"
+                    CornerRadius="10" Canvas.Left="129" Canvas.Top="21" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Nome1" Width="160"
+                    Padding="8"
+                    BorderThickness="0"
+                    GotFocus="Pesquisa_GotFocus"
+                    LostFocus="Pesquisa_LostFocus"
+                    Background="Transparent"
+                    VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Border Width="180"
+                     Height="36"
+                     Background="#CCFFFFFF"
+                     CornerRadius="10" Canvas.Left="129" Canvas.Top="72" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Categoria1" Width="160"
+                     Padding="8"
+                     BorderThickness="0"
+                     GotFocus="Pesquisa_GotFocus"
+                     LostFocus="Pesquisa_LostFocus"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Border Width="180"
+                     Height="36"
+                     Background="#CCFFFFFF"
+                     CornerRadius="10" Canvas.Left="129" Canvas.Top="169" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Custo1" Width="160"
+                     Padding="8"
+                     BorderThickness="0"
+                     GotFocus="Pesquisa_GotFocus"
+                     LostFocus="Pesquisa_LostFocus"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Border Width="180"
+                     Height="36"
+                     Background="#CCFFFFFF"
+                     CornerRadius="10" Canvas.Left="129" Canvas.Top="122" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Marca1" Width="160"
+                     Padding="8"
+                     BorderThickness="0"
+                     GotFocus="Pesquisa_GotFocus"
+                     LostFocus="Pesquisa_LostFocus"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Border Width="180"
+                     Height="36"
+                     Background="#CCFFFFFF"
+                     CornerRadius="10" Canvas.Left="129" Canvas.Top="220" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Venda1" Width="160"
+                     Padding="8"
+                     BorderThickness="0"
+                     GotFocus="Pesquisa_GotFocus"
+                     LostFocus="Pesquisa_LostFocus"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Border Width="180"
+                     Height="36"
+                     Background="#CCFFFFFF"
+                     CornerRadius="10" Canvas.Left="129" Canvas.Top="269" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBox x:Name="Quantidade1" Width="160"
+                     Padding="8"
+                     BorderThickness="0"
+                     GotFocus="Pesquisa_GotFocus"
+                     LostFocus="Pesquisa_LostFocus"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
+                    </Border>
+
+                    <Label Content="Nome"
+                   Canvas.Left="69"
+                   Canvas.Top="21"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64"/>
+
+                    <Label Content="Código"
+                    Canvas.Left="69"
+                    Canvas.Top="-25"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64"/>
+
+                    <Label Content="Categoria"
+                    Canvas.Left="69"
+                    Canvas.Top="72"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="11"/>
+
+                    <Label Content="Marca"
+                    Canvas.Left="69"
+                    Canvas.Top="122"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" FontSize="14"/>
+
+                    <Label Content="Custo"
+                    Canvas.Left="69"
+                    Canvas.Top="169"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" FontSize="14"/>
+
+                    <Label Content="Venda"
+                    Canvas.Left="69"
+                    Canvas.Top="220"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="14"/>
+
+                    <Label Content="QTD"
+                    Canvas.Left="69"
+                    Canvas.Top="269"
+                    FontWeight="Bold"
+                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="14"/>
+                    <Button x:Name="Save"
+                    Content="➕ Salvar"
+                    Width="126"
+                    Height="36"
+                    Canvas.Left="156"
+                    Canvas.Top="322"
+                    Click="Cad_Click"
+                    Background="#FF22C55E"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontWeight="Bold"
+                    Cursor="Hand"/>
+
+                </Canvas>
 
             </Canvas>
 

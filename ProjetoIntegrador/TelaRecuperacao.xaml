@@ -167,17 +167,16 @@
 
                                 <TextBox x:Name="EmailDigitado"
                                       Width="245"
-                                      Height="32"
                                       BorderThickness="0"
                                       Background="Transparent"
                                       FontSize="14"
                                       Padding="8"
                                       VerticalContentAlignment="Center" Text="" 
-                                      KeyDown="txtEmail_KeyDown"/>
+                                      KeyDown="txtEmail_KeyDown" Margin="11,2,11,2"/>
 
                             </Border>
-                            
-                            
+
+
 
                             <!-- SENHA -->
 
@@ -235,6 +234,6 @@
             </Grid>
 
         </Grid>
-        
+
     </Viewbox>
 </Page>

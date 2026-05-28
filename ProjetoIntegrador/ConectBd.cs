@@ -10,13 +10,13 @@ namespace ProjetoIntegrador
     {
         public static MySqlConnection? Conexao { get; private set; }
 
-        public static void AbrirConexao(string banco)
+        public static void AbrirConexao()
         {
             try
             {
                 if (Conexao == null)
                 {
-                    Conexao = new MySqlConnection(banco);
+                    Conexao = new MySqlConnection("server=localhost;database=Loja_De_Roupas;uid=root;pwd=123456789;");
                     Conexao.Open();
                 }
             }

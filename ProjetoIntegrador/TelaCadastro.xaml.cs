@@ -46,7 +46,6 @@ namespace ProjetoIntegrador
                     cmd.Parameters.AddWithValue("@senha", senha);
                     cmd.Parameters.AddWithValue("@email", Email);
                    
-
                     cmd.ExecuteNonQuery();
                 }
 
@@ -69,10 +68,6 @@ namespace ProjetoIntegrador
                     MessageBox.Show($"Erro: {ex.Message}");
                 }
             }
-
-
         }
-
-      
     }
 }

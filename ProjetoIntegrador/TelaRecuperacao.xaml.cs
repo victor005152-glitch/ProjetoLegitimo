@@ -37,9 +37,6 @@ namespace ProjetoIntegrador
             MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao);
             comando.Parameters.AddWithValue("@Email", EmailDigitado.Text);
 
-
-
-
             using (MySqlDataReader leitor = comando.ExecuteReader())
             {
 
@@ -56,11 +53,7 @@ namespace ProjetoIntegrador
                 }
                 leitor.Close();
 
-             
-
-
             }
-
            
         }
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
