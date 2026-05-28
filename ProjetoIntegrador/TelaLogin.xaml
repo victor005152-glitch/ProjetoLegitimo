@@ -221,7 +221,7 @@
                                     BorderThickness="0"
                                     FontWeight="SemiBold"
                                     FontSize="11"
-                                    Cursor="Hand"/>
+                                    Cursor="Hand" Click="Recuperar_Click"/>
 
                             <!-- BOTÕES -->
                             <Button Content="Cadastrar"

@@ -47,9 +47,15 @@ namespace ProjetoIntegrador
             NavigationService.Navigate(new Home());
         }
 
+<<<<<<< HEAD
         private void Ind_Loaded(object sender, RoutedEventArgs e)
         {
 
+=======
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaLogin());
+>>>>>>> 52fa3ef6f7fa336d93bafb61afbabc256b9eaaf0
         }
     }
 

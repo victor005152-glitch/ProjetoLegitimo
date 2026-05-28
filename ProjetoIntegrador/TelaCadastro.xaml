@@ -78,19 +78,19 @@
                     <!-- USUARIO -->
                     <Label Content="Usuário"
                            Canvas.Left="42"
-                           Canvas.Top="118"
+                           Canvas.Top="82"
                            FontWeight="SemiBold"
                            FontSize="13"
-                           Foreground="#FF1E293B"/>
+                           Foreground="#FF1E293B" RenderTransformOrigin="0.545,-0.806" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-                    <Border Width="265"
+                    <Border Width="264"
                             Height="45"
                             Canvas.Left="42"
-                            Canvas.Top="143"
+                            Canvas.Top="109"
                             Background="#FFF8FAFC"
                             CornerRadius="12"
                             BorderBrush="#FFE2E8F0"
-                            BorderThickness="1">
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top">
 
                         <TextBox x:Name="txbUser"
                                  Width="240"
@@ -102,22 +102,49 @@
                                  VerticalContentAlignment="Center"/>
                     </Border>
 
-                    <!-- SENHA -->
-                    <Label Content="Senha"
+                    <!-- EMAIL -->
+                    <Label Content="Email"
                            Canvas.Left="42"
-                           Canvas.Top="205"
+                           Canvas.Top="154"
                            FontWeight="SemiBold"
                            FontSize="13"
-                           Foreground="#FF1E293B"/>
+                           Foreground="#FF1E293B" RenderTransformOrigin="0.545,-0.806" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
                     <Border Width="265"
                             Height="45"
-                            Canvas.Left="42"
-                            Canvas.Top="230"
+                            Canvas.Left="41"
+                            Canvas.Top="181"
                             Background="#FFF8FAFC"
                             CornerRadius="12"
                             BorderBrush="#FFE2E8F0"
-                            BorderThickness="1">
+                            BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                        <TextBox x:Name="txbEmail"
+                         Width="240"
+                         Height="32"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         FontSize="14"
+                         Padding="8"
+                         VerticalContentAlignment="Center"/>
+                    </Border>
+
+                    <!-- SENHA -->
+                    <Label Content="Senha"
+                           Canvas.Left="42"
+                           Canvas.Top="223"
+                           FontWeight="SemiBold"
+                           FontSize="13"
+                           Foreground="#FF1E293B" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+                    <Border Width="265"
+                            Height="45"
+                            Canvas.Left="41"
+                            Canvas.Top="250"
+                            Background="#FFF8FAFC"
+                            CornerRadius="12"
+                            BorderBrush="#FFE2E8F0"
+                            BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top">
 
                         <PasswordBox x:Name="txbSenha"
                                      Width="240"
@@ -129,9 +156,9 @@
                     </Border>
 
                     <!-- CHECKBOX -->
-                    <CheckBox Content="Aceito os termos do sistema"
-                              Canvas.Left="44"
-                              Canvas.Top="290"
+                    <CheckBox x:Name="Termos" Content="Aceito os termos do sistema"
+                              Canvas.Left="42"
+                              Canvas.Top="300"
                               FontSize="12"
                               Foreground="#FF475569"/>
 

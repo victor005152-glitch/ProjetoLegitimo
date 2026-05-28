@@ -150,7 +150,7 @@
                 BorderThickness="0"
                 FontWeight="Bold"
                 FontSize="13"
-                Cursor="Hand"/>
+                Cursor="Hand" Click="Button_Click_1"/>
 
                 </Canvas>
 
