@@ -74,7 +74,7 @@
                Canvas.Left="20"
                Canvas.Top="120"
 
-               Background="#FF7C3AED"
+               Background="#FF1F2937"
                Foreground="White"
                BorderThickness="0"
                FontWeight="Bold"
@@ -103,7 +103,7 @@
                FontSize="13"
                Cursor="Hand" Click="BotaoHistorico_Click"/>
 
-                    <Button Content="💰 Financeiro"
+                    <Button x:Name="BotaoFinanceiro" Content="💰 Financeiro"
                Width="145"
                Height="42"
                Canvas.Left="20"
@@ -156,7 +156,7 @@
                BorderThickness="0"
                FontWeight="Bold"
                FontSize="13"
-               Cursor="Hand" Click="Button_Click"/>
+               Cursor="Hand"/>
 
                 </Canvas>
 
@@ -196,7 +196,6 @@
             <!-- FINANCEIRO -->
             <!-- ================================================= -->
             <Grid x:Name="Financeiro"
-
        Visibility="Visible"
        Width="615"
        Height="394"
@@ -213,42 +212,36 @@
 
                 <!-- INDICADOR -->
 
-                    <lvc:CartesianChart 
+                <lvc:CartesianChart 
                      Series="{Binding Series}"
                      XAxes="{Binding XAxes}"
                      Title="{Binding Title}"
-                     LegendPosition="Hidden" Margin="18,197,17,22"  x:Name="Ind" Loaded="Ind_Loaded"/>
+                     LegendPosition="Hidden" Margin="18,197,17,22"  x:Name="Ind"/>
 
                 <!-- PIZZA1 -->
 
-<<<<<<< HEAD
                 <lvc:PieChart
                  Series="{Binding Series}"
                  Title="{Binding Title1}" Margin="18,22,312,202" x:Name="PZ1">
                 </lvc:PieChart>
-                
+
                 <!-- PIZZA2 -->
-                
+
                 <lvc:PieChart
                  Series="{Binding Series}"
                  Title="{Binding Title2}" Margin="308,22,17,202"  x:Name="PZ2"/>
 
 
 
-=======
-                        <!-- GRAFICO -->
-                        <lvc:CartesianChart
+                <!-- GRAFICO -->
+                <lvc:CartesianChart
                         Grid.Row="1"
                          Series="{Binding Series}" />
-                    </Grid>
-
-                </Border>
 
 
->>>>>>> 52fa3ef6f7fa336d93bafb61afbabc256b9eaaf0
             </Grid>
         </Canvas>
 
-    </Viewbox>
 
+    </Viewbox>
 </Page>

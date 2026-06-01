@@ -21,6 +21,12 @@ namespace ProjetoIntegrador
         public TelaHistorico()
         {
             InitializeComponent();
+            InitializeComponent();
+
+            ResetarBotoes();
+
+            BotaoHistorico.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF7C3AED"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,5 +58,17 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new TelaLogin());
         }
+        private void ResetarBotoes()
+        {
+            BotaoEstoque.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoHistorico.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoFinanceiro.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+        }
+
     }
 }
