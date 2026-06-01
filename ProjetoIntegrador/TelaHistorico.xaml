@@ -70,7 +70,7 @@
                 Height="42"
                 Canvas.Left="20"
                 Canvas.Top="120"
-                Background="#FF7C3AED"
+                Background="#FF1F2937"
                 Foreground="White"
                 BorderThickness="0"
                 FontWeight="Bold"
@@ -98,7 +98,7 @@
                 FontSize="13"
                 Cursor="Hand"/>
 
-                    <Button Content="💰 Financeiro"
+                    <Button x:Name="BotaoFinanceiro" Content="💰 Financeiro"
                 Width="145"
                 Height="42"
                 Canvas.Left="20"

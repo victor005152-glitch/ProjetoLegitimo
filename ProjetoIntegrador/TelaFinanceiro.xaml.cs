@@ -6,6 +6,7 @@ using LiveChartsCore.SkiaSharpView.VisualElements;
 using SkiaSharp;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using static ProjetoIntegrador.ChartViewModel;
 namespace ProjetoIntegrador
@@ -34,6 +35,15 @@ namespace ProjetoIntegrador
             //Ind.DataContext = new ChartViewModel();
             //PZ1.DataContext = new ViewModel();
             //PZ2.DataContext = new ViewModel();
+            Ind.DataContext = new ChartViewModel();
+            PZ1.DataContext = new ViewModel();
+            PZ2.DataContext = new ViewModel();
+            InitializeComponent();
+
+            ResetarBotoes();
+
+            BotaoFinanceiro.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF7C3AED"));
         }
 
 
@@ -47,10 +57,19 @@ namespace ProjetoIntegrador
             NavigationService.Navigate(new Home());
         }
 
-        private void Ind_Loaded(object sender, RoutedEventArgs e)
+        private void Ind_Loaded(object sender, RoutedEventArgs e) {
+        }   
+        private void ResetarBotoes()
         {
+            BotaoEstoque.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
 
+            BotaoHistorico.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoFinanceiro.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
     }
 
@@ -189,5 +208,6 @@ namespace ProjetoIntegrador
                 Padding = new LiveChartsCore.Drawing.Padding(20),
                 Paint = new SolidColorPaint(SKColors.DarkSlateGray)
             };
+       
     }
 }
