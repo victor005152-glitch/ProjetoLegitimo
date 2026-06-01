@@ -16,9 +16,11 @@ namespace ProjetoIntegrador
 
         public MainWindow()
         {
-            ConectBd.AbrirConexao("server=localhost;database=loja_de_roupas_usuario;uid=root;pwd=123456789;");
+ 
             InitializeComponent();
+            ConectBd.AbrirConexao();
             MainFrame.Navigate(new TelaLogin());
+
 
 
 

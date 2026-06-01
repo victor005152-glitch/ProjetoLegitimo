@@ -26,18 +26,26 @@ namespace ProjetoIntegrador
 
         private void Cadastrar_Click(object sender, RoutedEventArgs e)
         {
+            if (Termos.IsChecked == false)
+            {
+                MessageBox.Show("Você deve aceitar os termos de uso para se cadastrar.");
+                return;
+            }
+
             string nome = txbUser.Text;
             string senha = txbSenha.Password;
+            string Email = txbEmail.Text;
 
             try
             {
-                string sql = @"INSERT INTO Usuario (Nome, Senha) VALUES (@nome, @senha)";
+                string sql = @"INSERT INTO Usuario (Nome, Senha, Email) VALUES (@nome, @senha, @email)";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, ConectBd.Conexao))
                 {
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@senha", senha);
-
+                    cmd.Parameters.AddWithValue("@email", Email);
+                   
                     cmd.ExecuteNonQuery();
                 }
 
@@ -45,6 +53,7 @@ namespace ProjetoIntegrador
 
                 txbUser.Clear();
                 txbSenha.Clear();
+                txbEmail.Clear();
 
                 NavigationService.Navigate(new TelaLogin());
             }
@@ -59,8 +68,6 @@ namespace ProjetoIntegrador
                     MessageBox.Show($"Erro: {ex.Message}");
                 }
             }
-
-
         }
     }
 }
