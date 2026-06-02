@@ -398,7 +398,7 @@
 
                 </Border>
 
-                <Canvas x:Name="Cadastro" Visibility="Collapsed" >
+                <Canvas x:Name="Cadastro" Visibility="Visible" >
                     <Border Width="334"
                     Height="410"
                     Canvas.Left="52"
@@ -518,10 +518,10 @@
                     Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64"/>
 
                     <Label Content="Categoria"
-                    Canvas.Left="69"
-                    Canvas.Top="72"
+                    Canvas.Left="65"
+                    Canvas.Top="78"
                     FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="11"/>
+                    Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontSize="11"/>
 
                     <Label Content="Marca"
                     Canvas.Left="69"
@@ -592,7 +592,7 @@
                      Background="Transparent"
                      VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"
                        KeyDown="QTD1_KeyDown"/>
-                      
+
 
                     </Border>
 

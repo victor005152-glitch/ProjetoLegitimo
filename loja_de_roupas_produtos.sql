@@ -16,30 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `produtos`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `produtos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `Senha` varchar(255) NOT NULL,
-  `Email` text,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Nome` (`Nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `produtos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `descricao` text,
+  `categoria` varchar(50) DEFAULT NULL,
+  `marca` varchar(50) DEFAULT NULL,
+  `valor_custo` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `valor_venda` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `quantidade_estoque` int NOT NULL DEFAULT '0',
+  `estoque_minimo` int NOT NULL DEFAULT '0',
+  `codigo_barras` varchar(50) DEFAULT NULL,
+  `unidade` varchar(20) DEFAULT NULL,
+  `imagem` varchar(300) DEFAULT NULL,
+  `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ativo` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `produtos`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (4,'Franchini','Nba2k23.','victor005152@gmail.com'),(5,'Luciano','123','lucianovmuhlen@gmail.com'),(6,'1','1','1');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `produtos` WRITE;
+/*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (17,'Camiseta Preta',NULL,'Masculina','Nike',190.00,250.00,24,0,'5001',NULL,NULL,'2026-05-29 19:28:30',1),(21,'Tenis Lebron Witiness 8',NULL,'Tenis Basquete Masculino','Nike',550.00,699.00,10,0,'5002',NULL,NULL,'2026-05-29 21:00:48',1),(22,'Calça Cargo Preta',NULL,'Calça masculina','Adidas',120.00,180.00,5,0,'5003',NULL,NULL,'2026-05-29 21:02:38',1);
+/*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
