@@ -317,5 +317,10 @@ namespace ProjetoIntegrador
                     new RoutedEventArgs(Button.ClickEvent));
             }
         }
+
+        private void BotaoVendas_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaVendas());
+        }
     }
 }

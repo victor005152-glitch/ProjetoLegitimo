@@ -74,5 +74,9 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new TelaLogin());
         }
+        private void BotaoVendas_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaVendas());
+        }
     }
 }

@@ -21,7 +21,6 @@ namespace ProjetoIntegrador
         public TelaHistorico()
         {
             InitializeComponent();
-            InitializeComponent();
 
             ResetarBotoes();
 
@@ -38,6 +37,12 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new Home());
         }
+
+        private void BotaoVendas_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaVendas());
+        }
+
         private void Pesquisa_GotFocus(object sender, RoutedEventArgs e)
         {
             if (Pesquisa.Text == "Pesquisar...")
@@ -58,9 +63,13 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new TelaLogin());
         }
+
         private void ResetarBotoes()
         {
             BotaoEstoque.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoVendas.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
             BotaoHistorico.Background =
@@ -71,4 +80,5 @@ namespace ProjetoIntegrador
         }
 
     }
+
 }

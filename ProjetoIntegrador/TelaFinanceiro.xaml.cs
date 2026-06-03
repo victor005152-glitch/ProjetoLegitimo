@@ -8,14 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
-using static ProjetoIntegrador.ChartViewModel;
+
 namespace ProjetoIntegrador
-
-
-
-
 {
-
     /// <summary>
     /// Interação lógica para TelaFinanceiro.xam
     /// </summary>
@@ -23,22 +18,14 @@ namespace ProjetoIntegrador
     {
         public ChartViewModel[] Series { get; set; }
 
-
-
         public TelaFinanceiro()
         {
-
             InitializeComponent();
 
-
-
-            //Ind.DataContext = new ChartViewModel();
-            //PZ1.DataContext = new ViewModel();
-            //PZ2.DataContext = new ViewModel();
+            // DataContext dos gráficos
             Ind.DataContext = new ChartViewModel();
-            PZ1.DataContext = new ViewModel();
-            PZ2.DataContext = new ViewModel();
-            InitializeComponent();
+            PZ1.DataContext = new ViewModelPizza1();
+            PZ2.DataContext = new ViewModelPizza2();
 
             ResetarBotoes();
 
@@ -46,24 +33,37 @@ namespace ProjetoIntegrador
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF7C3AED"));
         }
 
+        private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Home());
+        }
+
+        private void BotaoVendas_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaVendas());
+        }
 
         private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaHistorico());
         }
 
-        private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
+        private void BotaoSair_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home());
+            Application.Current.Shutdown();
         }
 
-        private void Ind_Loaded(object sender, RoutedEventArgs e) {
-        }   
+        private void Ind_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
         private void ResetarBotoes()
         {
             BotaoEstoque.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
+            BotaoVendas.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
             BotaoHistorico.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
@@ -74,9 +74,8 @@ namespace ProjetoIntegrador
     }
 
     //======================================
-    //GRAFICO DE INDICADORES
+    // GRÁFICO DE INDICADORES (BARRAS)
     //======================================
-
     public class ChartViewModel
     {
         public ISeries[] Series { get; set; }
@@ -84,121 +83,89 @@ namespace ProjetoIntegrador
         public Axis[] XAxes { get; set; }
 
         public LabelVisual Title { get; set; } =
-                new LabelVisual
-                {
-                    Text = "LUCROS MENSAIS",
-                    TextSize = 14,
-                    Padding = new LiveChartsCore.Drawing.Padding(15),
-                    Paint = new SolidColorPaint(SKColors.DarkSlateGray)
-                };
-
-
+            new LabelVisual
+            {
+                Text = "LUCROS MENSAIS",
+                TextSize = 14,
+                Padding = new LiveChartsCore.Drawing.Padding(15),
+                Paint = new SolidColorPaint(SKColors.DarkSlateGray)
+            };
 
         public ChartViewModel()
         {
             Series = new ISeries[]
             {
-            new RowSeries<double>
-            {
-                Values = new double[] { 9623 },
-                Name = "Verstappen",
-                Fill = new SolidColorPaint(SKColors.Red),
-                DataLabelsPaint = new SolidColorPaint(SKColors.White),
-                DataLabelsSize = 14,
-                DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
-                DataLabelsFormatter = point => $"Verstappen {point.Coordinate.PrimaryValue}"
-            },
-
-            new RowSeries<double>
-            {
-                Values = new double[] { 94860 },
-                Name = "Sainz",
-                Fill = new SolidColorPaint(SKColors.Green),
-                DataLabelsPaint = new SolidColorPaint(SKColors.White),
-                DataLabelsSize = 14,
-                DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
-                DataLabelsFormatter = point => $"Sainz {point.Coordinate.PrimaryValue}"
-            },
-
-            new RowSeries<double>
-            {
-                Values = new double[] { 9366 },
-                Name = "Hamilton",
-                Fill = new SolidColorPaint(SKColors.DodgerBlue),
-                DataLabelsPaint = new SolidColorPaint(SKColors.White),
-                DataLabelsSize = 14,
-                DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
-                DataLabelsFormatter = point => $"Hamilton {point.Coordinate.PrimaryValue}"
-            }
+                new RowSeries<double>
+                {
+                    Values = new double[] { 9623 },
+                    Name = "Verstappen",
+                    Fill = new SolidColorPaint(SKColors.Red),
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsSize = 14,
+                    DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
+                    DataLabelsFormatter = point => $"Verstappen {point.Coordinate.PrimaryValue}"
+                },
+                new RowSeries<double>
+                {
+                    Values = new double[] { 94860 },
+                    Name = "Sainz",
+                    Fill = new SolidColorPaint(SKColors.Green),
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsSize = 14,
+                    DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
+                    DataLabelsFormatter = point => $"Sainz {point.Coordinate.PrimaryValue}"
+                },
+                new RowSeries<double>
+                {
+                    Values = new double[] { 9366 },
+                    Name = "Hamilton",
+                    Fill = new SolidColorPaint(SKColors.DodgerBlue),
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsSize = 14,
+                    DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
+                    DataLabelsFormatter = point => $"Hamilton {point.Coordinate.PrimaryValue}"
+                }
             };
 
             XAxes = new Axis[]
             {
-            new Axis
-            {
-                MinLimit = 8800,
-                MaxLimit = 10000
-            }
+                new Axis
+                {
+                    MinLimit = 8800,
+                    MaxLimit = 10000
+                }
             };
-
-
-
-
         }
-
-
     }
-    //======================================
-    //GRAFICO DE PIZZA1
-    //======================================
 
-    public partial class ViewModel : ObservableObject
+    //======================================
+    // GRÁFICO DE PIZZA 1
+    //======================================
+    public class ViewModelPizza1
     {
-
-        public IEnumerable<ISeries> Series { get; set; } =
-   new[] { 2, 4, 1, 4, 3 }.AsPieSeries();
-        public IEnumerable<ISeries> Series1 { get; set; } =
-            new[]
-
-            {
-            new PieSeries<int> { Values = new[]{ 2 } },
-            new PieSeries<int> { Values = new[]{ 4 } },
-            new PieSeries<int> { Values = new[]{ 1 } },
-            new PieSeries<int> { Values = new[]{ 4 } },
-            new PieSeries<int> { Values = new[]{ 3 } },
-            };
-
+        public IEnumerable<ISeries> Series { get; set; }
 
         public LabelVisual Title1 { get; set; } =
             new LabelVisual
             {
-                Text = "My chart title",
+                Text = "DISTRIBUIÇÃO DE VENDAS",
                 TextSize = 16,
                 Padding = new LiveChartsCore.Drawing.Padding(15),
                 Paint = new SolidColorPaint(SKColors.DarkSlateGray)
             };
 
+        public ViewModelPizza1()
+        {
+            Series = new[] { 2, 4, 1, 4, 3 }.AsPieSeries();
+        }
     }
 
-
     //======================================
-    //GRAFICO DE PIZZA2
+    // GRÁFICO DE PIZZA 2
     //======================================
-
-    public partial class ViewModel : ObservableObject
+    public class ViewModelPizza2
     {
-
-        public IEnumerable<ISeries> Series2 { get; set; } =
-   new[] { 2, 4, 1, 4, 3 }.AsPieSeries();
-        public IEnumerable<ISeries> Series3 { get; set; } =
-            new[]
-            {
-            new PieSeries<int> { Values = new[]{ 2 } },
-            new PieSeries<int> { Values = new[]{ 4 } },
-            new PieSeries<int> { Values = new[]{ 1 } },
-            new PieSeries<int> { Values = new[]{ 4 } },
-            new PieSeries<int> { Values = new[]{ 3 } },
-            };
+        public IEnumerable<ISeries> Series { get; set; }
 
         public LabelVisual Title2 { get; set; } =
             new LabelVisual
@@ -208,6 +175,10 @@ namespace ProjetoIntegrador
                 Padding = new LiveChartsCore.Drawing.Padding(20),
                 Paint = new SolidColorPaint(SKColors.DarkSlateGray)
             };
-       
+
+        public ViewModelPizza2()
+        {
+            Series = new[] { 2, 4, 1, 4, 3 }.AsPieSeries();
+        }
     }
 }
