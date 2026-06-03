@@ -5,235 +5,273 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjetoIntegrador"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="TelaRecuperacao">
 
-    <Viewbox Stretch="Uniform">
+    <Grid Width="1920"
+          Height="1080"
+          Background="#FF0F172A">
 
-        <Grid Width="800"
-           Height="450"
-           Background="#FF0F172A">
+        <!-- FUNDO -->
+        <Rectangle HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF0F172A" Offset="0"/>
+                    <GradientStop Color="#FF1E293B" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
 
-            <!-- FUNDO -->
-            <Rectangle HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch">
+        <!-- DECORAÇÃO - AUMENTADA PROPORCIONALMENTE -->
+        <Ellipse Width="450"
+                 Height="450"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="-120,-90,0,0"
+                 Fill="#227C3AED"
+                 RenderOptions.BitmapScalingMode="HighQuality"/>
 
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FF0F172A" Offset="0"/>
-                        <GradientStop Color="#FF1E293B" Offset="1"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
+        <Ellipse Width="350"
+                 Height="350"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Bottom"
+                 Margin="0,0,-60,-60"
+                 Fill="#223B82F6"
+                 RenderOptions.BitmapScalingMode="HighQuality"/>
 
-            </Rectangle>
+        <!-- CÍRCULO DECORATIVO CENTRAL -->
+        <Ellipse Width="220"
+                 Height="220"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Margin="580,0,0,0"
+                 Fill="#113B82F6"
+                 RenderOptions.BitmapScalingMode="HighQuality"/>
 
-            <!-- DECORAÇÃO -->
-            <Ellipse Width="240"
-                  Height="240"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Margin="-90,-70,0,0"
-                  Fill="#227C3AED"/>
+        <!-- GRID PRINCIPAL -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="580"/>
+            </Grid.ColumnDefinitions>
 
-            <Ellipse Width="180"
-                  Height="180"
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Bottom"
-                  Margin="0,0,-40,-40"
-                  Fill="#223B82F6"/>
+            <!-- PAINEL ESQUERDO -->
+            <Grid Grid.Column="0">
+                <StackPanel Margin="120,120,0,0"
+                            VerticalAlignment="Top">
 
-            <!-- GRID PRINCIPAL -->
-            <Grid>
+                    <TextBlock Text="WRV Control"
+                               FontSize="52"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               TextOptions.TextFormattingMode="Display" Width="341"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="420"/>
-                </Grid.ColumnDefinitions>
+                    <TextBlock Text="Gerencie usuários, estoque&#10;e controle seu sistema com facilidade."
+                               Margin="0,30,0,0"
+                               FontSize="24"
+                               Foreground="#FFD1D5DB"
+                               TextWrapping="Wrap"
+                               MaxWidth="500"
+                               TextOptions.TextFormattingMode="Display" Width="356"/>
 
-                <!-- PAINEL ESQUERDO -->
-                <Grid Grid.Column="0">
-
-                    <StackPanel Margin="45,60,0,0"
-                             VerticalAlignment="Top">
-
-                        <TextBlock Text="WRV Control"
-                                FontSize="34"
-                                FontWeight="Bold"
-                                Foreground="White"/>
-
-                        <TextBlock Text="Gerencie usuários, estoque&#10;e controle seu sistema com facilidade."
-                                Margin="0,18,0,0"
-                                FontSize="17"
-                                Foreground="#FFD1D5DB"/>
-
-                        <!-- CARD 1 -->
-                        <Border Width="240"
-                             Height="60"
-                             Margin="0,55,0,0"
-                             Background="#11FFFFFF"
-                             CornerRadius="14"
-                             BorderBrush="#22FFFFFF"
-                             BorderThickness="1">
-
-                            <StackPanel Margin="15,8,0,0">
-
-                                <TextBlock Text="🔒 Login Seguro"
-                                        FontSize="15"
-                                        FontWeight="Bold"
-                                        Foreground="White"/>
-
-                                <TextBlock Text="Proteção avançada dos dados"
-                                        Margin="0,4,0,0"
-                                        FontSize="12"
-                                        Foreground="#FFD1D5DB"/>
-
-                            </StackPanel>
-
-                        </Border>
-
-                        <!-- CARD 2 -->
-                        <Border Width="240"
-                             Height="60"
-                             Margin="0,15,0,0"
-                             Background="#11FFFFFF"
-                             CornerRadius="14"
-                             BorderBrush="#22FFFFFF"
-                             BorderThickness="1">
-
-                            <StackPanel Margin="15,8,0,0">
-
-                                <TextBlock Text="⚡ Sistema Rápido"
-                                        FontSize="15"
-                                        FontWeight="Bold"
-                                        Foreground="White"/>
-
-                                <TextBlock Text="Interface moderna e fluida"
-                                        Margin="0,4,0,0"
-                                        FontSize="12"
-                                        Foreground="#FFD1D5DB"/>
-
-                            </StackPanel>
-
-                        </Border>
-
-                    </StackPanel>
-
-                </Grid>
-
-                <!-- CARD LOGIN -->
-                <Grid Grid.Column="1"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-
-                    <Border Width="360"
-                         Height="380"
-                         Background="#CCFFFFFF"
-                         CornerRadius="22"
-                         BorderBrush="#33FFFFFF"
-                         BorderThickness="1">
-
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="25"
-                                           ShadowDepth="0"
-                                           Opacity="0.30"/>
-                        </Border.Effect>
-
-                        <Canvas>
-
-                            <!-- TITULO -->
-                            <Label Content="Tela de Recuperação"
-                                Canvas.Left="30"
-                                Canvas.Top="25"
-                                FontSize="30"
-                                FontWeight="Bold"
-                                Foreground="#FF0F172A"/>
-
-                            <Label Content="Digite seu e-mail cadastrado"
-                                Canvas.Left="91"
-                                Canvas.Top="75"
-                                FontSize="13"
-                                Foreground="#FF64748B" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-
-                            <!-- USUARIO -->
-
-                            <Border Width="270"
-                                 Height="45"
-                                 Canvas.Left="45"
-                                 Canvas.Top="143"
-                                 Background="#FFF8FAFC"
-                                 CornerRadius="12"
-                                 BorderBrush="#FFE2E8F0"
-                                 BorderThickness="1">
-
-                                <TextBox x:Name="EmailDigitado"
-                                      Width="245"
-                                      BorderThickness="0"
-                                      Background="Transparent"
-                                      FontSize="14"
-                                      Padding="8"
-                                      VerticalContentAlignment="Center" Text="" 
-                                      KeyDown="txtEmail_KeyDown" Margin="11,2,11,2"/>
-
-                            </Border>
-
-
-
-                            <!-- SENHA -->
-
-
-
-                            <!-- BOTÕES -->
-                            <Button Content="Voltar"
-                                 Width="120"
-                                 Height="42"
-                                 Canvas.Left="45"
-                                 Canvas.Top="320"
-                                 Background="#FFFF2F2F"
-                                 Foreground="White"
-                                 BorderThickness="0"
-                                 FontWeight="Bold"
-                                 FontSize="13"
-                                 Cursor="Hand"
-                                 Click="Button_Click">
-
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="12"
-                                                   ShadowDepth="0"
-                                                   Opacity="0.25"/>
-                                </Button.Effect>
-
-                            </Button>
-
-                            <Button Content="Recuperar"
-                                 Width="120"
-                                 Height="42"
-                                 Canvas.Left="195"
-                                 Canvas.Top="320"
-                                 Background="#FF22C55E"
-                                 Foreground="White"
-                                 BorderThickness="0"
-                                 FontWeight="Bold"
-                                 FontSize="13"
-                                 Cursor="Hand"  
-                                 Click="Button_Click_1" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="12"
-                                                   ShadowDepth="0"
-                                                   Opacity="0.25"/>
-                                </Button.Effect>
-
-                            </Button>
-
-                        </Canvas>
-
+                    <!-- CARD 1 -->
+                    <Border Width="380"
+                            Height="90"
+                            Margin="0,100,0,0"
+                            Background="#11FFFFFF"
+                            CornerRadius="16"
+                            BorderBrush="#22FFFFFF"
+                            BorderThickness="1.5">
+                        <StackPanel Margin="20,12,0,0">
+                            <TextBlock Text="🔒 Login Seguro"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Proteção avançada dos dados"
+                                       Margin="0,6,0,0"
+                                       FontSize="15"
+                                       Foreground="#FFD1D5DB"/>
+                        </StackPanel>
                     </Border>
 
-                </Grid>
+                    <!-- CARD 2 -->
+                    <Border Width="380"
+                            Height="90"
+                            Margin="0,25,0,0"
+                            Background="#11FFFFFF"
+                            CornerRadius="16"
+                            BorderBrush="#22FFFFFF"
+                            BorderThickness="1.5">
+                        <StackPanel Margin="20,12,0,0">
+                            <TextBlock Text="⚡ Sistema Rápido"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Interface moderna e fluida"
+                                       Margin="0,6,0,0"
+                                       FontSize="15"
+                                       Foreground="#FFD1D5DB"/>
+                        </StackPanel>
+                    </Border>
 
+                    <!-- CARD 3 - RECUPERAÇÃO -->
+                    <Border Width="380"
+                            Height="90"
+                            Margin="0,25,0,0"
+                            Background="#11FFFFFF"
+                            CornerRadius="16"
+                            BorderBrush="#22FFFFFF"
+                            BorderThickness="1.5">
+                        <StackPanel Margin="20,12,0,0">
+                            <TextBlock Text="📧 Recuperação Fácil"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+                            <TextBlock Text="Recupere seu acesso em poucos passos"
+                                       Margin="0,6,0,0"
+                                       FontSize="15"
+                                       Foreground="#FFD1D5DB"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
             </Grid>
 
-        </Grid>
+            <!-- CARD DE RECUPERAÇÃO -->
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
 
-    </Viewbox>
+                <Border Width="480"
+                        Height="520"
+                        Background="#CCFFFFFF"
+                        CornerRadius="24"
+                        BorderBrush="#33FFFFFF"
+                        BorderThickness="1.5" Margin="-240,-10,240,10">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="35"
+                                          ShadowDepth="0"
+                                          Opacity="0.35"
+                                          RenderingBias="Quality"/>
+                    </Border.Effect>
+
+                    <Canvas>
+
+                        <!-- ÍCONE DE CADEADO -->
+                        <TextBlock Text="🔐"
+                                   Canvas.Left="200"
+                                   Canvas.Top="30"
+                                   FontSize="48"
+                                   HorizontalAlignment="Center"/>
+
+                        <!-- TITULO -->
+                        <Label Content="Recuperar Senha"
+                               Canvas.Left="105"
+                               Canvas.Top="95"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="#FF0F172A"/>
+
+                        <Label Content="Digite seu e-mail cadastrado"
+                               Canvas.Left="115"
+                               Canvas.Top="150"
+                               FontSize="16"
+                               Foreground="#FF64748B"/>
+
+                        <!-- CAMPO DE EMAIL -->
+                        <Label Content="E-mail"
+                               Canvas.Left="60"
+                               Canvas.Top="195"
+                               FontWeight="SemiBold"
+                               FontSize="15"
+                               Foreground="#FF1E293B"/>
+
+                        <Border Width="360"
+                                Height="55"
+                                Canvas.Left="60"
+                                Canvas.Top="230"
+                                Background="#FFF8FAFC"
+                                CornerRadius="14"
+                                BorderBrush="#FFE2E8F0"
+                                BorderThickness="1.5">
+
+                            <TextBox x:Name="EmailDigitado"
+                                     Width="330"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="16"
+                                     Padding="10"
+                                     VerticalContentAlignment="Center" 
+                                     Margin="14,6,12,8"
+                                     KeyDown="txtEmail_KeyDown"/>
+                        </Border>
+
+                        <!-- TEXTO INFORMATIVO -->
+
+                        <!-- LINHA DIVISÓRIA -->
+                        <Rectangle Width="360"
+                                   Height="1"
+                                   Fill="#FFE2E8F0"
+                                   Canvas.Left="60"
+                                   Canvas.Top="340"/>
+
+                        <!-- BOTÕES -->
+                        <Button Content="← Voltar"
+                                Width="160"
+                                Height="50"
+                                Canvas.Left="60"
+                                Canvas.Top="365"
+                                Background="#FFEF4444"
+                                Foreground="White"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                Cursor="Hand"
+                                Click="Button_Click">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.30"
+                                                  RenderingBias="Quality"/>
+                            </Button.Effect>
+                        </Button>
+
+                        <Button Content="Recuperar"
+                                Width="160"
+                                Height="50"
+                                Canvas.Left="260"
+                                Canvas.Top="365"
+                                Background="#FF22C55E"
+                                Foreground="White"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                Cursor="Hand"  
+                                Click="Button_Click_1">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.30"
+                                                  RenderingBias="Quality"/>
+                            </Button.Effect>
+                        </Button>
+
+                        <!-- LINK VOLTAR AO LOGIN -->
+                        <TextBlock Canvas.Left="145"
+                                   Canvas.Top="435"
+                                   FontSize="14"
+                                   Foreground="#FF64748B">
+                            Lembrou sua senha? 
+                            <Hyperlink Foreground="#FF7C3AED"
+                                       TextDecorations="None"
+                                       FontWeight="SemiBold">
+                                Fazer Login
+                            </Hyperlink>
+                        </TextBlock>
+                    </Canvas>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
 </Page>

@@ -5,192 +5,294 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjetoIntegrador"
       mc:Ignorable="d" 
-      d:DesignHeight="450"
-      d:DesignWidth="800"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="TelaCadastro">
 
-    <Viewbox Stretch="Uniform"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center">
 
-        <Canvas Background="#FF0F172A"
-                Width="800"
-                Height="450">
 
-            <!-- FUNDO -->
-            <Rectangle Width="800"
-                       Height="450">
+    <Canvas Background="#FF0F172A"
+                Width="1920"
+                Height="1080">
 
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FF0F172A" Offset="0"/>
-                        <GradientStop Color="#FF1E293B" Offset="1"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
+        <!-- FUNDO -->
+        <Rectangle Width="1920"
+                       Height="1080">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF0F172A" Offset="0"/>
+                    <GradientStop Color="#FF1E293B" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
 
-            </Rectangle>
+        <!-- BOLAS DECORATIVAS - AUMENTADAS PROPORCIONALMENTE -->
+        <Ellipse Width="450"
+                     Height="450"
+                     Canvas.Left="-120"
+                     Canvas.Top="-60"
+                     Fill="#227C3AED"
+                     RenderOptions.BitmapScalingMode="HighQuality"/>
 
-            <!-- BOLAS DECORATIVAS -->
-            <Ellipse Width="220"
-                     Height="220"
-                     Canvas.Left="-80"
-                     Canvas.Top="-40"
-                     Fill="#227C3AED"/>
+        <Ellipse Width="350"
+                     Height="350"
+                     Canvas.Left="1620"
+                     Canvas.Top="780"
+                     Fill="#223B82F6"
+                     RenderOptions.BitmapScalingMode="HighQuality"/>
 
-            <Ellipse Width="180"
-                     Height="180"
-                     Canvas.Left="650"
-                     Canvas.Top="320"
-                     Fill="#223B82F6"/>
+        <!-- CÍRCULO DECORATIVO ADICIONAL -->
+        <Ellipse Width="200"
+                     Height="200"
+                     Canvas.Left="1550"
+                     Canvas.Top="-50"
+                     Fill="#113B82F6"
+                     RenderOptions.BitmapScalingMode="HighQuality"/>
 
-            <!-- CARD LOGIN -->
-            <Border Width="350"
-                    Height="370"
-                    Canvas.Left="225"
-                    Canvas.Top="40"
+        <!-- PAINEL ESQUERDO INFORMATIVO -->
+        <StackPanel Canvas.Left="280"
+                        Canvas.Top="200"
+                        Width="550">
+
+            <TextBlock Text="WRV Control"
+                           FontSize="56"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           TextOptions.TextFormattingMode="Display" Width="445"/>
+
+            <TextBlock Text="Crie sua conta e comece a gerenciar seu negócio com inteligência."
+                           Margin="0,25,0,0"
+                           FontSize="22"
+                           Foreground="#FFD1D5DB"
+                           TextWrapping="Wrap"
+                           TextOptions.TextFormattingMode="Display" Width="442"/>
+
+            <!-- CARDS INFORMATIVOS -->
+            <Border Width="450"
+                        Height="85"
+                        Margin="0,60,0,0"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5">
+                <StackPanel Margin="20,12,0,0">
+                    <TextBlock Text="🔒 Dados Protegidos"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                    <TextBlock Text="Suas informações seguras com criptografia avançada"
+                                   Margin="0,6,0,0"
+                                   FontSize="14"
+                                   Foreground="#FFD1D5DB"/>
+                </StackPanel>
+            </Border>
+
+            <Border Width="450"
+                        Height="85"
+                        Margin="0,20,0,0"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5">
+                <StackPanel Margin="20,12,0,0">
+                    <TextBlock Text="⚡ Acesso Imediato"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                    <TextBlock Text="Após o cadastro, acesso liberado na hora"
+                                   Margin="0,6,0,0"
+                                   FontSize="14"
+                                   Foreground="#FFD1D5DB"/>
+                </StackPanel>
+            </Border>
+
+            <Border Width="450"
+                        Height="85"
+                        Margin="0,20,0,0"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5">
+                <StackPanel Margin="20,12,0,0">
+                    <TextBlock Text="📊 Dashboard Completo"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                    <TextBlock Text="Gerencie estoque, vendas e finanças em um só lugar"
+                                   Margin="0,6,0,0"
+                                   FontSize="14"
+                                   Foreground="#FFD1D5DB"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- CARD DE CADASTRO - DIMENSIONADO PROPORCIONALMENTE -->
+        <Border Width="500"
+                    Height="600"
+                    Canvas.Left="1050"
+                    Canvas.Top="240"
                     Background="#CCFFFFFF"
-                    CornerRadius="22"
+                    CornerRadius="24"
                     BorderBrush="#33FFFFFF"
-                    BorderThickness="1">
+                    BorderThickness="1.5">
 
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="25"
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="35"
                                       ShadowDepth="0"
-                                      Opacity="0.30"/>
-                </Border.Effect>
+                                      Opacity="0.35"
+                                      RenderingBias="Quality"/>
+            </Border.Effect>
 
-                <Canvas>
+            <Canvas>
 
-                    <!-- TITULO -->
-                    <Label Content="Criar Conta"
-                           Canvas.Left="100"
-                           Canvas.Top="28"
-                           FontSize="28"
+                <!-- TITULO -->
+                <Label Content="Criar Conta"
+                           Canvas.Left="145"
+                           Canvas.Top="40"
+                           FontSize="34"
                            FontWeight="Bold"
                            Foreground="#FF0F172A"/>
 
-                    <Label Content="Preencha os dados abaixo"
-                           Canvas.Left="95"
-                           Canvas.Top="68"
-                           FontSize="13"
+                <Label Content="Preencha os dados abaixo"
+                           Canvas.Left="135"
+                           Canvas.Top="90"
+                           FontSize="16"
                            Foreground="#FF64748B"/>
 
-                    <!-- USUARIO -->
-                    <Label Content="Usuário"
-                           Canvas.Left="42"
-                           Canvas.Top="82"
+                <!-- USUARIO -->
+                <Label Content="Usuário"
+                           Canvas.Left="60"
+                           Canvas.Top="125"
                            FontWeight="SemiBold"
-                           FontSize="13"
-                           Foreground="#FF1E293B" RenderTransformOrigin="0.545,-0.806" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                           FontSize="15"
+                           Foreground="#FF1E293B"/>
 
-                    <Border Width="264"
-                            Height="45"
-                            Canvas.Left="42"
-                            Canvas.Top="109"
+                <Border Width="380"
+                            Height="55"
+                            Canvas.Left="60"
+                            Canvas.Top="160"
                             Background="#FFF8FAFC"
-                            CornerRadius="12"
+                            CornerRadius="14"
                             BorderBrush="#FFE2E8F0"
-                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            BorderThickness="1.5">
 
-                        <TextBox x:Name="txbUser"
-                                 Width="240"
-                                 Height="32"
+                    <TextBox x:Name="txbUser"
+                                 Width="350"
+                                 Height="40"
                                  BorderThickness="0"
                                  Background="Transparent"
-                                 FontSize="14"
-                                 Padding="8"
+                                 FontSize="16"
+                                 Padding="10"
                                  VerticalContentAlignment="Center"/>
-                    </Border>
+                </Border>
 
-                    <!-- EMAIL -->
-                    <Label Content="Email"
-                           Canvas.Left="42"
-                           Canvas.Top="154"
+                <!-- EMAIL -->
+                <Label Content="Email"
+                           Canvas.Left="60"
+                           Canvas.Top="225"
                            FontWeight="SemiBold"
-                           FontSize="13"
-                           Foreground="#FF1E293B" RenderTransformOrigin="0.545,-0.806" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                           FontSize="15"
+                           Foreground="#FF1E293B"/>
 
-                    <Border Width="265"
-                            Height="45"
-                            Canvas.Left="41"
-                            Canvas.Top="181"
+                <Border Width="380"
+                            Height="55"
+                            Canvas.Left="60"
+                            Canvas.Top="260"
                             Background="#FFF8FAFC"
-                            CornerRadius="12"
+                            CornerRadius="14"
                             BorderBrush="#FFE2E8F0"
-                            BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            BorderThickness="1.5">
 
-                        <TextBox x:Name="txbEmail"
-                         Width="240"
-                         Height="32"
-                         BorderThickness="0"
-                         Background="Transparent"
-                         FontSize="14"
-                         Padding="8"
-                         VerticalContentAlignment="Center"/>
-                    </Border>
+                    <TextBox x:Name="txbEmail"
+                                 Width="350"
+                                 Height="40"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 FontSize="16"
+                                 Padding="10"
+                                 VerticalContentAlignment="Center"/>
+                </Border>
 
-                    <!-- SENHA -->
-                    <Label Content="Senha"
-                           Canvas.Left="42"
-                           Canvas.Top="223"
+
+                <!-- SENHA -->
+                <Label Content="Senha"
+                           Canvas.Left="60"
+                           Canvas.Top="325"
                            FontWeight="SemiBold"
-                           FontSize="13"
-                           Foreground="#FF1E293B" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                           FontSize="15"
+                           Foreground="#FF1E293B"/>
 
-                    <Border Width="265"
-                            Height="45"
-                            Canvas.Left="41"
-                            Canvas.Top="250"
+                <Border Width="380"
+                            Height="55"
+                            Canvas.Left="60"
+                            Canvas.Top="360"
                             Background="#FFF8FAFC"
-                            CornerRadius="12"
+                            CornerRadius="14"
                             BorderBrush="#FFE2E8F0"
-                            BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            BorderThickness="1.5">
 
-                        <PasswordBox x:Name="txbSenha"
-                                     Width="240"
-                                     Height="32"
+                    <PasswordBox x:Name="txbSenha"
+                                     Width="350"
+                                     Height="40"
                                      BorderThickness="0"
                                      Background="Transparent"
-                                     FontSize="14"
-                                     Padding="8"/>
-                    </Border>
+                                     FontSize="16"
+                                     Padding="10"/>
+                </Border>
 
-                    <!-- CHECKBOX -->
-                    <CheckBox x:Name="Termos" Content="Aceito os termos do sistema"
-                              Canvas.Left="42"
-                              Canvas.Top="300"
-                              FontSize="12"
+                <!-- CHECKBOX -->
+                <CheckBox x:Name="Termos" 
+                              Content="Aceito os termos do sistema"
+                              Canvas.Left="60"
+                              Canvas.Top="435"
+                              FontSize="14"
                               Foreground="#FF475569"/>
 
-                    <!-- BOTÃO -->
-                    <Button x:Name="BtnCadastrarClick"
+                <!-- BOTÃO -->
+                <Button x:Name="BtnCadastrarClick"
                             Content="Criar Conta"
-                            Width="265"
-                            Height="45"
-                            Canvas.Left="42"
-                            Canvas.Top="320"
+                            Width="380"
+                            Height="55"
+                            Canvas.Left="60"
+                            Canvas.Top="480"
                             Background="#FF7C3AED"
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"
-                            FontSize="14"
+                            FontSize="17"
                             Cursor="Hand"
                             Click="Cadastrar_Click">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="18"
                                               ShadowDepth="0"
-                                              Opacity="0.25"/>
-                        </Button.Effect>
+                                              Opacity="0.30"
+                                              RenderingBias="Quality"/>
+                    </Button.Effect>
+                </Button>
 
-                    </Button>
+                <!-- LINK PARA LOGIN -->
 
-                </Canvas>
+                <TextBox x:Name="txbLoginLink"
+                             Text="Já tem uma conta?"
+                             Canvas.Left="60"
+                             Canvas.Top="550"
+                             FontSize="14"
+                             Foreground="#FF475569"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             IsReadOnly="True"/>
 
-            </Border>
+               
+                <Button Content="Fazer Login" Canvas.Left="190" Canvas.Top="550"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="#FF7C3AED"
+                        FontWeight="SemiBold"
+                        Cursor="Hand" Click="Button_Click"/>
 
-        </Canvas>
-
-    </Viewbox>
+            </Canvas>
+        </Border>
+    </Canvas>
 
 </Page>

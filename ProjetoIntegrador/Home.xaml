@@ -5,629 +5,687 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjetoIntegrador"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Home">
-    <Viewbox Stretch="Uniform">
-        <Canvas Background="#FF0F172A" Width="800" Height="450" HorizontalAlignment="Left" VerticalAlignment="Center" >
+ 
+        <Canvas Background="#FF0F172A" Width="1920" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Center">
 
             <!-- FUNDO -->
-            <Rectangle Width="800"
-             Height="450">
-
+            <Rectangle Width="1920" Height="1080">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FF0F172A" Offset="0"/>
                         <GradientStop Color="#FF1E293B" Offset="1"/>
                     </LinearGradientBrush>
                 </Rectangle.Fill>
-
             </Rectangle>
 
             <!-- ================================================= -->
-            <!-- MENU -->
+            <!-- MENU LATERAL -->
             <!-- ================================================= -->
-
-            <Border Width="185"
-          Visibility="Visible"
-          Height="450"
-          Background="#CC111827"
-          CornerRadius="0,18,18,0">
-
+            <Border Width="280"
+                    Visibility="Visible"
+                    Height="1080"
+                    Background="#CC111827"
+                    CornerRadius="0,24,24,0">
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="20"
-                            ShadowDepth="0"
-                            Opacity="0.20"/>
+                    <DropShadowEffect BlurRadius="30"
+                                    ShadowDepth="0"
+                                    Opacity="0.25"/>
                 </Border.Effect>
 
                 <Canvas>
-
                     <!-- LOGO -->
                     <Label Content="WRV CONTROL"
-                 Canvas.Left="1"
-                 Canvas.Top="25"
-                 FontWeight="Bold"
-                 FontSize="24"
-                 Foreground="White" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Width="184"/>
+                           Canvas.Left="15"
+                           Canvas.Top="45"
+                           FontWeight="Bold"
+                           FontSize="32"
+                           Foreground="White" 
+                           HorizontalAlignment="Center" 
+                           Height="55" 
+                           VerticalAlignment="Top" 
+                           Width="250"/>
 
                     <Label Content="Sistema Inteligente"
-                 Canvas.Left="18"
-                 Canvas.Top="58"
-                 FontSize="11"
-                 Foreground="#FF9CA3AF"/>
+                           Canvas.Left="25"
+                           Canvas.Top="90"
+                           FontSize="15"
+                           Foreground="#FF9CA3AF"/>
 
                     <!-- LINHA -->
-                    <Rectangle Width="145"
-                     Height="1"
-                     Fill="#22FFFFFF"
-                     Canvas.Left="20"
-                     Canvas.Top="90"/>
+                    <Rectangle Width="220"
+                             Height="1.5"
+                             Fill="#33FFFFFF"
+                             Canvas.Left="30"
+                             Canvas.Top="130"/>
 
-                    <!-- BOTÕES -->
-
+                    <!-- BOTÕES DO MENU -->
                     <Button x:Name="BotaoEstoque"
-                  Content="📦 Estoque"
-                  Width="145"
-                  Height="42"
-                  Canvas.Left="20"
-                  Canvas.Top="120"
-                  Click="BotaoEstoque_Click"
-                  Background="#FF1F2937"
-                  Foreground="White"
-                  BorderThickness="0"
-                  FontWeight="Bold"
-                  FontSize="13"
-                  Cursor="Hand">
-
+                            Content="📦 Estoque"
+                            Width="220"
+                            Height="55"
+                            Canvas.Left="30"
+                            Canvas.Top="175"
+                            Click="BotaoEstoque_Click"
+                            Background="#FF1F2937"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand">
                         <Button.Effect>
-                            <DropShadowEffect BlurRadius="10"
-                                    ShadowDepth="0"
-                                    Opacity="0.20"/>
+                            <DropShadowEffect BlurRadius="12"
+                                            ShadowDepth="0"
+                                            Opacity="0.25"/>
                         </Button.Effect>
-
                     </Button>
 
                     <Button x:Name="BotaoHistorico"
-                  Content="🧾 Histórico"
-                  Width="145"
-                  Height="42"
-                  Canvas.Left="20"
-                  Canvas.Top="175"
-                  Click="Button_Click_1"
-                  Background="#FF1F2937"
-                  Foreground="White"
-                  BorderBrush="#223B82F6"
-                  FontWeight="Bold"
-                  FontSize="13"
-                  Cursor="Hand"/>
+                            Content="🧾 Histórico"
+                            Width="220"
+                            Height="55"
+                            Canvas.Left="30"
+                            Canvas.Top="250"
+                            Click="Button_Click_1"
+                            Background="#FF1F2937"
+                            Foreground="White"
+                            BorderBrush="#223B82F6"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand"/>
 
-                    <Button x:Name="BotaoFinanceiro" Content="💰 Financeiro"
-                  Width="145"
-                  Height="42"
-                  Canvas.Left="20"
-                  Canvas.Top="230"
-                  Click="Button_Click_2"
-                  Background="#FF1F2937"
-                  Foreground="White"
-                  BorderBrush="#223B82F6"
-                  FontWeight="Bold"
-                  FontSize="13"
-                  Cursor="Hand"/>
+                    <Button x:Name="BotaoFinanceiro" 
+                            Content="💰 Financeiro"
+                            Width="220"
+                            Height="55"
+                            Canvas.Left="30"
+                            Canvas.Top="325"
+                            Click="Button_Click_2"
+                            Background="#FF1F2937"
+                            Foreground="White"
+                            BorderBrush="#223B82F6"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand"/>
 
                     <!-- CARD INFO -->
-                    <Border Width="145"
-                  Height="72"
-                  Canvas.Left="20"
-                  Canvas.Top="305"
-                  Background="#11FFFFFF"
-                  CornerRadius="14"
-                  BorderBrush="#22FFFFFF"
-                  BorderThickness="1">
-
+                    <Border Width="220"
+                            Height="100"
+                            Canvas.Left="30"
+                            Canvas.Top="440"
+                            Background="#11FFFFFF"
+                            CornerRadius="16"
+                            BorderBrush="#22FFFFFF"
+                            BorderThickness="1.5">
                         <Canvas>
-
                             <Label Content="⚡ WRV Premium"
-                         Canvas.Left="12"
-                         Canvas.Top="10"
-                         FontWeight="Bold"
-                         FontSize="13"
-                         Foreground="White"/>
-
+                                   Canvas.Left="18"
+                                   Canvas.Top="15"
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="White"/>
                             <Label Content="Sistema moderno&#x0a;e otimizado"
-                         Canvas.Left="12"
-                         Canvas.Top="33"
-                         FontSize="11"
-                         Foreground="#FFD1D5DB"/>
-
+                                   Canvas.Left="18"
+                                   Canvas.Top="45"
+                                   FontSize="13"
+                                   Foreground="#FFD1D5DB"/>
                         </Canvas>
-
                     </Border>
 
-                    <!-- SAIR -->
+                    <!-- BOTÃO SAIR -->
                     <Button Content="🚪 Sair"
-                  Width="145"
-                  Height="40"
-                  Canvas.Left="20"
-                  Canvas.Top="392"
-                  Background="#FFDC2626"
-                  Foreground="White"
-                  BorderThickness="0"
-                  FontWeight="Bold"
-                  FontSize="13"
-                  Cursor="Hand" Click="Button_Click_3"/>
-
+                            Width="220"
+                            Height="50"
+                            Canvas.Left="30"
+                            Canvas.Top="975"
+                            Background="#FFDC2626"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand" 
+                            Click="Button_Click_3"/>
                 </Canvas>
-
             </Border>
 
             <!-- TOPO -->
-            <Border Canvas.Left="185"
-          Visibility="Visible"
-          Width="615"
-          Height="56"
-          Background="#11FFFFFF"
-          BorderBrush="#22FFFFFF"
-          BorderThickness="0,0,0,1">
-
+            <Border Canvas.Left="280"
+                    Visibility="Visible"
+                    Width="1640"
+                    Height="70"
+                    Background="#11FFFFFF"
+                    BorderBrush="#22FFFFFF"
+                    BorderThickness="0,0,0,1.5">
                 <Canvas>
-
                     <Label Content="Sistema de Controle"
-                 FontSize="20"
-                 FontWeight="Bold"
-                 Foreground="White"
-                 Canvas.Left="20"
-                 Canvas.Top="13"/>
-
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Canvas.Left="30"
+                           Canvas.Top="15"/>
                     <Label Content="Gerenciamento inteligente"
-                 FontSize="11"
-                 Foreground="#FFD1D5DB"
-                 Canvas.Left="22"
-                 Canvas.Top="35"/>
-
+                           FontSize="14"
+                           Foreground="#FFD1D5DB"
+                           Canvas.Left="32"
+                           Canvas.Top="45"/>
                 </Canvas>
-
             </Border>
 
-
-
             <!-- ================================================= -->
-            <!-- ESTOQUE -->
+            <!-- ÁREA PRINCIPAL - ESTOQUE -->
             <!-- ================================================= -->
-
             <Canvas x:Name="Estoque1"
-          Visibility="Visible"
-          Width="615"
-          Height="394"
-          Canvas.Left="185"
-          Canvas.Top="56"
-          Background="Transparent">
+                    Visibility="Visible"
+                    Width="1640"
+                    Height="1010"
+                    Canvas.Left="280"
+                    Canvas.Top="70"
+                    Background="Transparent">
 
-                <!-- CARDS -->
-
-                <Border Width="175"
-              Height="72"
-              Canvas.Left="15"
-              Canvas.Top="15"
-              Background="#CCFFFFFF"
-              CornerRadius="18">
-
+                <!-- CARDS SUPERIORES -->
+                <Border Width="260"
+                        Height="95"
+                        Canvas.Left="25"
+                        Canvas.Top="25"
+                        Background="#CCFFFFFF"
+                        CornerRadius="20">
                     <Canvas>
-
                         <Label Content="📦 Produtos"
-                     Canvas.Left="15"
-                     Canvas.Top="10"
-                     FontSize="14"
-                     FontWeight="Bold"
-                     Foreground="#FF1E293B"/>
-
-                        <Label x:Name="QTD" Content="125"
-                     Canvas.Left="17"
-                     Canvas.Top="33"
-                     FontSize="24"
-                     FontWeight="Bold"
-                     Foreground="#FF7C3AED"/>
-
+                               Canvas.Left="20"
+                               Canvas.Top="12"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#FF1E293B"/>
+                        <Label x:Name="QTD" 
+                               Content="125"
+                               Canvas.Left="22"
+                               Canvas.Top="45"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#FF7C3AED"/>
                     </Canvas>
-
                 </Border>
 
-                <Border Width="175"
-              Height="72"
-              Canvas.Left="210"
-              Canvas.Top="15"
-              Background="#CCFFFFFF"
-              CornerRadius="18">
-
+                <Border Width="260"
+                        Height="95"
+                        Canvas.Left="310"
+                        Canvas.Top="25"
+                        Background="#CCFFFFFF"
+                        CornerRadius="20">
                     <Canvas>
-
                         <Label Content="💰 Vendas"
-                     Canvas.Left="15"
-                     Canvas.Top="10"
-                     FontSize="14"
-                     FontWeight="Bold"
-                     Foreground="#FF1E293B"/>
-
-                        <Label x:Name="VND" Content="R$ 4.200"
-                     Canvas.Left="17"
-                     Canvas.Top="33"
-                     FontSize="22"
-                     FontWeight="Bold"
-                     Foreground="#FF22C55E"/>
-
+                               Canvas.Left="20"
+                               Canvas.Top="12"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#FF1E293B"/>
+                        <Label x:Name="VND" 
+                               Content="R$ 4.200"
+                               Canvas.Left="22"
+                               Canvas.Top="45"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Foreground="#FF22C55E"/>
                     </Canvas>
-
                 </Border>
 
-                <Border Width="175"
-              Height="72"
-              Canvas.Left="405"
-              Canvas.Top="15"
-              Background="#CCFFFFFF"
-              CornerRadius="18">
-
+                <Border Width="260"
+                        Height="95"
+                        Canvas.Left="595"
+                        Canvas.Top="25"
+                        Background="#CCFFFFFF"
+                        CornerRadius="20">
                     <Canvas>
-
                         <Label Content="🧾 Histórico"
-                     Canvas.Left="15"
-                     Canvas.Top="10"
-                     FontSize="14"
-                     FontWeight="Bold"
-                     Foreground="#FF1E293B"/>
-
+                               Canvas.Left="20"
+                               Canvas.Top="12"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#FF1E293B"/>
                         <Label Content="58"
-                     Canvas.Left="17"
-                     Canvas.Top="33"
-                     FontSize="24"
-                     FontWeight="Bold"
-                     Foreground="#FF3B82F6"/>
-
+                               Canvas.Left="22"
+                               Canvas.Top="45"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#FF3B82F6"/>
                     </Canvas>
-
                 </Border>
 
                 <!-- CONTROLES -->
-
                 <Button x:Name="Cad"
-              Content="➕ Cadastrar"
-              Width="125"
-              Height="36"
-              Canvas.Left="15"
-              Canvas.Top="105"
-              Click="Cad_Click1"
-              Background="#FF22C55E"
-              Foreground="White"
-              BorderThickness="0"
-              FontWeight="Bold"
-              Cursor="Hand"/>
+                        Content="➕ Cadastrar"
+                        Width="160"
+                        Height="45"
+                        Canvas.Left="25"
+                        Canvas.Top="145"
+                        Click="Cad_Click1"
+                        Background="#FF22C55E"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="15"
+                        Cursor="Hand"/>
 
                 <Button x:Name="ATL"
-              Content="↻ Atualizarr"
-              Width="125"
-              Height="36"
-              Canvas.Left="270"
-              Canvas.Top="105"
-              Click="ATL_Click1"
-              Background="#FF22C55E"
-              Foreground="White"
-              BorderThickness="0"
-              FontWeight="Bold"
-              Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        Content="↻ Atualizar"
+                        Width="160"
+                        Height="45"
+                        Canvas.Left="420"
+                        Canvas.Top="145"
+                        Click="ATL_Click1"
+                        Background="#FF22C55E"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="15"
+                        Cursor="Hand" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center"/>
 
                 <Button x:Name="Exc"
-              Content="🗑 Excluir"
-              Width="110"
-              Height="36"
-              Canvas.Left="150"
-              Canvas.Top="105"
-              Click="Exc_Click"
-              Background="#FFEF4444"
-              Foreground="White"
-              BorderThickness="0"
-              FontWeight="Bold"
-              Cursor="Hand"/>
+                        Content="🗑 Excluir"
+                        Width="140"
+                        Height="45"
+                        Canvas.Left="232"
+                        Canvas.Top="145"
+                        Click="Exc_Click"
+                        Background="#FFEF4444"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="15"
+                        Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <Border Width="180"
-              Height="36"
-              Canvas.Left="405"
-              Canvas.Top="105"
-              Background="#CCFFFFFF"
-              CornerRadius="10">
-
-
-                    <TextBox x:Name="Pesquisa1" Width="160"
-                   Text="Pesquisar..."
-                   Padding="8"
-                   BorderThickness="0"
-                   GotFocus="Pesquisa_GotFocus"
-                   LostFocus="Pesquisa_LostFocus"
-                   Background="Transparent"
-                   VerticalContentAlignment="Center" Margin="10,2,10,2"
-                   TextChanged="Pesquisa1_TextChanged"/>
-
+                <Border Width="260"
+                        Height="45"
+                        Canvas.Left="1345"
+                        Canvas.Top="145"
+                        Background="#CCFFFFFF"
+                        CornerRadius="12" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBox x:Name="Pesquisa1" 
+                             Width="240"
+                             Text="Pesquisar..."
+                             Padding="12"
+                             BorderThickness="0"
+                             GotFocus="Pesquisa_GotFocus"
+                             LostFocus="Pesquisa_LostFocus"
+                             Background="Transparent"
+                             VerticalContentAlignment="Center" 
+                             Margin="10,2,10,2"
+                             TextChanged="Pesquisa1_TextChanged"/>
                 </Border>
 
                 <!-- TABELA -->
-
-                <Border Width="570"
-              Height="230"
-              Canvas.Left="15"
-              Canvas.Top="150"
-              Background="#CCFFFFFF"
-              CornerRadius="18">
-
+                <Border Width="1580"
+                        Height="380"
+                        Canvas.Left="25"
+                        Canvas.Top="210"
+                        Background="#CCFFFFFF"
+                        CornerRadius="20">
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="18"
-                                ShadowDepth="0"
-                                Opacity="0.10"/>
+                        <DropShadowEffect BlurRadius="25"
+                                        ShadowDepth="0"
+                                        Opacity="0.15"/>
                     </Border.Effect>
 
-                    <DataGrid x:Name="DGestoque" Visibility="Visible"
-                    AutoGenerateColumns="False"
-                    IsReadOnly="True"
-                    BorderThickness="0"
-                    Background="Transparent">
-
+                    <DataGrid x:Name="DGestoque" 
+                              Visibility="Visible"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              BorderThickness="0"
+                              Background="Transparent"
+                              FontSize="14"
+                              RowHeight="35">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="CollumCodigo" Header="Código"
-                                      Binding="{Binding CodigoBarras}"/>
-
-                            <DataGridTextColumn x:Name="CollumNome" Header="Nome"
-                                      Binding="{Binding Nome}"/>
-
-                            <DataGridTextColumn x:Name="CollumCategoria" Header="Categoria"
-                                      Binding="{Binding Categoria}"/>
-
-                            <DataGridTextColumn x:Name="CollumMarca" Header="Marca"
-                                      Binding="{Binding Marca}"/>
-
-                            <DataGridTextColumn x:Name="CollumQuantidade" Header="Quantidade"
-                                      Binding="{Binding QuantidadeEstoque}"/>
-
-                            <DataGridTextColumn x:Name="CollumCusto" Header="Custo"
-                                      Binding="{Binding ValorCusto, StringFormat=R$ {0:N2}}"/>
-
-                            <DataGridTextColumn x:Name="CollumVenda" Header="Venda"
-                                      Binding="{Binding ValorVenda, StringFormat=R$ {0:N2}}"/>
-
+                            <DataGridTextColumn x:Name="CollumCodigo" 
+                                              Header="Código"
+                                              Width="150"
+                                              Binding="{Binding CodigoBarras}"/>
+                            <DataGridTextColumn x:Name="CollumNome" 
+                                              Header="Nome"
+                                              Width="200"
+                                              Binding="{Binding Nome}"/>
+                            <DataGridTextColumn x:Name="CollumCategoria" 
+                                              Header="Categoria"
+                                              Width="180"
+                                              Binding="{Binding Categoria}"/>
+                            <DataGridTextColumn x:Name="CollumMarca" 
+                                              Header="Marca"
+                                              Width="180"
+                                              Binding="{Binding Marca}"/>
+                            <DataGridTextColumn x:Name="CollumQuantidade" 
+                                              Header="Quantidade"
+                                              Width="150"
+                                              Binding="{Binding QuantidadeEstoque}"/>
+                            <DataGridTextColumn x:Name="CollumCusto" 
+                                              Header="Custo"
+                                              Width="150"
+                                              Binding="{Binding ValorCusto, StringFormat=R$ {0:N2}}"/>
+                            <DataGridTextColumn x:Name="CollumVenda" 
+                                              Header="Venda"
+                                              Width="150"
+                                              Binding="{Binding ValorVenda, StringFormat=R$ {0:N2}}"/>
                         </DataGrid.Columns>
-
                     </DataGrid>
-
-                    <!--=============================-->
-                    <!-- TELA DE CADASTRO DE PRODUTO -->
-                    <!--=============================-->
-
                 </Border>
 
-                <Canvas x:Name="Cadastro" Visibility="Visible" >
-                    <Border Width="334"
-                    Height="410"
-                    Canvas.Left="52"
-                    Canvas.Top="-36"
-                    CornerRadius="18" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF2D334C">
+                <!--=============================-->
+                <!-- TELA DE CADASTRO DE PRODUTO -->
+                <!--=============================-->
+                <Grid x:Name="Cadastro" Visibility="Collapsed">
 
+                    <Border Width="450"
+            Height="550"
+            Canvas.Left="404"
+            Canvas.Top="186"
+            CornerRadius="22"
+            Background="#FF2D334C" Margin="480,275,-480,-275">
 
-                    </Border>
+                        <Canvas>
 
-                    <Button x:Name="Fechar" Content="❌" Canvas.Left="362" Canvas.Top="-36" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Click="Fechar_Click"/>
-
-
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="-29" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="Codigo1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-
-                    <Border Width="180"
-                    Height="36"
-                    Background="#CCFFFFFF"
-                    CornerRadius="10" Canvas.Left="129" Canvas.Top="21" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Nome1" Width="160"
-                    Padding="8"
-                    BorderThickness="0"
-                    GotFocus="Pesquisa_GotFocus"
-                    LostFocus="Pesquisa_LostFocus"
+                            <Button x:Name="Fechar"
+                    Content="❌"
+                    Width="40"
+                    Height="40"
+                    Canvas.Left="400"
+                    Canvas.Top="10"
+                    BorderBrush="{x:Null}"
                     Background="Transparent"
-                    VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
+                    Foreground="White"
+                    FontSize="18"
+                    Click="Fechar_Click"/>
 
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="72" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Categoria1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-
-
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="122" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Marca1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="169" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Custo1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="220" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Venda1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="269" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Quantidade1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"
-                     KeyDown="Quantidade_KeyDown"/>
-                    </Border>
-
-                    <Label Content="Nome"
-                   Canvas.Left="69"
-                   Canvas.Top="21"
-                   FontSize="14"
+                            <!-- Código -->
+                            <Label Content="Código"
+                   Canvas.Left="40"
+                   Canvas.Top="35"
+                   FontSize="16"
                    FontWeight="Bold"
-                   Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64"/>
+                   Foreground="White"/>
 
-                    <Label Content="Código"
-                    Canvas.Left="69"
-                    Canvas.Top="-25"
-                    FontSize="14"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64"/>
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="25">
 
-                    <Label Content="Categoria"
-                    Canvas.Left="65"
-                    Canvas.Top="78"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" FontSize="11"/>
+                                <TextBox x:Name="Codigo1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
 
-                    <Label Content="Marca"
-                    Canvas.Left="69"
-                    Canvas.Top="122"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" FontSize="14"/>
+                            <!-- Nome -->
+                            <Label Content="Nome"
+                   Canvas.Left="40"
+                   Canvas.Top="100"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
 
-                    <Label Content="Custo"
-                    Canvas.Left="69"
-                    Canvas.Top="169"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" FontSize="14"/>
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="90">
 
-                    <Label Content="Venda"
-                    Canvas.Left="69"
-                    Canvas.Top="220"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="14"/>
+                                <TextBox x:Name="Nome1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
 
-                    <Label Content="QTD"
-                    Canvas.Left="69"
-                    Canvas.Top="269"
-                    FontWeight="Bold"
-                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="64" FontSize="14"/>
-                    <Button x:Name="Save"
+                            <!-- Categoria -->
+                            <Label Content="Categoria"
+                   Canvas.Left="40"
+                   Canvas.Top="165"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="155">
+
+                                <TextBox x:Name="Categoria1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
+
+                            <!-- Marca -->
+                            <Label Content="Marca"
+                   Canvas.Left="40"
+                   Canvas.Top="230"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="220">
+
+                                <TextBox x:Name="Marca1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
+
+                            <!-- Custo -->
+                            <Label Content="Custo"
+                   Canvas.Left="40"
+                   Canvas.Top="295"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="285">
+
+                                <TextBox x:Name="Custo1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
+
+                            <!-- Venda -->
+                            <Label Content="Venda"
+                   Canvas.Left="40"
+                   Canvas.Top="360"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="350">
+
+                                <TextBox x:Name="Venda1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
+
+                            <!-- Quantidade -->
+                            <Label Content="QTD"
+                   Canvas.Left="40"
+                   Canvas.Top="425"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="415">
+
+                                <TextBox x:Name="Quantidade1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"
+                         KeyDown="Quantidade_KeyDown"/>
+                            </Border>
+
+                            <Button x:Name="Save"
                     Content="➕ Salvar"
-                    Width="126"
-                    Height="36"
-                    Canvas.Left="156"
-                    Canvas.Top="322"
+                    Width="170"
+                    Height="48"
+                    Canvas.Left="140"
+                    Canvas.Top="485"
                     Click="Cad_Click"
                     Background="#FF22C55E"
                     Foreground="White"
                     BorderThickness="0"
                     FontWeight="Bold"
+                    FontSize="16"
                     Cursor="Hand"/>
 
-                </Canvas>
-                <Canvas x:Name="AtualizarEstoque" Visibility="Collapsed">
-                    <Border Width="334"
-                     Height="410"
-                     Canvas.Left="52"
-                     Canvas.Top="-36"
-                     CornerRadius="18" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF2D334C">
-                    </Border>
-
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="124" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="Codigo" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"/>
-                    </Border>
-                    <Border Width="180"
-                     Height="36"
-                     Background="#CCFFFFFF"
-                     CornerRadius="10" Canvas.Left="129" Canvas.Top="178" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBox x:Name="QTD1" Width="160"
-                     Padding="8"
-                     BorderThickness="0"
-                     GotFocus="Pesquisa_GotFocus"
-                     LostFocus="Pesquisa_LostFocus"
-                     Background="Transparent"
-                     VerticalContentAlignment="Center" Margin="10,2,10,2" Opacity="1"
-                       KeyDown="QTD1_KeyDown"/>
-
+                        </Canvas>
 
                     </Border>
 
-                    <Label Content="QTD"
-                     Canvas.Left="60"
-                     Canvas.Top="182"
-                     FontWeight="Bold"
-                     Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Width="51" FontSize="14"/>
+                </Grid>
 
-                    <Label Content="Código"
-                     Canvas.Left="60"
-                     Canvas.Top="128"
-                     FontWeight="Bold"
-                     Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" FontSize="14"/>
+                <!--=============================-->
+                <!-- TELA DE ATUALIZAR ESTOQUE -->
+                <!--=============================-->
+                <Grid x:Name="AtualizarEstoque" Visibility="Collapsed">
 
-                    <Button x:Name="Atualizar"
-                     Content="➕ Atualizar"
-                     Width="126"
-                     Height="36"
-                     Canvas.Left="156"
-                     Canvas.Top="322"
-                     Click="ATL_Click"
-                     Background="#FF22C55E"
-                     Foreground="White"
-                     BorderThickness="0"
-                     FontWeight="Bold"
-                     Cursor="Hand"/>
+                    <Border Width="450"
+            Height="550"
+            CornerRadius="22"
+            Background="#FF2D334C"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Margin="480,275,-480,-275">
 
-                    <Button x:Name="Fechar1" Content="❌" Canvas.Left="362" Canvas.Top="-36" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Click="Fechar_Click"/>
+                        <Canvas>
 
-                </Canvas>
+                            <Button x:Name="Fechar1"
+                    Content="❌"
+                    Width="40"
+                    Height="40"
+                    Canvas.Left="395"
+                    Canvas.Top="10"
+                    BorderBrush="{x:Null}"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="18"
+                    Click="Fechar_Click"/>
 
+                            <Label Content="Código"
+                   Canvas.Left="80"
+                   Canvas.Top="180"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   FontSize="16"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="170">
+
+                                <TextBox x:Name="Codigo"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"/>
+                            </Border>
+
+                            <Label Content="QTD"
+                   Canvas.Left="80"
+                   Canvas.Top="255"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   FontSize="16"/>
+
+                            <Border Width="240"
+                    Height="45"
+                    Background="#CCFFFFFF"
+                    CornerRadius="12"
+                    Canvas.Left="160"
+                    Canvas.Top="245">
+
+                                <TextBox x:Name="QTD1"
+                         Width="220"
+                         Padding="10"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"
+                         Margin="10,2,10,2"
+                         FontSize="15"
+                         KeyDown="QTD1_KeyDown"/>
+                            </Border>
+
+                            <Button x:Name="Atualizar"
+                    Content="➕ Atualizar"
+                    Width="170"
+                    Height="48"
+                    Canvas.Left="140"
+                    Canvas.Top="430"
+                    Click="ATL_Click"
+                    Background="#FF22C55E"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Cursor="Hand"/>
+
+                        </Canvas>
+
+                    </Border>
+
+                </Grid>
             </Canvas>
-
         </Canvas>
-    </Viewbox>
-
 </Page>
