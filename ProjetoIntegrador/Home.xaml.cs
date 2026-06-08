@@ -253,6 +253,9 @@ namespace ProjetoIntegrador
 
             BotaoFinanceiro.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoVendas.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
 
         private void ATL_Click(object sender, RoutedEventArgs e)

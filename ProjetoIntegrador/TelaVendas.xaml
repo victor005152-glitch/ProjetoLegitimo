@@ -24,6 +24,7 @@
         <!-- MENU LATERAL -->
         <!-- ================================================= -->
         <Border Width="280"
+                    Visibility="Visible"
                     Height="1080"
                     Background="#CC111827"
                     CornerRadius="0,24,24,0">
@@ -40,7 +41,12 @@
                            Canvas.Top="45"
                            FontWeight="Bold"
                            FontSize="32"
-                           Foreground="White"/>
+                           Foreground="White" 
+                           HorizontalAlignment="Center" 
+                           Height="55" 
+                           VerticalAlignment="Top" 
+                           Width="250"/>
+
                 <Label Content="Sistema Inteligente"
                            Canvas.Left="25"
                            Canvas.Top="90"
@@ -80,8 +86,8 @@
                             Width="220"
                             Height="55"
                             Canvas.Left="30"
-                            Canvas.Top="250"
-                            Background="#FF3B82F6"
+                            Canvas.Top="245"
+                            Background="#FF1F2937"
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"
@@ -99,7 +105,7 @@
                             Width="220"
                             Height="55"
                             Canvas.Left="30"
-                            Canvas.Top="325"
+                            Canvas.Top="315"
                             Click="BotaoHistorico_Click"
                             Background="#FF1F2937"
                             Foreground="White"
@@ -113,7 +119,7 @@
                             Width="220"
                             Height="55"
                             Canvas.Left="30"
-                            Canvas.Top="400"
+                            Canvas.Top="385"
                             Click="BotaoFinanceiro_Click"
                             Background="#FF1F2937"
                             Foreground="White"
@@ -126,7 +132,7 @@
                 <Border Width="220"
                             Height="100"
                             Canvas.Left="30"
-                            Canvas.Top="520"
+                            Canvas.Top="500"
                             Background="#11FFFFFF"
                             CornerRadius="16"
                             BorderBrush="#22FFFFFF"
@@ -152,18 +158,19 @@
                             Height="50"
                             Canvas.Left="30"
                             Canvas.Top="975"
-                            Click="BotaoSair_Click"
                             Background="#FFDC2626"
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"
                             FontSize="16"
-                            Cursor="Hand"/>
+                            Cursor="Hand" 
+                            Click="BotaoSair_Click"/>
             </Canvas>
         </Border>
 
         <!-- TOPO -->
         <Border Canvas.Left="280"
+                    Visibility="Visible"
                     Width="1640"
                     Height="70"
                     Background="#11FFFFFF"
@@ -206,7 +213,7 @@
                         CornerRadius="12">
                 <TextBox x:Name="PesquisaProduto" 
                              Width="380"
-                             Text="Código ou nome do produto..."
+                             Text="Código do produto..."
                              Padding="15"
                              BorderThickness="0"
                              Background="Transparent"
@@ -215,7 +222,7 @@
                              GotFocus="PesquisaProduto_GotFocus"
                              LostFocus="PesquisaProduto_LostFocus"
                              KeyDown="PesquisaProduto_KeyDown"
-                             Margin="10,0,10,0"/>
+                             Margin="10,0,10,0" TextChanged="PesquisaProduto_TextChanged"/>
             </Border>
 
             <!-- BOTÃO ADICIONAR -->
@@ -385,7 +392,7 @@
                                HorizontalAlignment="Right"/>
 
                     <!-- DESCONTO -->
-                    <Label Content="Desconto:"
+                    <Label Content="Desconto: (%)"
                                Canvas.Left="30"
                                Canvas.Top="130"
                                FontSize="16"
@@ -399,7 +406,6 @@
                                 CornerRadius="10">
                         <TextBox x:Name="DescontoGeral" 
                                      Width="130"
-                                     Text="0,00"
                                      Padding="10"
                                      BorderThickness="0"
                                      Background="Transparent"
@@ -528,7 +534,6 @@
                                 CornerRadius="10">
                         <TextBox x:Name="ValorRecebido" 
                                      Width="160"
-                                     Text="0,00"
                                      Padding="10"
                                      BorderThickness="0"
                                      Background="Transparent"
@@ -575,6 +580,14 @@
                                                 Opacity="0.3"/>
                         </Button.Effect>
                     </Button>
+                    <Label x:Name="LabelSubtotal_Copiar"
+                        Content="%"
+                        Canvas.Left="406"
+                        Canvas.Top="131"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Foreground="#FF1E293B"
+                               HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="29"/>
                 </Canvas>
             </Border>
 

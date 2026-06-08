@@ -1,10 +1,14 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using static ProjetoIntegrador.Home;
 
 namespace ProjetoIntegrador
 {
@@ -22,6 +26,15 @@ namespace ProjetoIntegrador
             InitializeComponent();
             DGVendas.ItemsSource = itensVenda;
             AtualizarResumo();
+            ResetarBotoes();
+
+            BotaoVendas.Background =
+                new SolidColorBrush(
+                    (Color)ColorConverter.ConvertFromString("#FF7C3AED"));
+
+
+            AtualizarResumo();
+
         }
 
         // Classe para representar um item na venda
@@ -43,12 +56,12 @@ namespace ProjetoIntegrador
 
         private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
         {
-            // Navegar para histórico
+            NavigationService?.Navigate(new TelaHistorico());
         }
 
         private void BotaoFinanceiro_Click(object sender, RoutedEventArgs e)
         {
-            // Navegar para financeiro
+            NavigationService?.Navigate(new TelaFinanceiro());
         }
 
         private void BotaoSair_Click(object sender, RoutedEventArgs e)
@@ -59,7 +72,7 @@ namespace ProjetoIntegrador
         // Pesquisa de produto
         private void PesquisaProduto_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (PesquisaProduto.Text == "Código ou nome do produto...")
+            if (PesquisaProduto.Text == "Código do produto...")
             {
                 PesquisaProduto.Text = "";
             }
@@ -67,9 +80,10 @@ namespace ProjetoIntegrador
 
         private void PesquisaProduto_LostFocus(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(PesquisaProduto.Text))
             {
-                PesquisaProduto.Text = "Código ou nome do produto...";
+                PesquisaProduto.Text = "Código do produto...";
             }
         }
 
@@ -89,44 +103,70 @@ namespace ProjetoIntegrador
 
         private void AdicionarProduto()
         {
-            // Aqui você deve buscar o produto no banco de dados
-            // Exemplo simplificado:
-            if (!string.IsNullOrWhiteSpace(PesquisaProduto.Text) &&
-                PesquisaProduto.Text != "Código ou nome do produto...")
+            if (string.IsNullOrWhiteSpace(PesquisaProduto.Text) ||
+                PesquisaProduto.Text == "Código ou nome do produto...")
+                return;
+
+            int quantidade = 1;
+
+            if (!int.TryParse(QuantidadeVenda.Text, out quantidade))
+                quantidade = 1;
+
+            string sql = @"
+        SELECT *
+        FROM produtos
+        WHERE  codigo_barras LIKE @pesquisa
+        OR nome LIKE @nome
+        LIMIT 1";
+
+            MySqlCommand cmd =
+                new MySqlCommand(sql, ConectBd.Conexao);
+
+            cmd.Parameters.AddWithValue("@pesquisa", PesquisaProduto.Text);
+            cmd.Parameters.AddWithValue("@nome", "%" + PesquisaProduto.Text + "%");
+
+            using (MySqlDataReader leitor = cmd.ExecuteReader())
             {
-                int quantidade = 1;
-                if (!int.TryParse(QuantidadeVenda.Text, out quantidade) || quantidade <= 0)
+                if (leitor.Read())
                 {
-                    quantidade = 1;
-                }
+                    string codigo = leitor["codigo_barras"].ToString();
+                    string nome = leitor["nome"].ToString();
+                    decimal valorVenda =
+                        Convert.ToDecimal(leitor["valor_venda"]);
 
-                // Simulação - você deve substituir pela consulta real ao banco
-                ItemVenda item = new ItemVenda
-                {
-                    CodigoBarras = PesquisaProduto.Text,
-                    Nome = "Produto Exemplo",
-                    Quantidade = quantidade,
-                    ValorUnitario = 29.90m,
-                    Desconto = 0
-                };
+                    var itemExistente =
+                        itensVenda.FirstOrDefault(i => i.CodigoBarras == codigo);
 
-                // Verifica se o item já existe na lista
-                var itemExistente = itensVenda.FirstOrDefault(i => i.CodigoBarras == item.CodigoBarras);
-                if (itemExistente != null)
-                {
-                    itemExistente.Quantidade += quantidade;
+                    if (itemExistente != null)
+                    {
+                        itemExistente.Quantidade += quantidade;
+
+                        DGVendas.Items.Refresh();
+                    }
+                    else
+                    {
+                        itensVenda.Add(new ItemVenda
+                        {
+                            CodigoBarras = codigo,
+                            Nome = nome,
+                            Quantidade = quantidade,
+                            ValorUnitario = valorVenda,
+                            Desconto = 0
+                        });
+                    }
                 }
                 else
                 {
-                    itensVenda.Add(item);
+                    MessageBox.Show("Produto não encontrado.");
+                    return;
                 }
-
-                PesquisaProduto.Text = "";
-                QuantidadeVenda.Text = "1";
-                AtualizarResumo();
             }
-        }
 
+            PesquisaProduto.Clear();
+            QuantidadeVenda.Text = "1";
+
+            AtualizarResumo();
+        }
         // Remover item selecionado
         private void BtnRemoverItem_Click(object sender, RoutedEventArgs e)
         {
@@ -211,11 +251,18 @@ namespace ProjetoIntegrador
         // Atualizar desconto
         private void DescontoGeral_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            if (DescontoGeral.Text == "0,00")
+            {
+
+                DescontoGeral.Clear();
+            }
             if (decimal.TryParse(DescontoGeral.Text, out decimal desconto))
             {
                 descontoGeral = desconto;
                 AtualizarResumo();
             }
+
         }
 
         // Atualizar valor recebido e calcular troco
@@ -239,7 +286,11 @@ namespace ProjetoIntegrador
         private void AtualizarResumo()
         {
             subtotal = itensVenda.Sum(i => i.Subtotal);
-            total = subtotal - descontoGeral;
+
+            // descontoGeral agora é porcentagem
+            decimal valorDesconto = subtotal * (descontoGeral / 100);
+
+            total = subtotal - valorDesconto;
 
             if (LabelSubtotal != null)
                 LabelSubtotal.Content = $"R$ {subtotal:N2}";
@@ -296,12 +347,68 @@ namespace ProjetoIntegrador
                 MessageBox.Show("Venda finalizada com sucesso!", "Sucesso",
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
+                try
+                {
+
+                    string sql = @"
+            UPDATE produtos
+            SET quantidade_estoque = quantidade_estoque - @qtd
+            WHERE codigo_barras = @codigo";
+
+
+                    for (int i = 0; i < DGVendas.SelectedItems.Count; i++)
+                    {
+                        if (DGVendas.SelectedItems[i] is ItemVenda prd)
+                        {
+
+                            MySqlCommand cmd =
+                                new MySqlCommand(sql, ConectBd.Conexao);
+
+                            cmd.Parameters.AddWithValue("@qtd", prd.Quantidade);
+                            cmd.Parameters.AddWithValue("@codigo", prd.CodigoBarras);
+
+                            int linhas = cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number == 1062)
+                    {
+                        MessageBox.Show("Este usuário já existe.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Erro: {ex.Message}");
+                    }
+                }
                 // Limpar para próxima venda
                 itensVenda.Clear();
                 DescontoGeral.Text = "0,00";
                 ValorRecebido.Text = "0,00";
+
                 AtualizarResumo();
             }
+        }
+        private void ResetarBotoes()
+        {
+            BotaoEstoque.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoHistorico.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoFinanceiro.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoVendas.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+        }
+
+        private void PesquisaProduto_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+
         }
     }
 }
