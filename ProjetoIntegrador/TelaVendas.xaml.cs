@@ -1,8 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,30 +13,34 @@ namespace ProjetoIntegrador
 {
     public partial class TelaVendas : Page
     {
-        // Lista de itens da venda
         private ObservableCollection<ItemVenda> itensVenda = new ObservableCollection<ItemVenda>();
+        private ObservableCollection<ProdutoEstoque> produtosEstoque = new ObservableCollection<ProdutoEstoque>();
+        private ObservableCollection<ProdutoEstoque> produtosFiltrados = new ObservableCollection<ProdutoEstoque>();
+
         private string formaPagamentoSelecionada = "Dinheiro";
         private decimal subtotal = 0;
         private decimal descontoGeral = 0;
         private decimal total = 0;
 
+        private const string PlaceholderPesquisa = "Código do produto...";
+
         public TelaVendas()
         {
             InitializeComponent();
+
             DGVendas.ItemsSource = itensVenda;
+            DGEstoque.ItemsSource = produtosFiltrados;
+
+            CarregarEstoque();
+
             AtualizarResumo();
             ResetarBotoes();
 
             BotaoVendas.Background =
                 new SolidColorBrush(
                     (Color)ColorConverter.ConvertFromString("#FF7C3AED"));
-
-
-            AtualizarResumo();
-
         }
 
-        // Classe para representar um item na venda
         public class ItemVenda
         {
             public string CodigoBarras { get; set; }
@@ -45,251 +48,236 @@ namespace ProjetoIntegrador
             public int Quantidade { get; set; }
             public decimal ValorUnitario { get; set; }
             public decimal Desconto { get; set; }
-            public decimal Subtotal { get { return (ValorUnitario * Quantidade) - Desconto; } }
-        }
 
-        // Eventos dos botões do menu
-        private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new Home());
-        }
-
-        private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new TelaHistorico());
-        }
-
-        private void BotaoFinanceiro_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new TelaFinanceiro());
-        }
-
-        private void BotaoSair_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        // Pesquisa de produto
-        private void PesquisaProduto_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (PesquisaProduto.Text == "Código do produto...")
+            public decimal Subtotal
             {
-                PesquisaProduto.Text = "";
+                get { return (ValorUnitario * Quantidade) - Desconto; }
             }
         }
 
-        private void PesquisaProduto_LostFocus(object sender, RoutedEventArgs e)
+        public class ProdutoEstoque
         {
+            public string CodigoBarras { get; set; }
+            public string Nome { get; set; }
+            public string Categoria { get; set; }
+            public int QuantidadeEstoque { get; set; }
+            public decimal ValorVenda { get; set; }
+        }
 
-            if (string.IsNullOrWhiteSpace(PesquisaProduto.Text))
+        private void CarregarEstoque()
+        {
+            produtosEstoque.Clear();
+            produtosFiltrados.Clear();
+
+            try
             {
-                PesquisaProduto.Text = "Código do produto...";
+                if (ConectBd.Conexao.State != ConnectionState.Open)
+                    ConectBd.Conexao.Open();
+
+                string sql = @"
+                    SELECT 
+                        codigo_barras,
+                        nome,
+                        categoria,
+                        quantidade_estoque,
+                        valor_venda
+                    FROM produtos
+                    ORDER BY nome";
+
+                MySqlCommand cmd = new MySqlCommand(sql, ConectBd.Conexao);
+
+                using (MySqlDataReader leitor = cmd.ExecuteReader())
+                {
+                    while (leitor.Read())
+                    {
+                        ProdutoEstoque produto = new ProdutoEstoque
+                        {
+                            CodigoBarras = leitor["codigo_barras"].ToString(),
+                            Nome = leitor["nome"].ToString(),
+                            Categoria = leitor["categoria"].ToString(),
+                            QuantidadeEstoque = Convert.ToInt32(leitor["quantidade_estoque"]),
+                            ValorVenda = Convert.ToDecimal(leitor["valor_venda"])
+                        };
+
+                        produtosEstoque.Add(produto);
+                        produtosFiltrados.Add(produto);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar estoque: " + ex.Message);
             }
         }
 
-        private void PesquisaProduto_KeyDown(object sender, KeyEventArgs e)
+        private void AtualizarFiltroEstoque()
         {
-            if (e.Key == Key.Enter)
-            {
-                AdicionarProduto();
-            }
-        }
+            if (produtosFiltrados == null)
+                return;
 
-        // Adicionar produto à venda
-        private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
-        {
-            AdicionarProduto();
+            produtosFiltrados.Clear();
+
+            string pesquisa = PesquisaProduto.Text.Trim().ToLower();
+
+            if (string.IsNullOrWhiteSpace(pesquisa) ||
+                pesquisa == PlaceholderPesquisa.ToLower() ||
+                pesquisa == "código ou nome do produto..." ||
+                pesquisa == "código do produto.")
+            {
+                foreach (ProdutoEstoque produto in produtosEstoque)
+                    produtosFiltrados.Add(produto);
+
+                return;
+            }
+
+            foreach (ProdutoEstoque produto in produtosEstoque)
+            {
+                bool encontrou =
+                    produto.Nome.ToLower().Contains(pesquisa) ||
+                    produto.CodigoBarras.ToLower().Contains(pesquisa) ||
+                    produto.Categoria.ToLower().Contains(pesquisa);
+
+                if (encontrou)
+                    produtosFiltrados.Add(produto);
+            }
         }
 
         private void AdicionarProduto()
         {
+            if (DGEstoque.SelectedItem != null)
+            {
+                AdicionarProdutoSelecionado();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(PesquisaProduto.Text) ||
+                PesquisaProduto.Text == PlaceholderPesquisa ||
+                PesquisaProduto.Text == "Código do produto." ||
                 PesquisaProduto.Text == "Código ou nome do produto...")
                 return;
+
+            string pesquisa = PesquisaProduto.Text.Trim().ToLower();
+
+            ProdutoEstoque produtoEncontrado = produtosEstoque.FirstOrDefault(p =>
+                p.CodigoBarras.ToLower() == pesquisa ||
+                p.Nome.ToLower().Contains(pesquisa));
+
+            if (produtoEncontrado == null)
+            {
+                MessageBox.Show("Produto não encontrado.");
+                return;
+            }
+
+            DGEstoque.SelectedItem = produtoEncontrado;
+            AdicionarProdutoSelecionado();
+
+            PesquisaProduto.Clear();
+            AtualizarFiltroEstoque();
+        }
+
+        private void AdicionarProdutoSelecionado()
+        {
+            ProdutoEstoque produto = DGEstoque.SelectedItem as ProdutoEstoque;
+
+            if (produto == null)
+            {
+                MessageBox.Show("Selecione um produto no estoque.");
+                return;
+            }
 
             int quantidade = 1;
 
             if (!int.TryParse(QuantidadeVenda.Text, out quantidade))
                 quantidade = 1;
 
-            string sql = @"
-        SELECT *
-        FROM produtos
-        WHERE  codigo_barras LIKE @pesquisa
-        OR nome LIKE @nome
-        LIMIT 1";
-
-            MySqlCommand cmd =
-                new MySqlCommand(sql, ConectBd.Conexao);
-
-            cmd.Parameters.AddWithValue("@pesquisa", PesquisaProduto.Text);
-            cmd.Parameters.AddWithValue("@nome", "%" + PesquisaProduto.Text + "%");
-
-            using (MySqlDataReader leitor = cmd.ExecuteReader())
+            if (quantidade <= 0)
             {
-                if (leitor.Read())
-                {
-                    string codigo = leitor["codigo_barras"].ToString();
-                    string nome = leitor["nome"].ToString();
-                    decimal valorVenda =
-                        Convert.ToDecimal(leitor["valor_venda"]);
-
-                    var itemExistente =
-                        itensVenda.FirstOrDefault(i => i.CodigoBarras == codigo);
-
-                    if (itemExistente != null)
-                    {
-                        itemExistente.Quantidade += quantidade;
-
-                        DGVendas.Items.Refresh();
-                    }
-                    else
-                    {
-                        itensVenda.Add(new ItemVenda
-                        {
-                            CodigoBarras = codigo,
-                            Nome = nome,
-                            Quantidade = quantidade,
-                            ValorUnitario = valorVenda,
-                            Desconto = 0
-                        });
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Produto não encontrado.");
-                    return;
-                }
+                MessageBox.Show("Quantidade inválida.");
+                return;
             }
 
-            PesquisaProduto.Clear();
-            QuantidadeVenda.Text = "1";
+            ItemVenda itemExistente =
+                itensVenda.FirstOrDefault(i => i.CodigoBarras == produto.CodigoBarras);
 
-            AtualizarResumo();
-        }
-        // Remover item selecionado
-        private void BtnRemoverItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (DGVendas.SelectedItem != null)
+            int quantidadeAtualNoCarrinho = itemExistente == null ? 0 : itemExistente.Quantidade;
+            int quantidadeFinal = quantidadeAtualNoCarrinho + quantidade;
+
+            if (quantidadeFinal > produto.QuantidadeEstoque)
             {
-                itensVenda.Remove((ItemVenda)DGVendas.SelectedItem);
-                AtualizarResumo();
+                MessageBox.Show("Quantidade maior que o estoque disponível.");
+                return;
+            }
+
+            if (itemExistente != null)
+            {
+                itemExistente.Quantidade += quantidade;
+                DGVendas.Items.Refresh();
             }
             else
             {
-                MessageBox.Show("Selecione um item para remover.", "Aviso",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                itensVenda.Add(new ItemVenda
+                {
+                    CodigoBarras = produto.CodigoBarras,
+                    Nome = produto.Nome,
+                    Quantidade = quantidade,
+                    ValorUnitario = produto.ValorVenda,
+                    Desconto = 0
+                });
             }
+
+            QuantidadeVenda.Text = "1";
+            AtualizarResumo();
         }
 
-        // Limpar toda a venda
-        private void BtnLimparVenda_Click(object sender, RoutedEventArgs e)
+        private void BaixarEstoque()
         {
-            if (itensVenda.Count > 0)
-            {
-                MessageBoxResult result = MessageBox.Show("Deseja realmente limpar todos os itens?",
-                    "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ConectBd.Conexao.State != ConnectionState.Open)
+                ConectBd.Conexao.Open();
 
-                if (result == MessageBoxResult.Yes)
+            using (MySqlTransaction transacao = ConectBd.Conexao.BeginTransaction())
+            {
+                try
                 {
-                    itensVenda.Clear();
-                    DescontoGeral.Text = "0,00";
-                    ValorRecebido.Text = "0,00";
-                    AtualizarResumo();
+                    string sql = @"
+                        UPDATE produtos
+                        SET quantidade_estoque = quantidade_estoque - @qtd
+                        WHERE codigo_barras = @codigo";
+
+                    foreach (ItemVenda item in itensVenda)
+                    {
+                        MySqlCommand cmd = new MySqlCommand(sql, ConectBd.Conexao, transacao);
+                        cmd.Parameters.AddWithValue("@qtd", item.Quantidade);
+                        cmd.Parameters.AddWithValue("@codigo", item.CodigoBarras);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transacao.Commit();
+                }
+                catch
+                {
+                    transacao.Rollback();
+                    throw;
                 }
             }
         }
 
-        // Seleção da forma de pagamento
-        private void BtnDinheiro_Click(object sender, RoutedEventArgs e)
+        private void LimparVenda()
         {
-            formaPagamentoSelecionada = "Dinheiro";
-            LabelPagamento.Content = "Pagamento: Dinheiro";
-            ResetarBotoesPagamento();
-            BtnDinheiro.Background = new System.Windows.Media.SolidColorBrush(
-                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF3B82F6"));
+            itensVenda.Clear();
+            DescontoGeral.Text = "0,00";
+            ValorRecebido.Text = "0,00";
+            QuantidadeVenda.Text = "1";
+            PesquisaProduto.Text = PlaceholderPesquisa;
+
+            CarregarEstoque();
+            AtualizarResumo();
         }
 
-        private void BtnCartao_Click(object sender, RoutedEventArgs e)
-        {
-            formaPagamentoSelecionada = "Cartão";
-            LabelPagamento.Content = "Pagamento: Cartão";
-            ResetarBotoesPagamento();
-            BtnCartao.Background = new System.Windows.Media.SolidColorBrush(
-                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF3B82F6"));
-        }
-
-        private void BtnPix_Click(object sender, RoutedEventArgs e)
-        {
-            formaPagamentoSelecionada = "Pix";
-            LabelPagamento.Content = "Pagamento: Pix";
-            ResetarBotoesPagamento();
-            BtnPix.Background = new System.Windows.Media.SolidColorBrush(
-                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF3B82F6"));
-        }
-
-        private void BtnBoleto_Click(object sender, RoutedEventArgs e)
-        {
-            formaPagamentoSelecionada = "Boleto";
-            LabelPagamento.Content = "Pagamento: Boleto";
-            ResetarBotoesPagamento();
-            BtnBoleto.Background = new System.Windows.Media.SolidColorBrush(
-                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF3B82F6"));
-        }
-
-        private void ResetarBotoesPagamento()
-        {
-            var corPadrao = new System.Windows.Media.SolidColorBrush(
-                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BtnDinheiro.Background = corPadrao;
-            BtnCartao.Background = corPadrao;
-            BtnPix.Background = corPadrao;
-            BtnBoleto.Background = corPadrao;
-        }
-
-        // Atualizar desconto
-        private void DescontoGeral_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            if (DescontoGeral.Text == "0,00")
-            {
-
-                DescontoGeral.Clear();
-            }
-            if (decimal.TryParse(DescontoGeral.Text, out decimal desconto))
-            {
-                descontoGeral = desconto;
-                AtualizarResumo();
-            }
-
-        }
-
-        // Atualizar valor recebido e calcular troco
-        private void ValorRecebido_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (LabelTroco == null)
-                return;
-
-            if (decimal.TryParse(ValorRecebido.Text, out decimal recebido))
-            {
-                decimal troco = recebido - total;
-
-                if (troco < 0)
-                    troco = 0;
-
-                LabelTroco.Content = $"R$ {troco:N2}";
-            }
-        }
-
-        // Atualizar resumo da venda
         private void AtualizarResumo()
         {
             subtotal = itensVenda.Sum(i => i.Subtotal);
 
-            // descontoGeral agora é porcentagem
             decimal valorDesconto = subtotal * (descontoGeral / 100);
-
             total = subtotal - valorDesconto;
 
             if (LabelSubtotal != null)
@@ -316,7 +304,175 @@ namespace ProjetoIntegrador
                 LabelTroco.Content = $"R$ {troco:N2}";
             }
         }
-        // Finalizar venda
+
+        private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new Home());
+        }
+
+        private void BotaoHistorico_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new TelaHistorico());
+        }
+
+        private void BotaoFinanceiro_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new TelaFinanceiro());
+        }
+
+        private void BotaoSair_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void PesquisaProduto_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (PesquisaProduto.Text == PlaceholderPesquisa ||
+                PesquisaProduto.Text == "Código do produto.")
+            {
+                PesquisaProduto.Text = "";
+            }
+        }
+
+        private void PesquisaProduto_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PesquisaProduto.Text))
+            {
+                PesquisaProduto.Text = PlaceholderPesquisa;
+                AtualizarFiltroEstoque();
+            }
+        }
+
+        private void PesquisaProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                AdicionarProduto();
+            }
+        }
+
+        private void PesquisaProduto_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AtualizarFiltroEstoque();
+        }
+
+        private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+            AdicionarProduto();
+        }
+
+        private void DGEstoque_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            AdicionarProdutoSelecionado();
+        }
+
+        private void BtnRemoverItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGVendas.SelectedItem != null)
+            {
+                itensVenda.Remove((ItemVenda)DGVendas.SelectedItem);
+                AtualizarResumo();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um item para remover.", "Aviso",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void BtnLimparVenda_Click(object sender, RoutedEventArgs e)
+        {
+            if (itensVenda.Count > 0)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    "Deseja realmente limpar todos os itens?",
+                    "Confirmar",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    itensVenda.Clear();
+                    DescontoGeral.Text = "0,00";
+                    ValorRecebido.Text = "0,00";
+                    AtualizarResumo();
+                }
+            }
+        }
+
+        private void BtnDinheiro_Click(object sender, RoutedEventArgs e)
+        {
+            formaPagamentoSelecionada = "Dinheiro";
+            LabelPagamento.Content = "Pagamento: Dinheiro";
+            ResetarBotoesPagamento();
+
+            BtnDinheiro.Background = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#FF3B82F6"));
+        }
+
+        private void BtnCartao_Click(object sender, RoutedEventArgs e)
+        {
+            formaPagamentoSelecionada = "Cartão";
+            LabelPagamento.Content = "Pagamento: Cartão";
+            ResetarBotoesPagamento();
+
+            BtnCartao.Background = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#FF3B82F6"));
+        }
+
+        private void BtnPix_Click(object sender, RoutedEventArgs e)
+        {
+            formaPagamentoSelecionada = "Pix";
+            LabelPagamento.Content = "Pagamento: Pix";
+            ResetarBotoesPagamento();
+
+            BtnPix.Background = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#FF3B82F6"));
+        }
+
+        private void BtnBoleto_Click(object sender, RoutedEventArgs e)
+        {
+            formaPagamentoSelecionada = "Boleto";
+            LabelPagamento.Content = "Pagamento: Boleto";
+            ResetarBotoesPagamento();
+
+            BtnBoleto.Background = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#FF3B82F6"));
+        }
+
+        private void ResetarBotoesPagamento()
+        {
+            var corPadrao = new SolidColorBrush(
+                (Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BtnDinheiro.Background = corPadrao;
+            BtnCartao.Background = corPadrao;
+            BtnPix.Background = corPadrao;
+            BtnBoleto.Background = corPadrao;
+        }
+
+        private void DescontoGeral_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (DescontoGeral == null)
+                return;
+
+            if (decimal.TryParse(DescontoGeral.Text, out decimal desconto))
+            {
+                descontoGeral = desconto;
+            }
+            else
+            {
+                descontoGeral = 0;
+            }
+
+            AtualizarResumo();
+        }
+
+        private void ValorRecebido_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AtualizarResumo();
+        }
+
         private void BtnFinalizar_Click(object sender, RoutedEventArgs e)
         {
             if (itensVenda.Count == 0)
@@ -326,11 +482,21 @@ namespace ProjetoIntegrador
                 return;
             }
 
-            if (decimal.TryParse(ValorRecebido.Text, out decimal recebido) && recebido < total)
+            if (formaPagamentoSelecionada == "Dinheiro")
             {
-                MessageBox.Show("Valor recebido é menor que o total da venda.", "Aviso",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                if (!decimal.TryParse(ValorRecebido.Text, out decimal recebido))
+                {
+                    MessageBox.Show("Informe o valor recebido.", "Aviso",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (recebido < total)
+                {
+                    MessageBox.Show("Valor recebido é menor que o total da venda.", "Aviso",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
             }
 
             MessageBoxResult result = MessageBox.Show(
@@ -339,57 +505,27 @@ namespace ProjetoIntegrador
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            try
             {
-                // Aqui você deve salvar a venda no banco de dados
-                // RegistrarVenda();
+                BaixarEstoque();
 
                 MessageBox.Show("Venda finalizada com sucesso!", "Sucesso",
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
-                try
-                {
-
-                    string sql = @"
-            UPDATE produtos
-            SET quantidade_estoque = quantidade_estoque - @qtd
-            WHERE codigo_barras = @codigo";
-
-
-                    for (int i = 0; i < DGVendas.SelectedItems.Count; i++)
-                    {
-                        if (DGVendas.SelectedItems[i] is ItemVenda prd)
-                        {
-
-                            MySqlCommand cmd =
-                                new MySqlCommand(sql, ConectBd.Conexao);
-
-                            cmd.Parameters.AddWithValue("@qtd", prd.Quantidade);
-                            cmd.Parameters.AddWithValue("@codigo", prd.CodigoBarras);
-
-                            int linhas = cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    if (ex.Number == 1062)
-                    {
-                        MessageBox.Show("Este usuário já existe.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Erro: {ex.Message}");
-                    }
-                }
-                // Limpar para próxima venda
-                itensVenda.Clear();
-                DescontoGeral.Text = "0,00";
-                ValorRecebido.Text = "0,00";
-
-                AtualizarResumo();
+                LimparVenda();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao finalizar venda: " + ex.Message,
+                    "Erro",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
+
         private void ResetarBotoes()
         {
             BotaoEstoque.Background =
@@ -403,12 +539,6 @@ namespace ProjetoIntegrador
 
             BotaoVendas.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-        }
-
-        private void PesquisaProduto_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-
         }
     }
 }
