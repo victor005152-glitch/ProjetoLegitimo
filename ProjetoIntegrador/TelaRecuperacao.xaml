@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjetoIntegrador"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="TelaRecuperacao">
 
     <Grid Width="1920"
@@ -23,7 +24,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <!-- DECORAÇÃO - AUMENTADA PROPORCIONALMENTE -->
+        <!-- DECORAÇÃO -->
         <Ellipse Width="450"
                  Height="450"
                  HorizontalAlignment="Left"
@@ -40,7 +41,6 @@
                  Fill="#223B82F6"
                  RenderOptions.BitmapScalingMode="HighQuality"/>
 
-        <!-- CÍRCULO DECORATIVO CENTRAL -->
         <Ellipse Width="220"
                  Height="220"
                  HorizontalAlignment="Left"
@@ -65,7 +65,8 @@
                                FontSize="52"
                                FontWeight="Bold"
                                Foreground="White"
-                               TextOptions.TextFormattingMode="Display" Width="341"/>
+                               TextOptions.TextFormattingMode="Display"
+                               Width="341"/>
 
                     <TextBlock Text="Gerencie usuários, estoque&#10;e controle seu sistema com facilidade."
                                Margin="0,30,0,0"
@@ -73,7 +74,8 @@
                                Foreground="#FFD1D5DB"
                                TextWrapping="Wrap"
                                MaxWidth="500"
-                               TextOptions.TextFormattingMode="Display" Width="356"/>
+                               TextOptions.TextFormattingMode="Display"
+                               Width="356"/>
 
                     <!-- CARD 1 -->
                     <Border Width="380"
@@ -115,7 +117,7 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- CARD 3 - RECUPERAÇÃO -->
+                    <!-- CARD 3 -->
                     <Border Width="380"
                             Height="90"
                             Margin="0,25,0,0"
@@ -143,11 +145,12 @@
                   VerticalAlignment="Center">
 
                 <Border Width="480"
-                        Height="520"
+                        Height="720"
                         Background="#CCFFFFFF"
                         CornerRadius="24"
                         BorderBrush="#33FFFFFF"
-                        BorderThickness="1.5" Margin="-240,-10,240,10">
+                        BorderThickness="1.5"
+                        Margin="-240,-10,240,10">
 
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="35"
@@ -158,31 +161,30 @@
 
                     <Canvas>
 
-                        <!-- ÍCONE DE CADEADO -->
+                        <!-- ÍCONE -->
                         <TextBlock Text="🔐"
                                    Canvas.Left="200"
-                                   Canvas.Top="30"
-                                   FontSize="48"
-                                   HorizontalAlignment="Center"/>
+                                   Canvas.Top="25"
+                                   FontSize="48"/>
 
-                        <!-- TITULO -->
+                        <!-- TÍTULO -->
                         <Label Content="Recuperar Senha"
                                Canvas.Left="105"
-                               Canvas.Top="95"
+                               Canvas.Top="90"
                                FontSize="34"
                                FontWeight="Bold"
                                Foreground="#FF0F172A"/>
 
                         <Label Content="Digite seu e-mail cadastrado"
                                Canvas.Left="115"
-                               Canvas.Top="150"
+                               Canvas.Top="145"
                                FontSize="16"
                                Foreground="#FF64748B"/>
 
                         <!-- CAMPO DE EMAIL -->
                         <Label Content="E-mail"
                                Canvas.Left="60"
-                               Canvas.Top="195"
+                               Canvas.Top="190"
                                FontWeight="SemiBold"
                                FontSize="15"
                                Foreground="#FF1E293B"/>
@@ -190,7 +192,7 @@
                         <Border Width="360"
                                 Height="55"
                                 Canvas.Left="60"
-                                Canvas.Top="230"
+                                Canvas.Top="225"
                                 Background="#FFF8FAFC"
                                 CornerRadius="14"
                                 BorderBrush="#FFE2E8F0"
@@ -202,26 +204,17 @@
                                      Background="Transparent"
                                      FontSize="16"
                                      Padding="10"
-                                     VerticalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center"
                                      Margin="14,6,12,8"
                                      KeyDown="txtEmail_KeyDown"/>
                         </Border>
 
-                        <!-- TEXTO INFORMATIVO -->
-
-                        <!-- LINHA DIVISÓRIA -->
-                        <Rectangle Width="360"
-                                   Height="1"
-                                   Fill="#FFE2E8F0"
-                                   Canvas.Left="60"
-                                   Canvas.Top="340"/>
-
-                        <!-- BOTÕES -->
+                        <!-- BOTÕES INICIAIS -->
                         <Button Content="← Voltar"
                                 Width="160"
                                 Height="50"
                                 Canvas.Left="60"
-                                Canvas.Top="365"
+                                Canvas.Top="305"
                                 Background="#FFEF4444"
                                 Foreground="White"
                                 BorderThickness="0"
@@ -237,17 +230,17 @@
                             </Button.Effect>
                         </Button>
 
-                        <Button Content="Recuperar"
+                        <Button Content="Enviar Código"
                                 Width="160"
                                 Height="50"
                                 Canvas.Left="260"
-                                Canvas.Top="365"
+                                Canvas.Top="305"
                                 Background="#FF22C55E"
                                 Foreground="White"
                                 BorderThickness="0"
                                 FontWeight="Bold"
                                 FontSize="15"
-                                Cursor="Hand"  
+                                Cursor="Hand"
                                 Click="Button_Click_1">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15"
@@ -257,18 +250,120 @@
                             </Button.Effect>
                         </Button>
 
+                        <!-- PAINEL DO CÓDIGO -->
+                        <StackPanel x:Name="painelCodigo"
+                                    Canvas.Left="60"
+                                    Canvas.Top="380"
+                                    Width="360"
+                                    Visibility="Collapsed">
+
+                            <TextBlock Text="Código recebido:"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       Foreground="#FF1E293B"/>
+
+                            <Border Width="360"
+                                    Height="50"
+                                    Margin="0,6,0,10"
+                                    Background="#FFF8FAFC"
+                                    CornerRadius="14"
+                                    BorderBrush="#FFE2E8F0"
+                                    BorderThickness="1.5">
+
+                                <TextBox x:Name="CodigoDigitado"
+                                         BorderThickness="0"
+                                         Background="Transparent"
+                                         FontSize="16"
+                                         Padding="10"
+                                         VerticalContentAlignment="Center"/>
+                            </Border>
+
+                            <Button Content="Validar Código"
+                                    Width="360"
+                                    Height="45"
+                                    Background="#FF3B82F6"
+                                    Foreground="White"
+                                    BorderThickness="0"
+                                    FontWeight="Bold"
+                                    FontSize="15"
+                                    Cursor="Hand"
+                                    Click="btnValidarCodigo_Click"/>
+                        </StackPanel>
+
+                        <!-- PAINEL NOVA SENHA -->
+                        <StackPanel x:Name="painelNovaSenha"
+                                    Canvas.Left="60"
+                                    Canvas.Top="525"
+                                    Width="360"
+                                    Visibility="Collapsed">
+
+                            <TextBlock Text="Nova senha:"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       Foreground="#FF1E293B"/>
+
+                            <Border Width="360"
+                                    Height="45"
+                                    Margin="0,6,0,8"
+                                    Background="#FFF8FAFC"
+                                    CornerRadius="14"
+                                    BorderBrush="#FFE2E8F0"
+                                    BorderThickness="1.5">
+
+                                <PasswordBox x:Name="NovaSenhaDigitada"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             FontSize="16"
+                                             Padding="10"
+                                             VerticalContentAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Confirmar senha:"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       Foreground="#FF1E293B"/>
+
+                            <Border Width="360"
+                                    Height="45"
+                                    Margin="0,6,0,10"
+                                    Background="#FFF8FAFC"
+                                    CornerRadius="14"
+                                    BorderBrush="#FFE2E8F0"
+                                    BorderThickness="1.5">
+
+                                <PasswordBox x:Name="ConfirmarSenhaDigitada"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             FontSize="16"
+                                             Padding="10"
+                                             VerticalContentAlignment="Center"/>
+                            </Border>
+
+                            <Button Content="Alterar Senha"
+                                    Width="360"
+                                    Height="45"
+                                    Background="#FF7C3AED"
+                                    Foreground="White"
+                                    BorderThickness="0"
+                                    FontWeight="Bold"
+                                    FontSize="15"
+                                    Cursor="Hand"
+                                    Click="btnAlterarSenha_Click"/>
+                        </StackPanel>
+
                         <!-- LINK VOLTAR AO LOGIN -->
                         <TextBlock Canvas.Left="145"
-                                   Canvas.Top="435"
+                                   Canvas.Top="675"
                                    FontSize="14"
                                    Foreground="#FF64748B">
-                            Lembrou sua senha? 
+                            Lembrou sua senha?
                             <Hyperlink Foreground="#FF7C3AED"
                                        TextDecorations="None"
                                        FontWeight="SemiBold">
                                 Fazer Login
                             </Hyperlink>
                         </TextBlock>
+
                     </Canvas>
                 </Border>
             </Grid>
