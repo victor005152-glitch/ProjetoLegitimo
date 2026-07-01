@@ -131,12 +131,24 @@
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand"/>
+                
+                <Button x:Name="BotaoEmpresa"
+                            Width="220"
+                            Height="55"
+                            Canvas.Left="30"
+                            Canvas.Top="455"
+                            Background="#FF1F2937"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand" Content="⚙️ Empresa"/>
 
                 <!-- CARD INFO -->
                 <Border Width="220"
                             Height="100"
                             Canvas.Left="30"
-                            Canvas.Top="500"
+                            Canvas.Top="570"
                             Background="#11FFFFFF"
                             CornerRadius="16"
                             BorderBrush="#22FFFFFF"

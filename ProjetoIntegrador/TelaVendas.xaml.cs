@@ -43,25 +43,34 @@ namespace ProjetoIntegrador
 
         public class ItemVenda
         {
+            public int ProdutoId { get; set; }
             public string CodigoBarras { get; set; }
             public string Nome { get; set; }
             public int Quantidade { get; set; }
             public decimal ValorUnitario { get; set; }
+            public decimal CustoUnitario { get; set; }
             public decimal Desconto { get; set; }
 
             public decimal Subtotal
             {
                 get { return (ValorUnitario * Quantidade) - Desconto; }
             }
+
+            public decimal Lucro
+            {
+                get { return Subtotal - (CustoUnitario * Quantidade); }
+            }
         }
 
         public class ProdutoEstoque
         {
+            public int Id { get; set; }
             public string CodigoBarras { get; set; }
             public string Nome { get; set; }
             public string Categoria { get; set; }
             public int QuantidadeEstoque { get; set; }
             public decimal ValorVenda { get; set; }
+            public decimal ValorCusto { get; set; }
         }
 
         private void CarregarEstoque()
@@ -75,28 +84,31 @@ namespace ProjetoIntegrador
                     ConectBd.Conexao.Open();
 
                 string sql = @"
-                    SELECT 
-                        codigo_barras,
-                        nome,
-                        categoria,
-                        quantidade_estoque,
-                        valor_venda
-                    FROM produtos
-                    ORDER BY nome";
+            SELECT 
+                id,
+                codigo_barras,
+                nome,
+                categoria,
+                quantidade_estoque,
+                valor_venda,
+                valor_custo
+            FROM produtos
+            ORDER BY nome";
 
-                MySqlCommand cmd = new MySqlCommand(sql, ConectBd.Conexao);
-
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConectBd.Conexao))
                 using (MySqlDataReader leitor = cmd.ExecuteReader())
                 {
                     while (leitor.Read())
                     {
                         ProdutoEstoque produto = new ProdutoEstoque
                         {
+                            Id = Convert.ToInt32(leitor["id"]),
                             CodigoBarras = leitor["codigo_barras"].ToString(),
                             Nome = leitor["nome"].ToString(),
                             Categoria = leitor["categoria"].ToString(),
                             QuantidadeEstoque = Convert.ToInt32(leitor["quantidade_estoque"]),
-                            ValorVenda = Convert.ToDecimal(leitor["valor_venda"])
+                            ValorVenda = Convert.ToDecimal(leitor["valor_venda"]),
+                            ValorCusto = Convert.ToDecimal(leitor["valor_custo"])
                         };
 
                         produtosEstoque.Add(produto);
@@ -214,16 +226,16 @@ namespace ProjetoIntegrador
                 DGVendas.Items.Refresh();
             }
             else
-            {
                 itensVenda.Add(new ItemVenda
                 {
+                    ProdutoId = produto.Id,
                     CodigoBarras = produto.CodigoBarras,
                     Nome = produto.Nome,
                     Quantidade = quantidade,
                     ValorUnitario = produto.ValorVenda,
+                    CustoUnitario = produto.ValorCusto,
                     Desconto = 0
                 });
-            }
 
             QuantidadeVenda.Text = "1";
             AtualizarResumo();
@@ -258,6 +270,170 @@ namespace ProjetoIntegrador
                     transacao.Rollback();
                     throw;
                 }
+            }
+        }
+        private int SalvarVendaEBaixarEstoque()
+        {
+            if (ConectBd.Conexao.State != ConnectionState.Open)
+            {
+                ConectBd.Conexao.Open();
+            }
+
+            MySqlTransaction transacao = ConectBd.Conexao.BeginTransaction();
+
+            try
+            {
+                decimal valorDesconto = subtotal * (descontoGeral / 100);
+
+                decimal? valorRecebido = null;
+                decimal? troco = null;
+
+                if (formaPagamentoSelecionada == "Dinheiro")
+                {
+                    if (decimal.TryParse(ValorRecebido.Text, out decimal recebido))
+                    {
+                        valorRecebido = recebido;
+                        troco = recebido - total;
+
+                        if (troco < 0)
+                            troco = 0;
+                    }
+                }
+
+                string sqlVenda = @"
+            INSERT INTO vendas
+            (
+                data_venda,
+                operador_nome,
+                cliente_nome,
+                cliente_cpf,
+                subtotal,
+                desconto_percentual,
+                desconto_valor,
+                total,
+                forma_pagamento,
+                valor_recebido,
+                troco,
+                status_venda
+            )
+            VALUES
+            (
+                NOW(),
+                @operador_nome,
+                @cliente_nome,
+                @cliente_cpf,
+                @subtotal,
+                @desconto_percentual,
+                @desconto_valor,
+                @total,
+                @forma_pagamento,
+                @valor_recebido,
+                @troco,
+                'Finalizada'
+            )";
+
+                int vendaId = 0;
+
+                using (MySqlCommand cmdVenda = new MySqlCommand(sqlVenda, ConectBd.Conexao, transacao))
+                {
+                    cmdVenda.Parameters.AddWithValue("@operador_nome", "Operador");
+                    cmdVenda.Parameters.AddWithValue("@cliente_nome", DBNull.Value);
+                    cmdVenda.Parameters.AddWithValue("@cliente_cpf", DBNull.Value);
+                    cmdVenda.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmdVenda.Parameters.AddWithValue("@desconto_percentual", descontoGeral);
+                    cmdVenda.Parameters.AddWithValue("@desconto_valor", valorDesconto);
+                    cmdVenda.Parameters.AddWithValue("@total", total);
+                    cmdVenda.Parameters.AddWithValue("@forma_pagamento", formaPagamentoSelecionada);
+
+                    if (valorRecebido.HasValue)
+                        cmdVenda.Parameters.AddWithValue("@valor_recebido", valorRecebido.Value);
+                    else
+                        cmdVenda.Parameters.AddWithValue("@valor_recebido", DBNull.Value);
+
+                    if (troco.HasValue)
+                        cmdVenda.Parameters.AddWithValue("@troco", troco.Value);
+                    else
+                        cmdVenda.Parameters.AddWithValue("@troco", DBNull.Value);
+
+                    cmdVenda.ExecuteNonQuery();
+
+                    vendaId = Convert.ToInt32(cmdVenda.LastInsertedId);
+                }
+
+                foreach (ItemVenda item in itensVenda)
+                {
+                    string sqlItem = @"
+                INSERT INTO venda_itens
+                (
+                    venda_id,
+                    produto_id,
+                    codigo_barras,
+                    nome_produto,
+                    quantidade,
+                    valor_unitario,
+                    custo_unitario,
+                    desconto,
+                    subtotal,
+                    lucro
+                )
+                VALUES
+                (
+                    @venda_id,
+                    @produto_id,
+                    @codigo_barras,
+                    @nome_produto,
+                    @quantidade,
+                    @valor_unitario,
+                    @custo_unitario,
+                    @desconto,
+                    @subtotal,
+                    @lucro
+                )";
+
+                    using (MySqlCommand cmdItem = new MySqlCommand(sqlItem, ConectBd.Conexao, transacao))
+                    {
+                        cmdItem.Parameters.AddWithValue("@venda_id", vendaId);
+                        cmdItem.Parameters.AddWithValue("@produto_id", item.ProdutoId);
+                        cmdItem.Parameters.AddWithValue("@codigo_barras", item.CodigoBarras);
+                        cmdItem.Parameters.AddWithValue("@nome_produto", item.Nome);
+                        cmdItem.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                        cmdItem.Parameters.AddWithValue("@valor_unitario", item.ValorUnitario);
+                        cmdItem.Parameters.AddWithValue("@custo_unitario", item.CustoUnitario);
+                        cmdItem.Parameters.AddWithValue("@desconto", item.Desconto);
+                        cmdItem.Parameters.AddWithValue("@subtotal", item.Subtotal);
+                        cmdItem.Parameters.AddWithValue("@lucro", item.Lucro);
+
+                        cmdItem.ExecuteNonQuery();
+                    }
+
+                    string sqlEstoque = @"
+                UPDATE produtos
+                SET quantidade_estoque = quantidade_estoque - @quantidade
+                WHERE id = @produto_id
+                  AND quantidade_estoque >= @quantidade";
+
+                    using (MySqlCommand cmdEstoque = new MySqlCommand(sqlEstoque, ConectBd.Conexao, transacao))
+                    {
+                        cmdEstoque.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                        cmdEstoque.Parameters.AddWithValue("@produto_id", item.ProdutoId);
+
+                        int linhasAfetadas = cmdEstoque.ExecuteNonQuery();
+
+                        if (linhasAfetadas == 0)
+                        {
+                            throw new Exception("Estoque insuficiente para o produto: " + item.Nome);
+                        }
+                    }
+                }
+
+                transacao.Commit();
+
+                return vendaId;
+            }
+            catch
+            {
+                transacao.Rollback();
+                throw;
             }
         }
 
@@ -455,7 +631,7 @@ namespace ProjetoIntegrador
         {
             if (DescontoGeral == null)
                 return;
-
+            
             if (decimal.TryParse(DescontoGeral.Text, out decimal desconto))
             {
                 descontoGeral = desconto;
@@ -510,12 +686,17 @@ namespace ProjetoIntegrador
 
             try
             {
-                BaixarEstoque();
+                int vendaId = SalvarVendaEBaixarEstoque();
 
-                MessageBox.Show("Venda finalizada com sucesso!", "Sucesso",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(
+                    $"Venda finalizada com sucesso!\n\nNúmero da venda: {vendaId}",
+                    "Sucesso",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
 
                 LimparVenda();
+
+                NavigationService.Navigate(new TelaComprovante(vendaId));
             }
             catch (Exception ex)
             {
@@ -539,6 +720,11 @@ namespace ProjetoIntegrador
 
             BotaoVendas.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+        }
+     
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaEmpresa());
         }
     }
 }

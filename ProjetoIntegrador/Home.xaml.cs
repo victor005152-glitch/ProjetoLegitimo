@@ -245,17 +245,22 @@ namespace ProjetoIntegrador
 
         private void ResetarBotoes()
         {
-            BotaoEstoque.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            {
+                BotaoEstoque.Background =
+                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-            BotaoHistorico.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                BotaoVendas.Background =
+                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-            BotaoFinanceiro.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                BotaoHistorico.Background =
+                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-            BotaoVendas.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                BotaoFinanceiro.Background =
+                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+                BotaoEmpresa.Background =
+                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            }
         }
 
         private void ATL_Click(object sender, RoutedEventArgs e)
@@ -324,6 +329,10 @@ namespace ProjetoIntegrador
         private void BotaoVendas_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaVendas());
+        }
+        private void BotaoEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaEmpresa());
         }
     }
 }

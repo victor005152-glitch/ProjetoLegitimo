@@ -59,12 +59,12 @@ namespace ProjetoIntegrador
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BotaoEmpresa_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaLogin());
         }
 
-        private void ResetarBotoes()
+private void ResetarBotoes()
         {
             BotaoEstoque.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
@@ -77,8 +77,20 @@ namespace ProjetoIntegrador
 
             BotaoFinanceiro.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoEmpresa.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaEmpresa());
+        }
+
+        private void BotaoSair_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaLogin());
+        }
     }
 
 }

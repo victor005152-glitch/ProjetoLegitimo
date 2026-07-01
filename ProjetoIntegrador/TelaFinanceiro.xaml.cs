@@ -53,10 +53,6 @@ namespace ProjetoIntegrador
             Application.Current.Shutdown();
         }
 
-        private void Ind_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void ResetarBotoes()
         {
             BotaoEstoque.Background =
@@ -70,7 +66,17 @@ namespace ProjetoIntegrador
 
             BotaoFinanceiro.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoEmpresa.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
+
+        private void ButtonEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaEmpresa());
+        }
+
+       
     }
 
     //======================================
@@ -180,5 +186,7 @@ namespace ProjetoIntegrador
         {
             Series = new[] { 2, 4, 1, 4, 3 }.AsPieSeries();
         }
+
     }
+
 }
