@@ -16,35 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `gastos`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `gastos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `Senha` varchar(255) NOT NULL,
-  `Email` text,
-  `codigo_recuperacao` varchar(6) DEFAULT NULL,
-  `codigo_expira` datetime DEFAULT NULL,
-  `tipo_usuario` varchar(30) NOT NULL DEFAULT 'Operador',
-  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+CREATE TABLE `gastos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(150) NOT NULL,
+  `categoria` varchar(80) DEFAULT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `data_gasto` date NOT NULL,
+  `observacao` varchar(255) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Nome` (`Nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `gastos`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (4,'Franchini','Nba2k23.','victor005152@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(5,'Luciano','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(6,'1','1','1',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(7,'rai','r@iedu77','rai316004@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(8,'lucianovm','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `gastos` WRITE;
+/*!40000 ALTER TABLE `gastos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gastos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

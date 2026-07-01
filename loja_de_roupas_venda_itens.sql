@@ -16,35 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `venda_itens`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `venda_itens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `Senha` varchar(255) NOT NULL,
-  `Email` text,
-  `codigo_recuperacao` varchar(6) DEFAULT NULL,
-  `codigo_expira` datetime DEFAULT NULL,
-  `tipo_usuario` varchar(30) NOT NULL DEFAULT 'Operador',
-  `ativo` tinyint(1) NOT NULL DEFAULT '1',
-  `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Nome` (`Nome`)
+CREATE TABLE `venda_itens` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `venda_id` int NOT NULL,
+  `produto_id` int DEFAULT NULL,
+  `codigo_barras` varchar(100) DEFAULT NULL,
+  `nome_produto` varchar(150) NOT NULL,
+  `quantidade` int NOT NULL,
+  `valor_unitario` decimal(10,2) NOT NULL,
+  `custo_unitario` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `desconto` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `subtotal` decimal(10,2) NOT NULL,
+  `lucro` decimal(10,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`),
+  KEY `venda_id` (`venda_id`),
+  CONSTRAINT `venda_itens_ibfk_1` FOREIGN KEY (`venda_id`) REFERENCES `vendas` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `venda_itens`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (4,'Franchini','Nba2k23.','victor005152@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(5,'Luciano','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(6,'1','1','1',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(7,'rai','r@iedu77','rai316004@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(8,'lucianovm','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `venda_itens` WRITE;
+/*!40000 ALTER TABLE `venda_itens` DISABLE KEYS */;
+INSERT INTO `venda_itens` VALUES (1,2,26,'5001','COCA_COLA 2L',1,15.00,10.00,0.00,15.00,5.00),(2,3,26,'5001','COCA_COLA 2L',3,15.00,10.00,0.00,45.00,15.00),(3,4,26,'5001','COCA_COLA 2L',5,15.00,10.00,0.00,75.00,25.00),(4,5,26,'5001','COCA_COLA 2L',1,15.00,10.00,0.00,15.00,5.00),(5,6,26,'5001','COCA_COLA 2L',3,15.00,10.00,0.00,45.00,15.00),(6,7,26,'5001','COCA_COLA 2L',11,15.00,10.00,0.00,165.00,55.00),(7,8,26,'5001','COCA_COLA 2L',1,15.00,10.00,0.00,15.00,5.00),(8,9,26,'5001','COCA_COLA 2L',1,15.00,10.00,0.00,15.00,5.00);
+/*!40000 ALTER TABLE `venda_itens` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

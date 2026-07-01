@@ -16,32 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `empresa_config`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `empresa_config`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `Senha` varchar(255) NOT NULL,
-  `Email` text,
-  `codigo_recuperacao` varchar(6) DEFAULT NULL,
-  `codigo_expira` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Nome` (`Nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `empresa_config` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_fantasia` varchar(150) NOT NULL,
+  `razao_social` varchar(150) DEFAULT NULL,
+  `cnpj` varchar(30) DEFAULT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  `email` varchar(120) DEFAULT NULL,
+  `endereco` varchar(200) DEFAULT NULL,
+  `numero` varchar(20) DEFAULT NULL,
+  `bairro` varchar(100) DEFAULT NULL,
+  `cidade` varchar(100) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL,
+  `cep` varchar(20) DEFAULT NULL,
+  `mensagem_rodape` varchar(255) DEFAULT NULL,
+  `data_atualizacao` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `empresa_config`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (4,'Franchini','Nba2k23.','victor005152@gmail.com',NULL,NULL),(5,'Luciano','123456789','lucianovmuhlen@gmail.com',NULL,NULL),(6,'1','1','1',NULL,NULL),(7,'rai','r@iedu77','rai316004@gmail.com',NULL,NULL),(8,'lucianovm','123456789','lucianovmuhlen@gmail.com',NULL,NULL);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `empresa_config` WRITE;
+/*!40000 ALTER TABLE `empresa_config` DISABLE KEYS */;
+INSERT INTO `empresa_config` VALUES (1,'WRV Control','WRV Control PDV','12039584230985','(54) 98444-3404','yakkededits@gmail.com','AV Flores da Cunha','123','Centro','Carazinho','RS','99500-000','Obrigado pela preferência!','2026-06-30 21:41:25');
+/*!40000 ALTER TABLE `empresa_config` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-23 21:21:43
+-- Dump completed on 2026-07-01 20:19:17

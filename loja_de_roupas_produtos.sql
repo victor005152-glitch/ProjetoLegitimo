@@ -37,8 +37,9 @@ CREATE TABLE `produtos` (
   `imagem` varchar(300) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
   `ativo` tinyint(1) DEFAULT '1',
+  `metodo_pagamento` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +48,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (17,'Camiseta Preta',NULL,'Masculina','Nike',190.00,250.00,24,0,'5001',NULL,NULL,'2026-05-29 19:28:30',1),(21,'Tenis Lebron Witiness 8',NULL,'Tenis Basquete Masculino','Nike',550.00,699.00,10,0,'5002',NULL,NULL,'2026-05-29 21:00:48',1),(22,'Calça Cargo Preta',NULL,'Calça masculina','Adidas',120.00,180.00,5,0,'5003',NULL,NULL,'2026-05-29 21:02:38',1);
+INSERT INTO `produtos` VALUES (26,'COCA_COLA 2L',NULL,'Bebidas','COCA-COLA',10.00,15.00,24,0,'5001',NULL,NULL,'2026-06-30 21:22:12',1,NULL);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-02 20:08:12
+-- Dump completed on 2026-07-01 20:19:17
