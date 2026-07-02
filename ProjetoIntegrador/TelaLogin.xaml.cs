@@ -1,24 +1,20 @@
 ﻿using MySql.Data.MySqlClient;
-using ProjetoIntegrador;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 namespace ProjetoIntegrador
 {
-    /// <summary>
-    /// Interação lógica para TelaLogin.xam
-    /// </summary>
     public partial class TelaLogin : Page
     {
         public TelaLogin()
         {
             InitializeComponent();
+
+            // Limpa sessão ao voltar para a tela de login
+            SessaoUsuario.Limpar();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -28,27 +24,88 @@ namespace ProjetoIntegrador
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string sql = "SELECT Nome, Senha FROM Usuario WHERE Nome = @nome AND Senha= @senha";
+            string nomeUsuario = User1.Text.Trim();
+            string senha = Senha1.Password.Trim();
 
-            MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao);
-            comando.Parameters.AddWithValue("@nome", User1.Text);
-            comando.Parameters.AddWithValue("@senha", Senha1.Password);
-
-            using (MySqlDataReader leitor = comando.ExecuteReader())
+            if (string.IsNullOrWhiteSpace(nomeUsuario))
             {
-                if (leitor.Read())
+                MessageBox.Show("Digite o usuário.");
+                User1.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                MessageBox.Show("Digite a senha.");
+                Senha1.Focus();
+                return;
+            }
+
+            bool loginValido = false;
+
+            int usuarioId = 0;
+            string nome = "";
+            string email = "";
+            string tipoUsuario = "Operador";
+
+            try
+            {
+                if (ConectBd.Conexao.State != ConnectionState.Open)
                 {
-                    string nome = leitor["Nome"].ToString();
-                    leitor.Close();
+                    ConectBd.Conexao.Open();
+                }
+
+                string sql = @"
+            SELECT 
+                Id,
+                Nome,
+                Email,
+                tipo_usuario
+            FROM usuario
+            WHERE Nome = @nome
+              AND Senha = @senha
+              AND ativo = 1
+            LIMIT 1";
+
+                using (MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao))
+                {
+                    comando.Parameters.AddWithValue("@nome", nomeUsuario);
+                    comando.Parameters.AddWithValue("@senha", senha);
+
+                    using (MySqlDataReader leitor = comando.ExecuteReader())
+                    {
+                        if (leitor.Read())
+                        {
+                            loginValido = true;
+
+                            usuarioId = Convert.ToInt32(leitor["Id"]);
+                            nome = leitor["Nome"].ToString();
+                            email = leitor["Email"] == DBNull.Value ? "" : leitor["Email"].ToString();
+                            tipoUsuario = leitor["tipo_usuario"] == DBNull.Value ? "Operador" : leitor["tipo_usuario"].ToString();
+                        }
+                    }
+                }
+
+                if (loginValido)
+                {
+                    SessaoUsuario.UsuarioId = usuarioId;
+                    SessaoUsuario.Nome = nome;
+                    SessaoUsuario.Email = email;
+                    SessaoUsuario.TipoUsuario = tipoUsuario;
+
                     NavigationService.Navigate(new Home());
                 }
                 else
                 {
                     MessageBox.Show("Usuário ou senha inválidos.");
                 }
-                leitor.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao fazer login: " + ex.Message);
             }
         }
+
         private void Senha1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

@@ -99,7 +99,7 @@
                         Cursor="Hand"/>
 
                 <Button x:Name="BotaoFinanceiro"
-                        Content="💰 Financeiro"
+                        Content="   💰 Financeiro"
                         Width="220"
                         Height="55"
                         Canvas.Left="30"
@@ -395,7 +395,7 @@
                     Content="🗑 Remover Item"
                     Width="180"
                     Height="45"
-                    Canvas.Left="560"
+                    Canvas.Left="640"
                     Canvas.Top="550"
                     Click="BtnRemoverItem_Click"
                     Background="#FFEF4444"
@@ -403,13 +403,13 @@
                     BorderThickness="0"
                     FontWeight="Bold"
                     FontSize="15"
-                    Cursor="Hand"/>
+                    Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
             <Button x:Name="BtnLimparVenda"
                     Content="🧹 Limpar Tudo"
                     Width="180"
                     Height="45"
-                    Canvas.Left="755"
+                    Canvas.Left="829"
                     Canvas.Top="550"
                     Click="BtnLimparVenda_Click"
                     Background="#FFF59E0B"
@@ -417,7 +417,7 @@
                     BorderThickness="0"
                     FontWeight="Bold"
                     FontSize="15"
-                    Cursor="Hand"/>
+                    Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
             <!-- CARD ITENS -->
             <Border Width="240"

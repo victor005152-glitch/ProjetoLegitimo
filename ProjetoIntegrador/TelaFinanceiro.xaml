@@ -1,17 +1,18 @@
-﻿<Page
+﻿<Page x:Class="ProjetoIntegrador.TelaFinanceiro"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ProjetoIntegrador"
-      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-      xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"  
-      x:Class="ProjetoIntegrador.TelaFinanceiro"
-      mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="TelaFinanceiro">
 
-    <Canvas Background="#FF0F172A" Width="1920" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Center">
+    <Canvas Background="#FF0F172A"
+            Width="1920"
+            Height="1080"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center">
 
         <!-- FUNDO -->
         <Rectangle Width="1920" Height="1080">
@@ -23,327 +24,677 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <!-- ================================================= -->
         <!-- MENU LATERAL -->
-        <!-- ================================================= -->
         <Border Width="280"
-                    Visibility="Visible"
-                    Height="1080"
-                    Background="#CC111827"
-                    CornerRadius="0,24,24,0">
+                Height="1080"
+                Background="#CC111827"
+                CornerRadius="0,24,24,0">
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30"
-                                    ShadowDepth="0"
-                                    Opacity="0.25"/>
+                                  ShadowDepth="0"
+                                  Opacity="0.25"/>
             </Border.Effect>
 
             <Canvas>
-                <!-- LOGO -->
                 <Label Content="WRV CONTROL"
-                           Canvas.Left="15"
-                           Canvas.Top="45"
-                           FontWeight="Bold"
-                           FontSize="32"
-                           Foreground="White" 
-                           HorizontalAlignment="Center" 
-                           Height="55" 
-                           VerticalAlignment="Top" 
-                           Width="250"/>
+                       Canvas.Left="15"
+                       Canvas.Top="45"
+                       FontWeight="Bold"
+                       FontSize="32"
+                       Foreground="White"
+                       Width="250"/>
 
                 <Label Content="Sistema Inteligente"
-                           Canvas.Left="25"
-                           Canvas.Top="90"
-                           FontSize="15"
-                           Foreground="#FF9CA3AF"/>
+                       Canvas.Left="25"
+                       Canvas.Top="90"
+                       FontSize="15"
+                       Foreground="#FF9CA3AF"/>
 
-                <!-- LINHA -->
                 <Rectangle Width="220"
-                             Height="1.5"
-                             Fill="#33FFFFFF"
-                             Canvas.Left="30"
-                             Canvas.Top="130"/>
+                           Height="1.5"
+                           Fill="#33FFFFFF"
+                           Canvas.Left="30"
+                           Canvas.Top="130"/>
 
-                <!-- BOTÕES DO MENU -->
                 <Button x:Name="BotaoEstoque"
-                            Content="📦 Estoque"
-                            Width="220"
-                            Height="55"
-                            Canvas.Left="30"
-                            Canvas.Top="175"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand" 
-                            Click="BotaoEstoque_Click">
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="12"
-                                            ShadowDepth="0"
-                                            Opacity="0.25"/>
-                    </Button.Effect>
-                </Button>
+                        Content="📦 Estoque"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="175"
+                        Click="BotaoEstoque_Click"
+                        Background="#FF1F2937"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"/>
 
-                <!-- NOVO BOTÃO VENDAS -->
                 <Button x:Name="BotaoVendas"
-                            Content="🛒 Vendas"
-                            Width="220"
-                            Height="55"
-                            Canvas.Left="30"
-                            Canvas.Top="245"
-                            Click="BotaoVendas_Click"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="12"
-                                            ShadowDepth="0"
-                                            Opacity="0.25"/>
-                    </Button.Effect>
-                </Button>
+                        Content="🛒 Vendas"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="245"
+                        Click="BotaoVendas_Click"
+                        Background="#FF1F2937"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"/>
 
                 <Button x:Name="BotaoHistorico"
-                            Content="🧾 Histórico"
-                            Width="220"
-                            Height="55"
-                            Canvas.Left="30"
-                            Canvas.Top="315"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand" 
-                            Click="BotaoHistorico_Click"/>
+                        Content="🧾 Histórico"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="315"
+                        Click="BotaoHistorico_Click"
+                        Background="#FF1F2937"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"/>
 
-                <Button x:Name="BotaoFinanceiro" 
-                            Content="💰 Financeiro"
-                            Width="220"
-                            Height="55"
-                            Canvas.Left="30"
-                            Canvas.Top="385"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand"/>
-                
+                <Button x:Name="BotaoFinanceiro"
+                        Content="   💰 Financeiro"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="385"
+                        Background="#FF7C3AED"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"/>
+
                 <Button x:Name="BotaoEmpresa"
-                            Width="220"
-                            Height="55"
-                            Canvas.Left="30"
-                            Canvas.Top="455"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand" Content="⚙️ Empresa"/>
+                        Content="⚙️ Empresa"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="455"
+                        Click="BotaoEmpresa_Click"
+                        Background="#FF1F2937"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"/>
 
-                <!-- CARD INFO -->
                 <Border Width="220"
-                            Height="100"
-                            Canvas.Left="30"
-                            Canvas.Top="570"
-                            Background="#11FFFFFF"
-                            CornerRadius="16"
-                            BorderBrush="#22FFFFFF"
-                            BorderThickness="1.5">
+                        Height="100"
+                        Canvas.Left="30"
+                        Canvas.Top="570"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5">
                     <Canvas>
-                        <Label Content="⚡ WRV Premium"
-                                   Canvas.Left="18"
-                                   Canvas.Top="15"
-                                   FontWeight="Bold"
-                                   FontSize="16"
-                                   Foreground="White"/>
-                        <Label Content="Sistema moderno&#xA;e otimizado"
-                                   Canvas.Left="18"
-                                   Canvas.Top="45"
-                                   FontSize="13"
-                                   Foreground="#FFD1D5DB"/>
+                        <Label Content="💰 Financeiro"
+                               Canvas.Left="18"
+                               Canvas.Top="15"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               Foreground="White"/>
+
+                        <Label Content="Lucro, gastos&#x0a;e metas mensais"
+                               Canvas.Left="18"
+                               Canvas.Top="45"
+                               FontSize="13"
+                               Foreground="#FFD1D5DB"/>
                     </Canvas>
                 </Border>
 
-                <!-- BOTÃO SAIR -->
                 <Button Content="🚪 Sair"
-                            Width="220"
-                            Height="50"
-                            Canvas.Left="30"
-                            Canvas.Top="975"
-                            Background="#FFDC2626"
-                            Foreground="White"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Cursor="Hand" 
-                            Click="BotaoSair_Click"/>
+                        Width="220"
+                        Height="50"
+                        Canvas.Left="30"
+                        Canvas.Top="975"
+                        Background="#FFDC2626"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"
+                        Click="BotaoSair_Click"/>
             </Canvas>
         </Border>
 
         <!-- TOPO -->
         <Border Canvas.Left="280"
-                    Visibility="Visible"
-                    Width="1640"
-                    Height="70"
-                    Background="#11FFFFFF"
-                    BorderBrush="#22FFFFFF"
-                    BorderThickness="0,0,0,1.5">
+                Width="1640"
+                Height="70"
+                Background="#11FFFFFF"
+                BorderBrush="#22FFFFFF"
+                BorderThickness="0,0,0,1.5">
+
             <Canvas>
-                <Label Content="Sistema de Controle"
-                           FontSize="26"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           Canvas.Left="30"
-                           Canvas.Top="15"/>
-                <Label Content="Gerenciamento inteligente"
-                           FontSize="14"
-                           Foreground="#FFD1D5DB"
-                           Canvas.Left="32"
-                           Canvas.Top="45"/>
+                <Label Content="Financeiro"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Canvas.Left="30"
+                       Canvas.Top="15"/>
+
+                <Label Content="Acompanhe vendas, lucros, gastos e metas"
+                       FontSize="14"
+                       Foreground="#FFD1D5DB"
+                       Canvas.Left="32"
+                       Canvas.Top="45"/>
             </Canvas>
         </Border>
 
-        <!-- ================================================= -->
-        <!-- ÁREA PRINCIPAL - FINANCEIRO -->
-        <!-- ================================================= -->
-        <Canvas x:Name="Financeiro"
-                    Visibility="Visible"
-                    Width="1640"
-                    Height="1010"
-                    Canvas.Left="280"
-                    Canvas.Top="70"
-                    Background="Transparent">
+        <!-- ÁREA PRINCIPAL -->
+        <Canvas Width="1640"
+                Height="1010"
+                Canvas.Left="280"
+                Canvas.Top="70"
+                Background="Transparent">
 
-            <!-- CARDS DE RESUMO FINANCEIRO -->
-            <Border Width="380"
-                        Height="100"
-                        Canvas.Left="25"
-                        Canvas.Top="15"
-                        Background="#CCFFFFFF"
-                        CornerRadius="18">
+            <!-- CARD VENDAS -->
+            <Border Width="270"
+                    Height="95"
+                    Canvas.Left="25"
+                    Canvas.Top="25"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
                 <Canvas>
-                    <Label Content="💰 Receita Total"
-                               Canvas.Left="20"
-                               Canvas.Top="12"
-                               FontSize="17"
-                               FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
-                    <Label x:Name="ReceitaTotal" 
-                               Content="R$ 25.450,00"
-                               Canvas.Left="22"
-                               Canvas.Top="48"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="#FF22C55E"/>
+                    <Label Content="💵 Vendido"
+                           Canvas.Left="20"
+                           Canvas.Top="12"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label x:Name="CardVendas"
+                           Content="R$ 0,00"
+                           Canvas.Left="20"
+                           Canvas.Top="45"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#FF22C55E"/>
                 </Canvas>
             </Border>
 
-            <Border Width="380"
-                        Height="100"
-                        Canvas.Left="430"
-                        Canvas.Top="15"
-                        Background="#CCFFFFFF"
-                        CornerRadius="18">
+            <!-- CARD LUCRO BRUTO -->
+            <Border Width="270"
+                    Height="95"
+                    Canvas.Left="315"
+                    Canvas.Top="25"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
                 <Canvas>
-                    <Label Content="📊 Vendas do Mês"
-                               Canvas.Left="20"
-                               Canvas.Top="12"
-                               FontSize="17"
-                               FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
-                    <Label x:Name="VendasMes" 
-                               Content="342"
-                               Canvas.Left="22"
-                               Canvas.Top="48"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="#FF7C3AED"/>
+                    <Label Content="📈 Lucro Bruto"
+                           Canvas.Left="20"
+                           Canvas.Top="12"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label x:Name="CardLucroBruto"
+                           Content="R$ 0,00"
+                           Canvas.Left="20"
+                           Canvas.Top="45"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#FF7C3AED"/>
                 </Canvas>
             </Border>
 
-            <Border Width="380"
-                        Height="100"
-                        Canvas.Left="835"
-                        Canvas.Top="15"
-                        Background="#CCFFFFFF"
-                        CornerRadius="18">
+            <!-- CARD GASTOS -->
+            <Border Width="270"
+                    Height="95"
+                    Canvas.Left="605"
+                    Canvas.Top="25"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
                 <Canvas>
-                    <Label Content="📈 Ticket Médio"
-                               Canvas.Left="20"
-                               Canvas.Top="12"
-                               FontSize="17"
-                               FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
-                    <Label x:Name="TicketMedio" 
-                               Content="R$ 74,42"
-                               Canvas.Left="22"
-                               Canvas.Top="48"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="#FF3B82F6"/>
+                    <Label Content="📉 Gastos"
+                           Canvas.Left="20"
+                           Canvas.Top="12"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label x:Name="CardGastos"
+                           Content="R$ 0,00"
+                           Canvas.Left="20"
+                           Canvas.Top="45"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#FFEF4444"/>
                 </Canvas>
             </Border>
 
-            <!-- PAINEL PRINCIPAL COM GRÁFICOS -->
-            <!-- O Grid é o ÚNICO filho desta Border -->
-            <Border Width="1590"
-                        Height="860"
-                        Canvas.Left="25"
-                        Canvas.Top="130"
-                        Background="#CCFFFFFF"
-                        CornerRadius="22">
+            <!-- CARD LUCRO LÍQUIDO -->
+            <Border Width="270"
+                    Height="95"
+                    Canvas.Left="895"
+                    Canvas.Top="25"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
+                <Canvas>
+                    <Label Content="🏆 Lucro Líquido"
+                           Canvas.Left="20"
+                           Canvas.Top="12"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label x:Name="CardLucroLiquido"
+                           Content="R$ 0,00"
+                           Canvas.Left="20"
+                           Canvas.Top="45"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#FF16A34A"/>
+                </Canvas>
+            </Border>
+
+            <!-- FILTRO -->
+            <Border Width="390"
+                    Height="95"
+                    Canvas.Left="1215"
+                    Canvas.Top="25"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
+                <Canvas>
+                    <Label Content="📅 Período"
+                           Canvas.Left="20"
+                           Canvas.Top="10"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <ComboBox x:Name="ComboMes"
+                              Width="150"
+                              Height="35"
+                              Canvas.Left="20"
+                              Canvas.Top="48"
+                              SelectionChanged="ComboMes_SelectionChanged">
+                        <ComboBoxItem Content="Janeiro" Tag="1"/>
+                        <ComboBoxItem Content="Fevereiro" Tag="2"/>
+                        <ComboBoxItem Content="Março" Tag="3"/>
+                        <ComboBoxItem Content="Abril" Tag="4"/>
+                        <ComboBoxItem Content="Maio" Tag="5"/>
+                        <ComboBoxItem Content="Junho" Tag="6"/>
+                        <ComboBoxItem Content="Julho" Tag="7"/>
+                        <ComboBoxItem Content="Agosto" Tag="8"/>
+                        <ComboBoxItem Content="Setembro" Tag="9"/>
+                        <ComboBoxItem Content="Outubro" Tag="10"/>
+                        <ComboBoxItem Content="Novembro" Tag="11"/>
+                        <ComboBoxItem Content="Dezembro" Tag="12"/>
+                    </ComboBox>
+
+                    <TextBox x:Name="TxtAno"
+                             Width="80"
+                             Height="35"
+                             Canvas.Left="180"
+                             Canvas.Top="48"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             TextAlignment="Center"/>
+
+                    <Button Content="Atualizar"
+                            Width="95"
+                            Height="35"
+                            Canvas.Left="275"
+                            Canvas.Top="48"
+                            Click="BotaoAtualizar_Click"
+                            Background="#FF22C55E"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Cursor="Hand"/>
+                </Canvas>
+            </Border>
+
+            <!-- METAS -->
+            <Border Width="775"
+                    Height="145"
+                    Canvas.Left="25"
+                    Canvas.Top="145"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
+                <Canvas>
+                    <Label Content="🎯 Acompanhamento de Metas"
+                           Canvas.Left="25"
+                           Canvas.Top="15"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label Content="Meta de Vendas"
+                           Canvas.Left="25"
+                           Canvas.Top="62"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <ProgressBar x:Name="BarraMetaVendas"
+                                 Width="420"
+                                 Height="18"
+                                 Canvas.Left="170"
+                                 Canvas.Top="67"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="0"/>
+
+                    <Label x:Name="LabelMetaVendas"
+                           Content="0%"
+                           Canvas.Left="605"
+                           Canvas.Top="58"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#FF111827"/>
+
+                    <Label Content="Meta de Lucro"
+                           Canvas.Left="25"
+                           Canvas.Top="103"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <ProgressBar x:Name="BarraMetaLucro"
+                                 Width="420"
+                                 Height="18"
+                                 Canvas.Left="170"
+                                 Canvas.Top="108"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="0"/>
+
+                    <Label x:Name="LabelMetaLucro"
+                           Content="0%"
+                           Canvas.Left="605"
+                           Canvas.Top="99"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#FF111827"/>
+                </Canvas>
+            </Border>
+
+            <!-- CADASTRO DE META -->
+            <Border Width="775"
+                    Height="145"
+                    Canvas.Left="830"
+                    Canvas.Top="145"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
+                <Canvas>
+                    <Label Content="⚙️ Definir Meta do Mês"
+                           Canvas.Left="25"
+                           Canvas.Top="15"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label Content="Meta Vendas"
+                           Canvas.Left="25"
+                           Canvas.Top="60"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtMetaVendas"
+                             Width="150"
+                             Height="38"
+                             Canvas.Left="25"
+                             Canvas.Top="85"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Label Content="Meta Lucro"
+                           Canvas.Left="200"
+                           Canvas.Top="60"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtMetaLucro"
+                             Width="150"
+                             Height="38"
+                             Canvas.Left="200"
+                             Canvas.Top="85"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Label Content="Observação"
+                           Canvas.Left="375"
+                           Canvas.Top="60"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtObservacaoMeta"
+                             Width="210"
+                             Height="38"
+                             Canvas.Left="375"
+                             Canvas.Top="85"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Button Content="💾 Salvar Meta"
+                            Width="140"
+                            Height="38"
+                            Canvas.Left="610"
+                            Canvas.Top="85"
+                            Click="BotaoSalvarMeta_Click"
+                            Background="#FF7C3AED"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Cursor="Hand"/>
+                </Canvas>
+            </Border>
+
+            <!-- TABELA GASTOS -->
+            <Border Width="1000"
+                    Height="555"
+                    Canvas.Left="25"
+                    Canvas.Top="320"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="30"
-                                        ShadowDepth="0"
-                                        Opacity="0.15"/>
+                    <DropShadowEffect BlurRadius="25"
+                                      ShadowDepth="0"
+                                      Opacity="0.15"/>
                 </Border.Effect>
 
-                <Grid Margin="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="3*"/>
-                    </Grid.RowDefinitions>
+                <Canvas>
+                    <Label Content="📋 Gastos do Mês"
+                           Canvas.Left="25"
+                           Canvas.Top="15"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Button Content="🗑 Excluir Gasto"
+                            Width="150"
+                            Height="38"
+                            Canvas.Left="820"
+                            Canvas.Top="18"
+                            Click="BotaoExcluirGasto_Click"
+                            Background="#FFEF4444"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Cursor="Hand"/>
 
-                    <!-- GRÁFICO DE LINHA PRINCIPAL -->
-                    <lvc:CartesianChart 
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Series="{Binding Series}"
-                            XAxes="{Binding XAxes}"
-                            Title="{Binding Title}"
-                            LegendPosition="Hidden" 
-                            Margin="10"
-                            x:Name="Ind"/>
+                    <DataGrid x:Name="DGastos"
+                              Width="950"
+                              Height="470"
+                              Canvas.Left="25"
+                              Canvas.Top="70"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              BorderThickness="0"
+                              Background="Transparent"
+                              FontSize="14"
+                              RowHeight="36">
 
-                    <!-- GRÁFICO DE PIZZA 1 -->
-                    <lvc:PieChart
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Series="{Binding Series}"
-                            Title="{Binding Title1}" 
-                            Margin="10" 
-                            x:Name="PZ1"/>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Data"
+                                                Width="120"
+                                                Binding="{Binding DataFormatada}"/>
 
-                    <!-- GRÁFICO DE PIZZA 2 -->
-                    <lvc:PieChart
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Series="{Binding Series}"
-                            Title="{Binding Title2}" 
-                            Margin="10"  
-                            x:Name="PZ2"/>
-                </Grid>
+                            <DataGridTextColumn Header="Descrição"
+                                                Width="250"
+                                                Binding="{Binding Descricao}"/>
+
+                            <DataGridTextColumn Header="Categoria"
+                                                Width="160"
+                                                Binding="{Binding Categoria}"/>
+
+                            <DataGridTextColumn Header="Valor"
+                                                Width="130"
+                                                Binding="{Binding ValorFormatado}"/>
+
+                            <DataGridTextColumn Header="Observação"
+                                                Width="*"
+                                                Binding="{Binding Observacao}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Canvas>
             </Border>
+
+            <!-- CADASTRAR GASTO -->
+            <Border Width="555"
+                    Height="555"
+                    Canvas.Left="1050"
+                    Canvas.Top="320"
+                    Background="#CCFFFFFF"
+                    CornerRadius="20">
+                <Canvas>
+                    <Label Content="➕ Novo Gasto"
+                           Canvas.Left="25"
+                           Canvas.Top="15"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#FF1E293B"/>
+
+                    <Label Content="Descrição"
+                           Canvas.Left="25"
+                           Canvas.Top="70"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtDescricaoGasto"
+                             Width="500"
+                             Height="42"
+                             Canvas.Left="25"
+                             Canvas.Top="95"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Label Content="Categoria"
+                           Canvas.Left="25"
+                           Canvas.Top="150"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtCategoriaGasto"
+                             Width="240"
+                             Height="42"
+                             Canvas.Left="25"
+                             Canvas.Top="175"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Label Content="Valor"
+                           Canvas.Left="285"
+                           Canvas.Top="150"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtValorGasto"
+                             Width="240"
+                             Height="42"
+                             Canvas.Left="285"
+                             Canvas.Top="175"
+                             FontSize="15"
+                             VerticalContentAlignment="Center"
+                             Padding="10,0"/>
+
+                    <Label Content="Data"
+                           Canvas.Left="25"
+                           Canvas.Top="230"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <DatePicker x:Name="DpDataGasto"
+                                Width="240"
+                                Height="42"
+                                Canvas.Left="25"
+                                Canvas.Top="255"/>
+
+                    <Label Content="Observação"
+                           Canvas.Left="25"
+                           Canvas.Top="310"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#FF374151"/>
+
+                    <TextBox x:Name="TxtObservacaoGasto"
+                             Width="500"
+                             Height="90"
+                             Canvas.Left="25"
+                             Canvas.Top="335"
+                             FontSize="15"
+                             Padding="10"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             VerticalScrollBarVisibility="Auto"/>
+
+                    <Button Content="💾 Salvar Gasto"
+                            Width="500"
+                            Height="50"
+                            Canvas.Left="25"
+                            Canvas.Top="465"
+                            Click="BotaoAdicionarGasto_Click"
+                            Background="#FF22C55E"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand"/>
+                    <Button Content="📎 Anexar Documento"
+        Width="240"
+        Height="42"
+        Canvas.Left="285"
+        Canvas.Top="250"
+        Click="BotaoAnexarDocumento_Click"
+        Background="#FF7C3AED"
+        Foreground="White"
+        BorderThickness="0"
+        FontWeight="Bold"
+        FontSize="15"
+        Cursor="Hand"/>
+
+                    <Label x:Name="LabelDocumento"
+       Content="Nenhum documento anexado"
+       Canvas.Left="280"
+       Canvas.Top="440"
+       Width="245"
+       FontSize="13"
+       Foreground="#FF374151"/>
+                </Canvas>
+            </Border>
+
         </Canvas>
     </Canvas>
 </Page>

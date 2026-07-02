@@ -117,7 +117,7 @@
                             Cursor="Hand"/>
 
                 <Button x:Name="BotaoFinanceiro" 
-                            Content="💰 Financeiro"
+                            Content="   💰 Financeiro"
                             Width="220"
                             Height="55"
                             Canvas.Left="30"

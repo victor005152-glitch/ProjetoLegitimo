@@ -336,7 +336,8 @@ namespace ProjetoIntegrador
 
                 using (MySqlCommand cmdVenda = new MySqlCommand(sqlVenda, ConectBd.Conexao, transacao))
                 {
-                    cmdVenda.Parameters.AddWithValue("@operador_nome", "Operador");
+                    cmdVenda.Parameters.AddWithValue("@operador_nome",
+                    string.IsNullOrWhiteSpace(SessaoUsuario.Nome) ? "Operador" : SessaoUsuario.Nome);
                     cmdVenda.Parameters.AddWithValue("@cliente_nome", DBNull.Value);
                     cmdVenda.Parameters.AddWithValue("@cliente_cpf", DBNull.Value);
                     cmdVenda.Parameters.AddWithValue("@subtotal", subtotal);
