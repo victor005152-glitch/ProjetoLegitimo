@@ -78,7 +78,7 @@
                         Canvas.Left="30"
                         Canvas.Top="245"
                         Click="BotaoVendas_Click"
-                        Background="#FF7C3AED"
+                        Background="#FF1F2937"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
@@ -126,29 +126,47 @@
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
+                <Button x:Name="BotaoClientes"
+Content="👥 Clientes"
+Width="220"
+Height="55"
+Canvas.Left="30"
+Canvas.Top="523"
+Click="BotaoClientes_Click"
+Background="#FF1F2937"
+Foreground="White"
+BorderThickness="0"
+FontWeight="Bold"
+FontSize="16"
+Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="12"
+                  ShadowDepth="0"
+                  Opacity="0.25"/>
+                    </Button.Effect>
+                </Button>
 
                 <Border Width="220"
-                        Height="100"
-                        Canvas.Left="30"
-                        Canvas.Top="570"
-                        Background="#11FFFFFF"
-                        CornerRadius="16"
-                        BorderBrush="#22FFFFFF"
-                        BorderThickness="1.5">
-
+Height="100"
+Canvas.Left="30"
+Canvas.Top="620"
+Background="#11FFFFFF"
+CornerRadius="16"
+BorderBrush="#22FFFFFF"
+BorderThickness="1.5">
                     <Canvas>
-                        <Label Content="🧾 Comprovante"
-                               Canvas.Left="18"
-                               Canvas.Top="15"
-                               FontWeight="Bold"
-                               FontSize="16"
-                               Foreground="White"/>
+                        <Label Content="👥 Clientes"
+       Canvas.Left="18"
+       Canvas.Top="15"
+       FontWeight="Bold"
+       FontSize="16"
+       Foreground="White"/>
 
-                        <Label Content="Prévia de impressão&#x0a;da venda finalizada"
-                               Canvas.Left="18"
-                               Canvas.Top="45"
-                               FontSize="13"
-                               Foreground="#FFD1D5DB"/>
+                        <Label Content="Cadastro e&#x0a;gerenciamento"
+       Canvas.Left="18"
+       Canvas.Top="45"
+       FontSize="13"
+       Foreground="#FFD1D5DB"/>
                     </Canvas>
                 </Border>
 

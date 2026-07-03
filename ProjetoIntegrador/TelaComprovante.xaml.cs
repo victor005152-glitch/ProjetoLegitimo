@@ -298,5 +298,15 @@ namespace ProjetoIntegrador
         {
             NavigationService.Navigate(new TelaLogin());
         }
+
+        private void BotaoSobre_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaClientes());
+        }
+
+        private void BotaoClientes_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaClientes());
+        }
     }
 }

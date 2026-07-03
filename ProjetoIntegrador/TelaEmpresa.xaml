@@ -70,6 +70,20 @@
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
+                <Button x:Name="BotaoClientes"
+Content="👥 Clientes"
+Width="220"
+Height="48"
+Canvas.Left="30"
+Canvas.Top="523"
+Click="BotaoClientes_Click"
+Background="#FF1F2937"
+Foreground="White"
+BorderThickness="0"
+FontSize="16"
+FontWeight="Bold"
+Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
 
                 <Button x:Name="BotaoVendas"
                         Content="🛒 Vendas"
@@ -127,27 +141,25 @@
                         Cursor="Hand"/>
 
                 <Border Width="220"
-                        Height="100"
-                        Canvas.Left="30"
-                        Canvas.Top="570"
-                        Background="#11FFFFFF"
-                        CornerRadius="16"
-                        BorderBrush="#22FFFFFF"
-                        BorderThickness="1.5">
-
+             Height="100"
+             Canvas.Left="30"
+            Canvas.Top="594"
+             Background="#11FFFFFF"
+             CornerRadius="16"
+             BorderBrush="#22FFFFFF"
+             BorderThickness="1.5" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Canvas>
-                        <Label Content="⚙️ Configuração"
-                               Canvas.Left="18"
-                               Canvas.Top="15"
-                               FontWeight="Bold"
-                               FontSize="16"
-                               Foreground="White"/>
-
-                        <Label Content="Dados usados no&#x0a;comprovante"
-                               Canvas.Left="18"
-                               Canvas.Top="45"
-                               FontSize="13"
-                               Foreground="#FFD1D5DB"/>
+                        <Label Content="⚡ WRV Premium"
+                    Canvas.Left="18"
+                    Canvas.Top="15"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Foreground="White"/>
+                        <Label Content="Sistema moderno&#x0a;e otimizado"
+                    Canvas.Left="18"
+                    Canvas.Top="45"
+                    FontSize="13"
+                    Foreground="#FFD1D5DB"/>
                     </Canvas>
                 </Border>
 

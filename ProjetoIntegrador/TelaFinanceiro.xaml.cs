@@ -104,54 +104,68 @@ namespace ProjetoIntegrador
                 DateTime fim = inicio.AddMonths(1);
 
                 string sql = @"
-                    SELECT
-                        COALESCE(SUM(v.total), 0) AS total_vendas,
+    SELECT
+        COALESCE((
+            SELECT SUM(v.total)
+            FROM vendas v
+            WHERE v.data_venda >= @inicio
+              AND v.data_venda < @fim
+        ), 0) AS total_vendas,
 
-                        COALESCE((
-                            SELECT SUM(vi.lucro)
-                            FROM venda_itens vi
-                            INNER JOIN vendas v2 ON v2.id = vi.venda_id
-                            WHERE v2.data_venda >= @inicio
-                              AND v2.data_venda < @fim
-                        ), 0) AS lucro_bruto,
+        COALESCE((
+            SELECT SUM(vi.lucro)
+            FROM venda_itens vi
+            INNER JOIN vendas v2 ON v2.id = vi.venda_id
+            WHERE v2.data_venda >= @inicio
+              AND v2.data_venda < @fim
+        ), 0) AS lucro_bruto,
 
-                        COALESCE((
-                            SELECT SUM(g.valor)
-                            FROM gastos g
-                            WHERE g.data_gasto >= @inicio
-                              AND g.data_gasto < @fim
-                        ), 0) AS total_gastos,
+        COALESCE((
+            SELECT SUM(g.valor)
+            FROM gastos g
+            WHERE g.data_gasto >= @inicio
+              AND g.data_gasto < @fim
+        ), 0) AS gastos_manuais,
 
-                        COALESCE((
-                            SELECT mf.meta_vendas
-                            FROM metas_financeiras mf
-                            WHERE mf.mes = @mes
-                              AND mf.ano = @ano
-                            ORDER BY mf.id DESC
-                            LIMIT 1
-                        ), 0) AS meta_vendas,
+        COALESCE((
+            SELECT SUM(vi.custo_unitario * vi.quantidade)
+            FROM venda_itens vi
+            INNER JOIN vendas v3 ON v3.id = vi.venda_id
+            WHERE v3.data_venda >= @inicio
+              AND v3.data_venda < @fim
+        ), 0) AS custo_produtos_vendidos,
 
-                        COALESCE((
-                            SELECT mf.meta_lucro
-                            FROM metas_financeiras mf
-                            WHERE mf.mes = @mes
-                              AND mf.ano = @ano
-                            ORDER BY mf.id DESC
-                            LIMIT 1
-                        ), 0) AS meta_lucro,
+        COALESCE((
+            SELECT SUM(p.valor_custo * p.quantidade_estoque)
+            FROM produtos p
+        ), 0) AS custo_produtos_estoque,
 
-                        COALESCE((
-                            SELECT mf.observacao
-                            FROM metas_financeiras mf
-                            WHERE mf.mes = @mes
-                              AND mf.ano = @ano
-                            ORDER BY mf.id DESC
-                            LIMIT 1
-                        ), '') AS observacao_meta
+        COALESCE((
+            SELECT mf.meta_vendas
+            FROM metas_financeiras mf
+            WHERE mf.mes = @mes
+              AND mf.ano = @ano
+            ORDER BY mf.id DESC
+            LIMIT 1
+        ), 0) AS meta_vendas,
 
-                    FROM vendas v
-                    WHERE v.data_venda >= @inicio
-                      AND v.data_venda < @fim";
+        COALESCE((
+            SELECT mf.meta_lucro
+            FROM metas_financeiras mf
+            WHERE mf.mes = @mes
+              AND mf.ano = @ano
+            ORDER BY mf.id DESC
+            LIMIT 1
+        ), 0) AS meta_lucro,
+
+        COALESCE((
+            SELECT mf.observacao
+            FROM metas_financeiras mf
+            WHERE mf.mes = @mes
+              AND mf.ano = @ano
+            ORDER BY mf.id DESC
+            LIMIT 1
+        ), '') AS observacao_meta";
 
                 using (MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao))
                 {
@@ -164,18 +178,22 @@ namespace ProjetoIntegrador
                     {
                         if (leitor.Read())
                         {
+
                             decimal totalVendas = Convert.ToDecimal(leitor["total_vendas"]);
                             decimal lucroBruto = Convert.ToDecimal(leitor["lucro_bruto"]);
-                            decimal totalGastos = Convert.ToDecimal(leitor["total_gastos"]);
+                            decimal gastosManuais = Convert.ToDecimal(leitor["gastos_manuais"]);
+                            decimal custoProdutosVendidos = Convert.ToDecimal(leitor["custo_produtos_vendidos"]);
+                            decimal custoProdutosEstoque = Convert.ToDecimal(leitor["custo_produtos_estoque"]);
                             decimal metaVendas = Convert.ToDecimal(leitor["meta_vendas"]);
                             decimal metaLucro = Convert.ToDecimal(leitor["meta_lucro"]);
                             string observacaoMeta = leitor["observacao_meta"].ToString();
 
-                            decimal lucroLiquido = lucroBruto - totalGastos;
+                            decimal gastosTotais = gastosManuais + custoProdutosVendidos + custoProdutosEstoque;
+                            decimal lucroLiquido = totalVendas - gastosTotais;
 
                             CardVendas.Content = "R$ " + totalVendas.ToString("N2");
                             CardLucroBruto.Content = "R$ " + lucroBruto.ToString("N2");
-                            CardGastos.Content = "R$ " + totalGastos.ToString("N2");
+                            CardGastos.Content = "R$ " + gastosTotais.ToString("N2");
                             CardLucroLiquido.Content = "R$ " + lucroLiquido.ToString("N2");
 
                             AtualizarMetas(totalVendas, lucroLiquido, metaVendas, metaLucro);
@@ -183,6 +201,7 @@ namespace ProjetoIntegrador
                             TxtMetaVendas.Text = metaVendas > 0 ? metaVendas.ToString("N2") : "";
                             TxtMetaLucro.Text = metaLucro > 0 ? metaLucro.ToString("N2") : "";
                             TxtObservacaoMeta.Text = observacaoMeta;
+
                         }
                     }
                 }
@@ -640,6 +659,9 @@ namespace ProjetoIntegrador
 
             BotaoEmpresa.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoClientes.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
 
         private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
@@ -665,6 +687,10 @@ namespace ProjetoIntegrador
         private void BotaoSair_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaLogin());
+        }
+        private void BotaoClientes_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaClientes());
         }
     }
 }

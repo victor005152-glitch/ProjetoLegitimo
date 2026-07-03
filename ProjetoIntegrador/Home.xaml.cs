@@ -229,6 +229,10 @@ namespace ProjetoIntegrador
         {
             Cadastro.Visibility = Visibility.Visible;
         }
+        private void BotaoClientes_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaClientes());
+        }
 
         private void Quantidade_KeyDown(object sender, KeyEventArgs e)
         {
@@ -245,22 +249,23 @@ namespace ProjetoIntegrador
 
         private void ResetarBotoes()
         {
-            {
-                BotaoEstoque.Background =
-                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoEstoque.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-                BotaoVendas.Background =
-                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoVendas.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-                BotaoHistorico.Background =
-                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoHistorico.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-                BotaoFinanceiro.Background =
-                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoFinanceiro.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-                BotaoEmpresa.Background =
-                    new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-            }
+            BotaoEmpresa.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoClientes.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
 
         private void ATL_Click(object sender, RoutedEventArgs e)

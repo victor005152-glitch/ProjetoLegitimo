@@ -250,6 +250,9 @@ namespace ProjetoIntegrador
 
             BotaoEmpresa.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+
+            BotaoClientes.Background =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
         }
 
         private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
@@ -275,6 +278,10 @@ namespace ProjetoIntegrador
         private void BotaoSair_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaLogin());
+        }
+        private void BotaoClientes_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaClientes());
         }
     }
 }

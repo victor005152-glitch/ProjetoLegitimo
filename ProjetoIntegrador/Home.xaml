@@ -102,6 +102,8 @@
                     </Button.Effect>
                 </Button>
 
+
+
                 <Button x:Name="BotaoHistorico"
                             Content="🧾 Histórico"
                             Width="220"
@@ -142,12 +144,25 @@
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand"/>
+                <Button x:Name="BotaoClientes"
+        Content="👥 Clientes"
+        Width="220"
+        Height="48"
+        Canvas.Left="30"
+        Canvas.Top="523"
+        Click="BotaoClientes_Click"
+        Background="#FF1F2937"
+        Foreground="White"
+        BorderThickness="0"
+        FontSize="16"
+        FontWeight="Bold"
+        Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
                 <!-- CARD INFO -->
                 <Border Width="220"
                             Height="100"
                             Canvas.Left="30"
-                           Canvas.Top="570"
+                           Canvas.Top="594"
                             Background="#11FFFFFF"
                             CornerRadius="16"
                             BorderBrush="#22FFFFFF"
