@@ -102,7 +102,7 @@
                 Width="220"
                 Height="55"
                 Canvas.Left="30"
-                Canvas.Top="523"
+               Canvas.Top="523"
                 Click="BotaoClientes_Click"
                 Background="#FF7C3AED"
                 Foreground="White"
@@ -123,14 +123,14 @@
                 Width="220"
                 Height="55"
                 Canvas.Left="30"
-                Canvas.Top="385"
+                Canvas.Top="315"
                 Click="IrHistorico_Click"
                 Background="#FF1F2937"
                 Foreground="White"
                 BorderThickness="0"
                 FontWeight="Bold"
                 FontSize="16"
-                Cursor="Hand">
+                Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="12"
                                   ShadowDepth="0"
@@ -140,18 +140,18 @@
 
                     <!-- BOTÃO FINANCEIRO -->
                     <Button x:Name="BotaoFinanceiro"
-                Content="💰 Financeiro"
+                Content="   💰 Financeiro"
                 Width="220"
                 Height="55"
                 Canvas.Left="30"
-                Canvas.Top="455"
+                  Canvas.Top="385"
                 Click="IrFinanceiro_Click"
                 Background="#FF1F2937"
                 Foreground="White"
                 BorderThickness="0"
                 FontWeight="Bold"
                 FontSize="16"
-                Cursor="Hand">
+                Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="12"
                                   ShadowDepth="0"
@@ -165,7 +165,7 @@
                 Width="220"
                 Height="55"
                 Canvas.Left="30"
-                Canvas.Top="315"
+               Canvas.Top="455"
                 Click="IrEmpresa_Click"
                 Background="#FF1F2937"
                 Foreground="White"
@@ -182,26 +182,25 @@
 
                     <!-- CARD INFO -->
                     <Border Width="220"
-                Height="100"
-                Canvas.Left="30"
-                Canvas.Top="620"
-                Background="#11FFFFFF"
-                CornerRadius="16"
-                BorderBrush="#22FFFFFF"
-                BorderThickness="1.5">
+ Height="100"
+ Canvas.Left="30"
+Canvas.Top="594"
+ Background="#11FFFFFF"
+ CornerRadius="16"
+ BorderBrush="#22FFFFFF"
+ BorderThickness="1.5" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <Canvas>
-                            <Label Content="👥 Clientes"
-                       Canvas.Left="18"
-                       Canvas.Top="15"
-                       FontWeight="Bold"
-                       FontSize="16"
-                       Foreground="White"/>
-
-                            <Label Content="Cadastro e&#x0a;gerenciamento"
-                       Canvas.Left="18"
-                       Canvas.Top="45"
-                       FontSize="13"
-                       Foreground="#FFD1D5DB"/>
+                            <Label Content="⚡ WRV Premium"
+        Canvas.Left="18"
+        Canvas.Top="15"
+        FontWeight="Bold"
+        FontSize="16"
+        Foreground="White"/>
+                            <Label Content="Sistema moderno&#x0a;e otimizado"
+        Canvas.Left="18"
+        Canvas.Top="45"
+        FontSize="13"
+        Foreground="#FFD1D5DB"/>
                         </Canvas>
                     </Border>
 

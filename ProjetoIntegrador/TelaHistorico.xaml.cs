@@ -27,21 +27,23 @@ namespace ProjetoIntegrador
             BotaoHistorico.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF7C3AED"));
 
+            Pesquisa.Text = PlaceholderPesquisa;
+
             CarregarHistorico();
         }
 
         public class HistoricoVenda
         {
             public int VendaId { get; set; }
-            public string CodigoVenda { get; set; }
+            public string CodigoVenda { get; set; } = "";
             public DateTime DataVenda { get; set; }
-            public string Cliente { get; set; }
-            public string Cpf { get; set; }
-            public string FormaPagamento { get; set; }
+            public string Cliente { get; set; } = "";
+            public string Cpf { get; set; } = "";
+            public string FormaPagamento { get; set; } = "";
             public decimal Total { get; set; }
-            public string Operador { get; set; }
+            public string Operador { get; set; } = "";
             public int QuantidadeItens { get; set; }
-            public string Produtos { get; set; }
+            public string Produtos { get; set; } = "";
 
             public string DataFormatada
             {
@@ -54,15 +56,27 @@ namespace ProjetoIntegrador
             }
         }
 
+        private void AbrirConexao()
+        {
+            if (ConectBd.Conexao.State != ConnectionState.Open)
+            {
+                ConectBd.Conexao.Open();
+            }
+        }
+
         private void CarregarHistorico(string pesquisa = "")
         {
             vendasHistorico.Clear();
 
             try
             {
-                if (ConectBd.Conexao.State != ConnectionState.Open)
+                AbrirConexao();
+
+                pesquisa = pesquisa.Trim();
+
+                if (pesquisa == PlaceholderPesquisa)
                 {
-                    ConectBd.Conexao.Open();
+                    pesquisa = "";
                 }
 
                 string sql = @"
@@ -81,11 +95,15 @@ namespace ProjetoIntegrador
                     WHERE
                         @pesquisa = ''
                         OR CAST(v.id AS CHAR) LIKE @like
+                        OR LPAD(v.id, 6, '0') LIKE @like
+                        OR DATE_FORMAT(v.data_venda, '%d/%m/%Y') LIKE @like
+                        OR DATE_FORMAT(v.data_venda, '%d/%m/%Y %H:%i') LIKE @like
                         OR v.cliente_nome LIKE @like
                         OR v.cliente_cpf LIKE @like
                         OR v.forma_pagamento LIKE @like
                         OR v.operador_nome LIKE @like
                         OR vi.nome_produto LIKE @like
+                        OR vi.codigo_barras LIKE @like
                     GROUP BY
                         v.id,
                         v.data_venda,
@@ -162,15 +180,34 @@ namespace ProjetoIntegrador
 
         private void Historico1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Historico1.SelectedItem is HistoricoVenda venda)
+            HistoricoVenda venda = Historico1.SelectedItem as HistoricoVenda;
+
+            if (venda == null)
             {
-                DetalheVenda.Content = "Venda Nº " + venda.CodigoVenda;
-                DetalheProduto.Text = string.IsNullOrWhiteSpace(venda.Produtos) ? "-" : venda.Produtos;
-                DetalheCliente.Content = venda.Cliente;
-                DetalheValor.Content = venda.TotalFormatado;
-                DetalheData.Content = venda.DataFormatada;
-                DetalhePagamento.Content = venda.FormaPagamento;
+                return;
             }
+
+            DetalheVenda.Content = "Venda Nº " + venda.CodigoVenda;
+
+            string produtos = string.IsNullOrWhiteSpace(venda.Produtos)
+                ? "-"
+                : venda.Produtos;
+
+            DetalheProduto.Text = produtos;
+
+            string cliente = venda.Cliente;
+
+            if (!string.IsNullOrWhiteSpace(venda.Cpf))
+            {
+                cliente += " - CPF: " + venda.Cpf;
+            }
+
+            cliente += " | Operador: " + venda.Operador;
+
+            DetalheCliente.Content = cliente;
+            DetalheValor.Content = venda.TotalFormatado;
+            DetalheData.Content = venda.DataFormatada;
+            DetalhePagamento.Content = venda.FormaPagamento;
         }
 
         private void LimparDetalhes()
@@ -185,7 +222,9 @@ namespace ProjetoIntegrador
 
         private void BtnComprovante_Click(object sender, RoutedEventArgs e)
         {
-            if (Historico1.SelectedItem is not HistoricoVenda venda)
+            HistoricoVenda venda = Historico1.SelectedItem as HistoricoVenda;
+
+            if (venda == null)
             {
                 MessageBox.Show("Selecione uma venda para abrir o comprovante.");
                 return;
@@ -196,8 +235,8 @@ namespace ProjetoIntegrador
 
         private void BotaoAtualizar_Click(object sender, RoutedEventArgs e)
         {
-            CarregarHistorico();
             Pesquisa.Text = PlaceholderPesquisa;
+            CarregarHistorico();
         }
 
         private void Pesquisa_TextChanged(object sender, TextChangedEventArgs e)
@@ -236,23 +275,15 @@ namespace ProjetoIntegrador
 
         private void ResetarBotoes()
         {
-            BotaoEstoque.Background =
+            SolidColorBrush corPadrao =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
 
-            BotaoVendas.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoHistorico.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoFinanceiro.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoEmpresa.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoClientes.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoEstoque.Background = corPadrao;
+            BotaoVendas.Background = corPadrao;
+            BotaoHistorico.Background = corPadrao;
+            BotaoFinanceiro.Background = corPadrao;
+            BotaoEmpresa.Background = corPadrao;
+            BotaoClientes.Background = corPadrao;
         }
 
         private void BotaoEstoque_Click(object sender, RoutedEventArgs e)
@@ -275,13 +306,15 @@ namespace ProjetoIntegrador
             NavigationService.Navigate(new TelaEmpresa());
         }
 
-        private void BotaoSair_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new TelaLogin());
-        }
         private void BotaoClientes_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaClientes());
+        }
+
+        private void BotaoSair_Click(object sender, RoutedEventArgs e)
+        {
+            SessaoUsuario.Limpar();
+            NavigationService.Navigate(new TelaLogin());
         }
     }
 }
