@@ -256,51 +256,6 @@
                 </Canvas>
             </Border>
 
-            <Border Width="260"
-                        Height="95"
-                        Canvas.Left="310"
-                        Canvas.Top="25"
-                        Background="#CCFFFFFF"
-                        CornerRadius="20">
-                <Canvas>
-                    <Label Content="💰 Vendas"
-                               Canvas.Left="20"
-                               Canvas.Top="12"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
-                    <Label x:Name="VND" 
-                               Content="R$ 4.200"
-                               Canvas.Left="22"
-                               Canvas.Top="45"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="#FF22C55E"/>
-                </Canvas>
-            </Border>
-
-            <Border Width="260"
-                        Height="95"
-                        Canvas.Left="595"
-                        Canvas.Top="25"
-                        Background="#CCFFFFFF"
-                        CornerRadius="20">
-                <Canvas>
-                    <Label Content="🧾 Histórico"
-                               Canvas.Left="20"
-                               Canvas.Top="12"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
-                    <Label Content="58"
-                               Canvas.Left="22"
-                               Canvas.Top="45"
-                               FontSize="32"
-                               FontWeight="Bold"
-                               Foreground="#FF3B82F6"/>
-                </Canvas>
-            </Border>
-
             <!-- CONTROLES -->
             <Button x:Name="Cad"
                         Content="➕ Cadastrar"
