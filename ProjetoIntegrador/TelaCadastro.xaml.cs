@@ -33,7 +33,7 @@ namespace ProjetoIntegrador
             }
 
             string nome = txbUser.Text;
-            string senha = txbSenha.Password;
+            string senha = BCrypt.Net.BCrypt.HashPassword(txbSenha.Password);
             string Email = txbEmail.Text;
 
             try

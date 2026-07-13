@@ -25,7 +25,7 @@ namespace ProjetoIntegrador
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string nomeUsuario = User1.Text.Trim();
-            string senha = Senha1.Password.Trim();
+            string senha = Senha1.Password;
 
             if (string.IsNullOrWhiteSpace(nomeUsuario))
             {
@@ -59,24 +59,22 @@ namespace ProjetoIntegrador
             SELECT 
                 Id,
                 Nome,
+                Senha,
                 Email,
                 tipo_usuario
             FROM usuario
             WHERE Nome = @nome
-              AND Senha = @senha
-              AND ativo = 1
             LIMIT 1";
 
                 using (MySqlCommand comando = new MySqlCommand(sql, ConectBd.Conexao))
                 {
                     comando.Parameters.AddWithValue("@nome", nomeUsuario);
-                    comando.Parameters.AddWithValue("@senha", senha);
 
                     using (MySqlDataReader leitor = comando.ExecuteReader())
                     {
                         if (leitor.Read())
                         {
-                            loginValido = true;
+                            loginValido = BCrypt.Net.BCrypt.Verify(senha, leitor["Senha"].ToString());
 
                             usuarioId = Convert.ToInt32(leitor["Id"]);
                             nome = leitor["Nome"].ToString();

@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Tls;
+﻿using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Tls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace ProjetoIntegrador
 
         public MainWindow()
         {
- 
+
             InitializeComponent();
             ConectBd.AbrirConexao();
             MainFrame.Navigate(new TelaLogin());
@@ -164,5 +165,11 @@ namespace ProjetoIntegrador
 
         //    }
         //}
+
+        public void Cadastrar(string usuario, string senha)
+        {
+
+
+        }
     }
 }
