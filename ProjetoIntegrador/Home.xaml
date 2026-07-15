@@ -26,7 +26,7 @@
         <Border Width="280"
                     Visibility="Visible"
                     Height="1080"
-                    Background="#CC111827"
+                    Background="#FF131111"
                     CornerRadius="0,24,24,0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30"
@@ -68,9 +68,9 @@
                             Canvas.Left="30"
                             Canvas.Top="175"
                             Click="BotaoEstoque_Click"
-                            Background="#FF1F2937"
+                            Background="Black"
                             Foreground="White"
-                            BorderThickness="0"
+                           
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand">
@@ -89,9 +89,9 @@
                             Canvas.Left="30"
                             Canvas.Top="245"
                          
-                            Background="#FF1F2937"
+                            Background="Black"
                             Foreground="White"
-                            BorderThickness="0"
+                           
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="" Click="BotaoVendas_Click">
@@ -111,9 +111,9 @@
                             Canvas.Left="30"
                             Canvas.Top="315"
                             Click="Button_Click_1"
-                            Background="#FF1F2937"
+                            Background="Black"
                             Foreground="White"
-                            BorderBrush="#223B82F6"
+                            BorderBrush="#FF707070"
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand"/>
@@ -125,9 +125,9 @@
                             Canvas.Left="30"
                             Canvas.Top="385"
                             Click="Button_Click_2"
-                            Background="#FF1F2937"
+                            Background="Black"
                             Foreground="White"
-                            BorderBrush="#223B82F6"
+                            BorderBrush="#FF707070"
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand"/>
@@ -137,23 +137,24 @@
                             Height="55"
                             Canvas.Left="30"
                             Canvas.Top="455"
-                            Click="BotaoEmpresa_Click"
-                            Background="#FF1F2937"
-                            Foreground="White"
-                            BorderThickness="0"
+                              Click="Button_Click_2"
+  Background="Black"
+  Foreground="White"
+  BorderBrush="#FF707070"
+                            
                             FontWeight="Bold"
                             FontSize="16"
                             Cursor="Hand"/>
                 <Button x:Name="BotaoClientes"
         Content="👥 Clientes"
         Width="220"
-        Height="48"
+        Height="55"
         Canvas.Left="30"
         Canvas.Top="523"
         Click="BotaoClientes_Click"
-        Background="#FF1F2937"
+        Background="Black"
         Foreground="White"
-        BorderThickness="0"
+        
         FontSize="16"
         FontWeight="Bold"
         Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -188,7 +189,7 @@
                             Height="50"
                             Canvas.Left="30"
                             Canvas.Top="975"
-                            Background="#FFDC2626"
+                            Background="Red"
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"
@@ -203,7 +204,7 @@
                     Visibility="Visible"
                     Width="1640"
                     Height="70"
-                    Background="#11FFFFFF"
+                    Background="#CC0F0F10"
                     BorderBrush="#22FFFFFF"
                     BorderThickness="0,0,0,1.5">
             <Canvas>
@@ -230,14 +231,14 @@
                     Height="1010"
                     Canvas.Left="280"
                     Canvas.Top="70"
-                    Background="Transparent">
+                    Background="Black">
 
             <!-- CARDS SUPERIORES -->
             <Border Width="260"
                         Height="95"
                         Canvas.Left="25"
                         Canvas.Top="25"
-                        Background="#CCFFFFFF"
+                        Background="#FF131111"
                         CornerRadius="20">
                 <Canvas>
                     <Label Content="📦 Produtos"
@@ -245,7 +246,7 @@
                                Canvas.Top="12"
                                FontSize="18"
                                FontWeight="Bold"
-                               Foreground="#FF1E293B"/>
+                               Foreground="White"/>
                     <Label x:Name="QTD" 
                                Content="125"
                                Canvas.Left="22"
@@ -264,7 +265,7 @@
                         Canvas.Left="25"
                         Canvas.Top="145"
                         Click="Cad_Click1"
-                        Background="#FF22C55E"
+                        Background="#FF00B342"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
@@ -278,7 +279,7 @@
                         Canvas.Left="420"
                         Canvas.Top="145"
                         Click="ATL_Click1"
-                        Background="#FF22C55E"
+                        Background="#FF0004FF"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
@@ -294,7 +295,7 @@
                         Canvas.Left="232"
                         Canvas.Top="145"
                         Click="Exc_Click"
-                        Background="#FFEF4444"
+                        Background="#FFFB0000"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
@@ -305,7 +306,7 @@
                         Height="45"
                         Canvas.Left="1345"
                         Canvas.Top="145"
-                        Background="#CCFFFFFF"
+                        Background="#FF131111"
                         CornerRadius="12" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <TextBox x:Name="Pesquisa1" 
                              Width="240"
@@ -317,7 +318,7 @@
                              Background="Transparent"
                              VerticalContentAlignment="Center" 
                              Margin="10,2,10,2"
-                             TextChanged="Pesquisa1_TextChanged"/>
+                             TextChanged="Pesquisa1_TextChanged" Foreground="White"/>
             </Border>
 
             <!-- TABELA -->
@@ -333,44 +334,126 @@
                                         Opacity="0.15"/>
                 </Border.Effect>
 
-                <DataGrid x:Name="DGestoque" 
-                              Visibility="Visible"
-                              AutoGenerateColumns="False"
-                              IsReadOnly="True"
-                              BorderThickness="0"
-                              Background="Transparent"
-                              FontSize="14"
-                              RowHeight="35">
+                <DataGrid x:Name="DGestoque"
+          Visibility="Visible"
+          AutoGenerateColumns="False"
+          IsReadOnly="True"
+          Background="#FF131111"
+          Foreground="White"
+          RowBackground="#FF131111"
+          AlternatingRowBackground="#FF181818"
+          BorderThickness="0"
+          FontSize="14"
+          RowHeight="35"
+          HeadersVisibility="Column"
+          GridLinesVisibility="All"
+          HorizontalGridLinesBrush="#FF404040"
+          VerticalGridLinesBrush="#FF404040"
+          AlternationCount="2"
+          SelectionMode="Single"
+          SelectionUnit="FullRow">
+
+                    <!-- CABEÇALHO -->
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#FF131111"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Height" Value="32"/>
+                            <Setter Property="Padding" Value="5,0"/>
+                            <Setter Property="BorderBrush" Value="#FF707070"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <!-- LINHAS -->
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="Background" Value="#FF131111"/>
+                            <Setter Property="Foreground" Value="White"/>
+
+                            <Style.Triggers>
+
+                                <Trigger Property="AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="#FF181818"/>
+                                </Trigger>
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF252525"/>
+                                </Trigger>
+
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF7C3AED"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+                    <!-- CÉLULAS -->
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="#FF404040"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="Padding" Value="5,0"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+                            <Style.Triggers>
+
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF7C3AED"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="CollumCodigo" 
-                                              Header="Código"
-                                              Width="150"
-                                              Binding="{Binding CodigoBarras}"/>
-                        <DataGridTextColumn x:Name="CollumNome" 
-                                              Header="Nome"
-                                              Width="200"
-                                              Binding="{Binding Nome}"/>
-                        <DataGridTextColumn x:Name="CollumCategoria" 
-                                              Header="Categoria"
-                                              Width="180"
-                                              Binding="{Binding Categoria}"/>
-                        <DataGridTextColumn x:Name="CollumMarca" 
-                                              Header="Marca"
-                                              Width="180"
-                                              Binding="{Binding Marca}"/>
-                        <DataGridTextColumn x:Name="CollumQuantidade" 
-                                              Header="Quantidade"
-                                              Width="150"
-                                              Binding="{Binding QuantidadeEstoque}"/>
-                        <DataGridTextColumn x:Name="CollumCusto" 
-                                              Header="Custo"
-                                              Width="150"
-                                              Binding="{Binding ValorCusto, StringFormat=R$ {0:N2}}"/>
-                        <DataGridTextColumn x:Name="CollumVenda" 
-                                              Header="Venda"
-                                              Width="150"
-                                              Binding="{Binding ValorVenda, StringFormat=R$ {0:N2}}"/>
+
+                        <DataGridTextColumn x:Name="CollumCodigo"
+                            Header="Código"
+                            Width="150"
+                            Binding="{Binding CodigoBarras}"/>
+
+                        <DataGridTextColumn x:Name="CollumNome"
+                            Header="Nome"
+                            Width="200"
+                            Binding="{Binding Nome}"/>
+
+                        <DataGridTextColumn x:Name="CollumCategoria"
+                            Header="Categoria"
+                            Width="180"
+                            Binding="{Binding Categoria}"/>
+
+                        <DataGridTextColumn x:Name="CollumMarca"
+                            Header="Marca"
+                            Width="180"
+                            Binding="{Binding Marca}"/>
+
+                        <DataGridTextColumn x:Name="CollumQuantidade"
+                            Header="Quantidade"
+                            Width="150"
+                            Binding="{Binding QuantidadeEstoque}"/>
+
+                        <DataGridTextColumn x:Name="CollumCusto"
+                            Header="Custo"
+                            Width="150"
+                            Binding="{Binding ValorCusto,
+                                              StringFormat=R$ {0:N2}}"/>
+
+                        <DataGridTextColumn x:Name="CollumVenda"
+                            Header="Venda"
+                            Width="150"
+                            Binding="{Binding ValorVenda,
+                                              StringFormat=R$ {0:N2}}"/>
+
                     </DataGrid.Columns>
+
                 </DataGrid>
             </Border>
 

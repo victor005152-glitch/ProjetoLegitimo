@@ -33,6 +33,7 @@ namespace ProjetoIntegrador
 
             BotaoEstoque.Background =
                 new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF7C3AED"));
+        
 
             Cadastro.Visibility = Visibility.Collapsed;
             CollumCusto.Visibility = Visibility.Collapsed;
@@ -52,10 +53,6 @@ namespace ProjetoIntegrador
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TelaFinanceiro());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
 
         private void Cad_Click(object sender, RoutedEventArgs e)
@@ -250,22 +247,22 @@ namespace ProjetoIntegrador
         private void ResetarBotoes()
         {
             BotaoEstoque.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoVendas.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoHistorico.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoFinanceiro.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoEmpresa.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoClientes.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
         }
 
         private void ATL_Click(object sender, RoutedEventArgs e)

@@ -811,7 +811,7 @@ namespace ProjetoIntegrador
         private void ResetarBotoes()
         {
             SolidColorBrush corPadrao =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoEstoque.Background = corPadrao;
             BotaoVendas.Background = corPadrao;
@@ -819,6 +819,11 @@ namespace ProjetoIntegrador
             BotaoFinanceiro.Background = corPadrao;
             BotaoEmpresa.Background = corPadrao;
             BotaoClientes.Background = corPadrao;
+        }
+
+        private void BotaoVendas_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
