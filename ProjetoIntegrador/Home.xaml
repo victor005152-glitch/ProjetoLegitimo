@@ -467,7 +467,7 @@
             Canvas.Left="404"
             Canvas.Top="186"
             CornerRadius="22"
-            Background="#FF2D334C" Margin="480,275,-480,-275">
+            Background="Black" Margin="480,275,-480,-275">
 
                     <Canvas>
 
@@ -493,7 +493,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                   Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="25">
@@ -502,10 +502,10 @@
                          Width="220"
                          Padding="10"
                          BorderThickness="0"
-                         Background="Transparent"
+                        Background="#FF131111"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Nome -->
@@ -518,7 +518,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                     Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="90">
@@ -527,10 +527,10 @@
                          Width="220"
                          Padding="10"
                          BorderThickness="0"
-                         Background="Transparent"
+                          Background="#FF131111"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Categoria -->
@@ -543,7 +543,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                     Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="155">
@@ -555,7 +555,7 @@
                          Background="Transparent"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Marca -->
@@ -568,7 +568,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                      Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="220">
@@ -580,7 +580,7 @@
                          Background="Transparent"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Custo -->
@@ -593,7 +593,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                      Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="285">
@@ -605,7 +605,7 @@
                          Background="Transparent"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Venda -->
@@ -618,7 +618,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                     Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="350">
@@ -630,7 +630,7 @@
                          Background="Transparent"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <!-- Quantidade -->
@@ -643,7 +643,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                   Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="160"
                     Canvas.Top="415">
@@ -656,7 +656,7 @@
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
                          FontSize="15"
-                         KeyDown="Quantidade_KeyDown"/>
+                         KeyDown="Quantidade_KeyDown" Foreground="White"/>
                         </Border>
 
                         <Button x:Name="Save"
@@ -666,7 +666,7 @@
                     Canvas.Left="140"
                     Canvas.Top="485"
                     Click="Cad_Click"
-                    Background="#FF22C55E"
+                    Background="#FF00FF5E"
                     Foreground="White"
                     BorderThickness="0"
                     FontWeight="Bold"
@@ -682,14 +682,14 @@
             <!--=============================-->
             <!-- TELA DE ATUALIZAR ESTOQUE -->
             <!--=============================-->
-            <Grid x:Name="AtualizarEstoque" Visibility="Collapsed">
+            <Grid x:Name="AtualizarEstoque" Visibility="Collapsed" Cursor="">
 
                 <Border Width="450"
             Height="550"
             CornerRadius="22"
-            Background="#FF2D334C"
+            Background="Black"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Margin="480,275,-480,-275">
+            VerticalAlignment="Top" Margin="480,275,-480,-275" BorderBrush="#FF707070">
 
                     <Canvas>
 
@@ -714,7 +714,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                      Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="105"
                     Canvas.Top="170" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -726,7 +726,7 @@
                          Background="Transparent"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
-                         FontSize="15"/>
+                         FontSize="15" Foreground="White"/>
                         </Border>
 
                         <Label Content="QTD"
@@ -738,7 +738,7 @@
 
                         <Border Width="240"
                     Height="45"
-                    Background="#CCFFFFFF"
+                     Background="#FF131111"
                     CornerRadius="12"
                     Canvas.Left="105"
                     Canvas.Top="239">
@@ -751,7 +751,7 @@
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"
                          FontSize="15"
-                         KeyDown="QTD1_KeyDown"/>
+                         KeyDown="QTD1_KeyDown" Foreground="White"/>
                         </Border>
 
                         <Button x:Name="Atualizar"
@@ -761,7 +761,7 @@
                     Canvas.Left="140"
                     Canvas.Top="430"
                     Click="ATL_Click"
-                    Background="#FF22C55E"
+                    Background="#FF00FF5E"
                     Foreground="White"
                     BorderThickness="0"
                     FontWeight="Bold"

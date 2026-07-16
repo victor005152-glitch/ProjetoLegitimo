@@ -8,35 +8,117 @@
       d:DesignWidth="1920"
       Title="TelaEmpresa">
 
+    <!-- ================================================= -->
+    <!-- ESTILOS -->
+    <!-- ================================================= -->
+
+    <Page.Resources>
+
+        <!-- BOTÕES DO MENU -->
+        <Style x:Key="BotaoMenuStyle"
+               TargetType="{x:Type Button}">
+
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="55"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF707070"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+        </Style>
+
+        <!-- TÍTULOS DOS CAMPOS -->
+        <Style x:Key="RotuloCampoStyle"
+               TargetType="{x:Type TextBlock}">
+
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#FFD1D5DB"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+
+        </Style>
+
+        <!-- BORDA DOS CAMPOS -->
+        <Style x:Key="BordaCampoStyle"
+               TargetType="{x:Type Border}">
+
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#FF181818"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="BorderBrush" Value="#FF404040"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+
+        </Style>
+
+        <!-- CAMPOS DE TEXTO -->
+        <Style x:Key="CampoTextoStyle"
+               TargetType="{x:Type TextBox}">
+
+            <Setter Property="Margin" Value="12,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="SelectionBrush" Value="#FF7C3AED"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
+
+    </Page.Resources>
+
     <Canvas Background="#FF0F172A"
             Width="1920"
             Height="1080"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
 
+        <!-- ================================================= -->
         <!-- FUNDO -->
-        <Rectangle Width="1920" Height="1080">
+        <!-- ================================================= -->
+
+        <Rectangle Width="1920"
+                   Height="1080">
+
             <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
+
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+
+                    <GradientStop Color="#FF0F172A"
+                                  Offset="0"/>
+
+                    <GradientStop Color="#FF1E293B"
+                                  Offset="1"/>
+
                 </LinearGradientBrush>
+
             </Rectangle.Fill>
+
         </Rectangle>
 
+        <!-- ================================================= -->
         <!-- MENU LATERAL -->
+        <!-- ================================================= -->
+
         <Border Width="280"
                 Height="1080"
-                Background="#CC111827"
+                Background="#FF131111"
                 CornerRadius="0,24,24,0">
 
             <Border.Effect>
+
                 <DropShadowEffect BlurRadius="30"
                                   ShadowDepth="0"
                                   Opacity="0.25"/>
+
             </Border.Effect>
 
             <Canvas>
+
                 <Label Content="WRV CONTROL"
                        Canvas.Left="15"
                        Canvas.Top="45"
@@ -57,136 +139,127 @@
                            Canvas.Left="30"
                            Canvas.Top="130"/>
 
+                <!-- ESTOQUE -->
+
                 <Button x:Name="BotaoEstoque"
+                        Style="{StaticResource BotaoMenuStyle}"
                         Content="📦 Estoque"
-                        Width="220"
-                        Height="55"
                         Canvas.Left="30"
                         Canvas.Top="175"
-                        Click="BotaoEstoque_Click"
-                        Background="#FF1F2937"
-                        Foreground="White"
-                        BorderThickness="0"
-                        FontWeight="Bold"
-                        FontSize="16"
-                        Cursor="Hand"/>
-                <Button x:Name="BotaoClientes"
-Content="👥 Clientes"
-Width="220"
-Height="48"
-Canvas.Left="30"
-Canvas.Top="523"
-Click="BotaoClientes_Click"
-Background="#FF1F2937"
-Foreground="White"
-BorderThickness="0"
-FontSize="16"
-FontWeight="Bold"
-Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        Click="BotaoEstoque_Click"/>
 
+                <!-- VENDAS -->
 
                 <Button x:Name="BotaoVendas"
+                        Style="{StaticResource BotaoMenuStyle}"
                         Content="🛒 Vendas"
-                        Width="220"
-                        Height="55"
                         Canvas.Left="30"
                         Canvas.Top="245"
-                        Click="BotaoVendas_Click"
-                        Background="#FF1F2937"
-                        Foreground="White"
-                        BorderThickness="0"
-                        FontWeight="Bold"
-                        FontSize="16"
-                        Cursor="Hand"/>
+                        Click="BotaoVendas_Click"/>
+
+                <!-- HISTÓRICO -->
 
                 <Button x:Name="BotaoHistorico"
+                        Style="{StaticResource BotaoMenuStyle}"
                         Content="🧾 Histórico"
-                        Width="220"
-                        Height="55"
                         Canvas.Left="30"
                         Canvas.Top="315"
-                        Click="BotaoHistorico_Click"
-                        Background="#FF1F2937"
-                        Foreground="White"
-                        BorderThickness="0"
-                        FontWeight="Bold"
-                        FontSize="16"
-                        Cursor="Hand"/>
+                        Click="BotaoHistorico_Click"/>
+
+                <!-- FINANCEIRO -->
 
                 <Button x:Name="BotaoFinanceiro"
+                        Style="{StaticResource BotaoMenuStyle}"
                         Content="   💰 Financeiro"
-                        Width="220"
-                        Height="55"
                         Canvas.Left="30"
                         Canvas.Top="385"
-                        Click="BotaoFinanceiro_Click"
-                        Background="#FF1F2937"
-                        Foreground="White"
-                        BorderThickness="0"
-                        FontWeight="Bold"
-                        FontSize="16"
-                        Cursor="Hand"/>
+                        Click="BotaoFinanceiro_Click"/>
+
+                <!-- EMPRESA -->
 
                 <Button x:Name="BotaoEmpresa"
+                        Style="{StaticResource BotaoMenuStyle}"
                         Content="⚙️ Empresa"
-                        Width="220"
-                        Height="55"
                         Canvas.Left="30"
                         Canvas.Top="455"
-                        Background="#FF1F2937"
-                        Foreground="White"
-                        BorderThickness="0"
-                        FontWeight="Bold"
-                        FontSize="16"
-                        Cursor="Hand"/>
+                        Background="#FF7C3AED"
+                        BorderBrush="#FF9B6AF3" Click="BotaoEmpresa_Click"/>
+
+                <!-- CLIENTES -->
+
+                <Button x:Name="BotaoClientes"
+                        Style="{StaticResource BotaoMenuStyle}"
+                        Content="👥 Clientes"
+                        Canvas.Left="30"
+                        Canvas.Top="523"
+                        Click="BotaoClientes_Click"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"/>
+
+                <!-- CARD PREMIUM -->
 
                 <Border Width="220"
-             Height="100"
-             Canvas.Left="30"
-            Canvas.Top="594"
-             Background="#11FFFFFF"
-             CornerRadius="16"
-             BorderBrush="#22FFFFFF"
-             BorderThickness="1.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        Height="100"
+                        Canvas.Left="30"
+                        Canvas.Top="594"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
+
                     <Canvas>
+
                         <Label Content="⚡ WRV Premium"
-                    Canvas.Left="18"
-                    Canvas.Top="15"
-                    FontWeight="Bold"
-                    FontSize="16"
-                    Foreground="White"/>
+                               Canvas.Left="18"
+                               Canvas.Top="15"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               Foreground="White"/>
+
                         <Label Content="Sistema moderno&#x0a;e otimizado"
-                    Canvas.Left="18"
-                    Canvas.Top="45"
-                    FontSize="13"
-                    Foreground="#FFD1D5DB"/>
+                               Canvas.Left="18"
+                               Canvas.Top="45"
+                               FontSize="13"
+                               Foreground="#FFD1D5DB"/>
+
                     </Canvas>
+
                 </Border>
+
+                <!-- SAIR -->
 
                 <Button Content="🚪 Sair"
                         Width="220"
                         Height="50"
                         Canvas.Left="30"
                         Canvas.Top="975"
-                        Background="#FFDC2626"
+                        Background="Red"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"
                         Click="BotaoSair_Click"/>
+
             </Canvas>
+
         </Border>
 
+        <!-- ================================================= -->
         <!-- TOPO -->
+        <!-- ================================================= -->
+
         <Border Canvas.Left="280"
                 Width="1640"
                 Height="70"
-                Background="#11FFFFFF"
+                Background="#FF131111"
                 BorderBrush="#22FFFFFF"
                 BorderThickness="0,0,0,1.5">
 
             <Canvas>
+
                 <Label Content="Dados da Empresa"
                        FontSize="26"
                        FontWeight="Bold"
@@ -199,33 +272,42 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                        Foreground="#FFD1D5DB"
                        Canvas.Left="32"
                        Canvas.Top="45"/>
+
             </Canvas>
+
         </Border>
 
+        <!-- ================================================= -->
         <!-- ÁREA PRINCIPAL -->
+        <!-- ================================================= -->
+
         <Canvas Width="1640"
                 Height="1010"
                 Canvas.Left="280"
                 Canvas.Top="70"
-                Background="Transparent">
+                Background="Black">
 
             <Border Width="1590"
                     Height="780"
                     Canvas.Left="25"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
                     CornerRadius="24"
-                    BorderBrush="#33FFFFFF"
+                    BorderBrush="#FF303030"
                     BorderThickness="1.5">
 
                 <Border.Effect>
+
                     <DropShadowEffect BlurRadius="30"
                                       ShadowDepth="0"
                                       Opacity="0.25"/>
+
                 </Border.Effect>
 
                 <Grid Margin="45,35,45,35">
+
                     <Grid.RowDefinitions>
+
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -233,240 +315,218 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+
                     </Grid.RowDefinitions>
 
+                    <!-- ================================================= -->
                     <!-- TÍTULO -->
+                    <!-- ================================================= -->
+
                     <TextBlock Grid.Row="0"
                                Text="Cadastro da Empresa"
                                FontSize="32"
                                FontWeight="Bold"
-                               Foreground="#FF0F172A"
+                               Foreground="White"
                                Margin="0,0,0,8"/>
 
                     <TextBlock Grid.Row="1"
                                Text="Preencha os dados da empresa para impressão no comprovante."
                                FontSize="16"
-                               Foreground="#FF64748B"
+                               Foreground="#FFD1D5DB"
                                Margin="0,0,0,30"/>
 
+                    <!-- ================================================= -->
                     <!-- LINHA 1 -->
+                    <!-- ================================================= -->
+
                     <Grid Grid.Row="2"
                           Margin="0,0,0,18">
 
                         <Grid.ColumnDefinitions>
+
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
+
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="Nome Fantasia"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
+                        <!-- NOME FANTASIA -->
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Nome Fantasia"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtNomeFantasia"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- RAZÃO SOCIAL -->
 
                         <StackPanel Grid.Column="2">
-                            <TextBlock Text="Razão Social"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Razão Social"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtRazaoSocial"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
                     </Grid>
 
+                    <!-- ================================================= -->
                     <!-- LINHA 2 -->
+                    <!-- ================================================= -->
+
                     <Grid Grid.Row="3"
                           Margin="0,0,0,18">
 
                         <Grid.ColumnDefinitions>
+
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
+
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="CNPJ"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
+                        <!-- CNPJ -->
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="CNPJ"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtCnpj"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- TELEFONE -->
 
                         <StackPanel Grid.Column="2">
-                            <TextBlock Text="Telefone"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Telefone"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtTelefone"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- E-MAIL -->
 
                         <StackPanel Grid.Column="4">
-                            <TextBlock Text="E-mail"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="E-mail"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtEmail"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
                     </Grid>
 
+                    <!-- ================================================= -->
                     <!-- LINHA 3 -->
+                    <!-- ================================================= -->
+
                     <Grid Grid.Row="4"
                           Margin="0,0,0,18">
 
                         <Grid.ColumnDefinitions>
+
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="110"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
+
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="Endereço"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
+                        <!-- ENDEREÇO -->
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Endereço"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtEndereco"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- NÚMERO -->
 
                         <StackPanel Grid.Column="2">
-                            <TextBlock Text="Número"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Número"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtNumero"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- BAIRRO -->
 
                         <StackPanel Grid.Column="4">
-                            <TextBlock Text="Bairro"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Bairro"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtBairro"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
                     </Grid>
 
+                    <!-- ================================================= -->
                     <!-- LINHA 4 -->
+                    <!-- ================================================= -->
+
                     <Grid Grid.Row="5"
                           Margin="0,0,0,25">
 
                         <Grid.ColumnDefinitions>
+
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="90"/>
@@ -474,99 +534,80 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                             <ColumnDefinition Width="160"/>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="2*"/>
+
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="Cidade"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
+                        <!-- CIDADE -->
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Cidade"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtCidade"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- UF -->
 
                         <StackPanel Grid.Column="2">
-                            <TextBlock Text="UF"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="UF"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtEstado"
-                                         Margin="12,0"
-                                         MaxLength="2"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"
+                                         MaxLength="2"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- CEP -->
 
                         <StackPanel Grid.Column="4">
-                            <TextBlock Text="CEP"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="CEP"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtCep"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
+                        <!-- MENSAGEM DO RODAPÉ -->
 
                         <StackPanel Grid.Column="6">
-                            <TextBlock Text="Mensagem do rodapé"
-                                       FontWeight="SemiBold"
-                                       FontSize="15"
-                                       Foreground="#FF1E293B"
-                                       Margin="0,0,0,6"/>
 
-                            <Border Height="50"
-                                    Background="#FFF8FAFC"
-                                    CornerRadius="12"
-                                    BorderBrush="#FFE2E8F0"
-                                    BorderThickness="1.5">
+                            <TextBlock Style="{StaticResource RotuloCampoStyle}"
+                                       Text="Mensagem do rodapé"/>
+
+                            <Border Style="{StaticResource BordaCampoStyle}">
 
                                 <TextBox x:Name="TxtMensagemRodape"
-                                         Margin="12,0"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         Style="{StaticResource CampoTextoStyle}"/>
+
                             </Border>
+
                         </StackPanel>
+
                     </Grid>
 
+                    <!-- ================================================= -->
                     <!-- BOTÕES -->
+                    <!-- ================================================= -->
+
                     <StackPanel Grid.Row="6"
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Right">
@@ -574,7 +615,7 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <Button Content="← Voltar"
                                 Width="160"
                                 Height="50"
-                                Background="#FFEF4444"
+                                Background="Red"
                                 Foreground="White"
                                 BorderThickness="0"
                                 FontWeight="Bold"
@@ -586,16 +627,22 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                 Width="190"
                                 Height="50"
                                 Margin="25,0,0,0"
-                                Background="#FF22C55E"
+                                Background="#FF00FF5E"
                                 Foreground="White"
                                 BorderThickness="0"
                                 FontWeight="Bold"
                                 FontSize="15"
                                 Cursor="Hand"
                                 Click="BotaoSalvar_Click"/>
+
                     </StackPanel>
+
                 </Grid>
+
             </Border>
+
         </Canvas>
+
     </Canvas>
+
 </Page>

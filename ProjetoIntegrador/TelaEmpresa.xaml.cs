@@ -173,24 +173,17 @@ namespace ProjetoIntegrador
         }
         private void ResetarBotoes()
         {
-            BotaoEstoque.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            SolidColorBrush corPadrao =
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
-            BotaoVendas.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoHistorico.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoFinanceiro.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoEmpresa.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
-
-            BotaoClientes.Background =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+            BotaoEstoque.Background = corPadrao;
+            BotaoVendas.Background = corPadrao;
+            BotaoHistorico.Background = corPadrao;
+            BotaoFinanceiro.Background = corPadrao;
+            BotaoEmpresa.Background = corPadrao;
+            BotaoClientes.Background = corPadrao;
         }
+
 
         private void AtualizarEmpresa()
         {
@@ -285,6 +278,10 @@ namespace ProjetoIntegrador
             NavigationService.Navigate(new TelaClientes());
         }
 
+        private void BotaoEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TelaEmpresa());
+        }
     }
 
 }

@@ -8,35 +8,242 @@
       d:DesignWidth="1920"
       Title="TelaHistorico">
 
+    <!-- ================================================= -->
+    <!-- ESTILOS -->
+    <!-- ================================================= -->
+
+    <Page.Resources>
+
+        <!-- ESTILO PRINCIPAL DO DATAGRID -->
+        <Style x:Key="DataGridEscuroStyle"
+               TargetType="{x:Type DataGrid}">
+
+            <Setter Property="Background"
+                    Value="#FF131111"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="RowBackground"
+                    Value="#FF131111"/>
+
+            <Setter Property="AlternatingRowBackground"
+                    Value="#FF181818"/>
+
+            <Setter Property="AlternationCount"
+                    Value="2"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0"/>
+
+            <Setter Property="HeadersVisibility"
+                    Value="Column"/>
+
+            <Setter Property="GridLinesVisibility"
+                    Value="All"/>
+
+            <Setter Property="HorizontalGridLinesBrush"
+                    Value="#FF404040"/>
+
+            <Setter Property="VerticalGridLinesBrush"
+                    Value="#FF404040"/>
+
+            <Setter Property="SelectionMode"
+                    Value="Single"/>
+
+            <Setter Property="SelectionUnit"
+                    Value="FullRow"/>
+
+            <Setter Property="RowHeaderWidth"
+                    Value="0"/>
+
+        </Style>
+
+        <!-- CABEÇALHO DO DATAGRID -->
+        <Style x:Key="CabecalhoDataGridEscuroStyle"
+               TargetType="{x:Type DataGridColumnHeader}">
+
+            <Setter Property="Background"
+                    Value="#FF131111"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Height"
+                    Value="36"/>
+
+            <Setter Property="Padding"
+                    Value="8,0"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#FF505050"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0,0,1,1"/>
+
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left"/>
+
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center"/>
+
+        </Style>
+
+        <!-- LINHAS DO DATAGRID -->
+        <Style x:Key="LinhaDataGridEscuroStyle"
+               TargetType="{x:Type DataGridRow}">
+
+            <Setter Property="Background"
+                    Value="#FF131111"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#FF404040"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0,0,0,1"/>
+
+            <Style.Triggers>
+
+                <!-- LINHAS ALTERNADAS -->
+                <Trigger Property="AlternationIndex"
+                         Value="1">
+
+                    <Setter Property="Background"
+                            Value="#FF181818"/>
+
+                </Trigger>
+
+                <!-- MOUSE SOBRE A LINHA -->
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF252525"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                </Trigger>
+
+                <!-- LINHA SELECIONADA -->
+                <Trigger Property="IsSelected"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF7C3AED"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+        <!-- CÉLULAS DO DATAGRID -->
+        <Style x:Key="CelulaDataGridEscuroStyle"
+               TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="Background"
+                    Value="Transparent"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#FF404040"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0,0,1,1"/>
+
+            <Setter Property="Padding"
+                    Value="8,0"/>
+
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center"/>
+
+            <Setter Property="FocusVisualStyle"
+                    Value="{x:Null}"/>
+
+            <Style.Triggers>
+
+                <!-- CÉLULA SELECIONADA -->
+                <Trigger Property="IsSelected"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF7C3AED"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                    <Setter Property="BorderBrush"
+                            Value="#FF9B6AF3"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+    </Page.Resources>
+
     <Canvas Background="#FF0F172A"
             Width="1920"
             Height="1080"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
 
+        <!-- ================================================= -->
         <!-- FUNDO -->
-        <Rectangle Width="1920" Height="1080">
+        <!-- ================================================= -->
+
+        <Rectangle Width="1920"
+                   Height="1080">
+
             <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
+
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+
+                    <GradientStop Color="#FF0F172A"
+                                  Offset="0"/>
+
+                    <GradientStop Color="#FF1E293B"
+                                  Offset="1"/>
+
                 </LinearGradientBrush>
+
             </Rectangle.Fill>
+
         </Rectangle>
 
+        <!-- ================================================= -->
         <!-- MENU LATERAL -->
+        <!-- ================================================= -->
+
         <Border Width="280"
                 Height="1080"
-                Background="#CC111827"
+                Background="#FF131111"
                 CornerRadius="0,24,24,0">
 
             <Border.Effect>
+
                 <DropShadowEffect BlurRadius="30"
                                   ShadowDepth="0"
                                   Opacity="0.25"/>
+
             </Border.Effect>
 
-            <Canvas>
+            <Canvas Cursor="">
+
                 <Label Content="WRV CONTROL"
                        Canvas.Left="15"
                        Canvas.Top="45"
@@ -57,6 +264,7 @@
                            Canvas.Left="30"
                            Canvas.Top="130"/>
 
+                <!-- ESTOQUE -->
                 <Button x:Name="BotaoEstoque"
                         Content="📦 Estoque"
                         Width="220"
@@ -64,27 +272,29 @@
                         Canvas.Left="30"
                         Canvas.Top="175"
                         Click="BotaoEstoque_Click"
-                        Background="#FF1F2937"
+                        Background="Black"
                         Foreground="White"
-                        BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
+
+                <!-- CLIENTES -->
                 <Button x:Name="BotaoClientes"
-Content="👥 Clientes"
-Width="220"
-Height="48"
-Canvas.Left="30"
-Canvas.Top="523"
-Click="BotaoClientes_Click"
-Background="#FF1F2937"
-Foreground="White"
-BorderThickness="0"
-FontSize="16"
-FontWeight="Bold"
-Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        Content="👥 Clientes"
+                        Width="220"
+                        Height="55"
+                        Canvas.Left="30"
+                        Canvas.Top="523"
+                        Click="BotaoClientes_Click"
+                        Background="Black"
+                        Foreground="White"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"/>
 
-
+                <!-- VENDAS -->
                 <Button x:Name="BotaoVendas"
                         Content="🛒 Vendas"
                         Width="220"
@@ -92,26 +302,26 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         Canvas.Left="30"
                         Canvas.Top="245"
                         Click="BotaoVendas_Click"
-                        Background="#FF1F2937"
+                        Background="Black"
                         Foreground="White"
-                        BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
 
+                <!-- HISTÓRICO -->
                 <Button x:Name="BotaoHistorico"
                         Content="🧾 Histórico"
                         Width="220"
                         Height="55"
                         Canvas.Left="30"
                         Canvas.Top="315"
-                        Background="#FF7C3AED"
+                        Background="Black"
                         Foreground="White"
-                        BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
 
+                <!-- FINANCEIRO -->
                 <Button x:Name="BotaoFinanceiro"
                         Content="   💰 Financeiro"
                         Width="220"
@@ -119,13 +329,13 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         Canvas.Left="30"
                         Canvas.Top="385"
                         Click="BotaoFinanceiro_Click"
-                        Background="#FF1F2937"
+                        Background="Black"
                         Foreground="White"
-                        BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
 
+                <!-- EMPRESA -->
                 <Button x:Name="BotaoEmpresa"
                         Content="⚙️ Empresa"
                         Width="220"
@@ -133,60 +343,74 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         Canvas.Left="30"
                         Canvas.Top="455"
                         Click="BotaoEmpresa_Click"
-                        Background="#FF1F2937"
+                        Background="Black"
                         Foreground="White"
-                        BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"/>
 
+                <!-- CARD PREMIUM -->
                 <Border Width="220"
-             Height="100"
-             Canvas.Left="30"
-            Canvas.Top="594"
-             Background="#11FFFFFF"
-             CornerRadius="16"
-             BorderBrush="#22FFFFFF"
-             BorderThickness="1.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        Height="100"
+                        Canvas.Left="30"
+                        Canvas.Top="594"
+                        Background="#11FFFFFF"
+                        CornerRadius="16"
+                        BorderBrush="#22FFFFFF"
+                        BorderThickness="1.5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
+
                     <Canvas>
+
                         <Label Content="⚡ WRV Premium"
-                    Canvas.Left="18"
-                    Canvas.Top="15"
-                    FontWeight="Bold"
-                    FontSize="16"
-                    Foreground="White"/>
+                               Canvas.Left="18"
+                               Canvas.Top="15"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               Foreground="White"/>
+
                         <Label Content="Sistema moderno&#x0a;e otimizado"
-                    Canvas.Left="18"
-                    Canvas.Top="45"
-                    FontSize="13"
-                    Foreground="#FFD1D5DB"/>
+                               Canvas.Left="18"
+                               Canvas.Top="45"
+                               FontSize="13"
+                               Foreground="#FFD1D5DB"/>
+
                     </Canvas>
+
                 </Border>
 
+                <!-- SAIR -->
                 <Button Content="🚪 Sair"
                         Width="220"
                         Height="50"
                         Canvas.Left="30"
                         Canvas.Top="975"
-                        Background="#FFDC2626"
+                        Background="#FFFB0000"
                         Foreground="White"
                         BorderThickness="0"
                         FontWeight="Bold"
                         FontSize="16"
                         Cursor="Hand"
                         Click="BotaoSair_Click"/>
+
             </Canvas>
+
         </Border>
 
+        <!-- ================================================= -->
         <!-- TOPO -->
+        <!-- ================================================= -->
+
         <Border Canvas.Left="280"
                 Width="1640"
                 Height="70"
-                Background="#11FFFFFF"
+                Background="#FF131111"
                 BorderBrush="#22FFFFFF"
                 BorderThickness="0,0,0,1.5">
 
             <Canvas>
+
                 <Label Content="Histórico de Vendas"
                        FontSize="26"
                        FontWeight="Bold"
@@ -199,32 +423,42 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                        Foreground="#FFD1D5DB"
                        Canvas.Left="32"
                        Canvas.Top="45"/>
+
             </Canvas>
+
         </Border>
 
+        <!-- ================================================= -->
         <!-- ÁREA PRINCIPAL -->
+        <!-- ================================================= -->
+
         <Canvas x:Name="HistDeVendas"
                 Width="1640"
                 Height="1010"
                 Canvas.Left="280"
                 Canvas.Top="70"
-                Background="Transparent">
+                Background="Black">
 
+            <!-- ================================================= -->
             <!-- CARDS -->
+            <!-- ================================================= -->
+
             <Border Width="260"
                     Height="95"
                     Canvas.Left="25"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    BorderThickness="0"
+                    Background="#FF131111"
                     CornerRadius="20">
 
                 <Canvas>
+
                     <Label Content="🧾 Vendas"
                            Canvas.Left="20"
                            Canvas.Top="12"
                            FontSize="18"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="TotalVendas"
                            Content="0"
@@ -233,23 +467,26 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                            FontSize="32"
                            FontWeight="Bold"
                            Foreground="#FF7C3AED"/>
+
                 </Canvas>
+
             </Border>
 
             <Border Width="320"
                     Height="95"
                     Canvas.Left="310"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
                     CornerRadius="20">
 
                 <Canvas>
+
                     <Label Content="💰 Valor Total"
                            Canvas.Left="20"
                            Canvas.Top="12"
                            FontSize="18"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="ValorTotal"
                            Content="R$ 0,00"
@@ -258,23 +495,26 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                            FontSize="30"
                            FontWeight="Bold"
                            Foreground="#FF22C55E"/>
+
                 </Canvas>
+
             </Border>
 
             <Border Width="320"
                     Height="95"
                     Canvas.Left="655"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
                     CornerRadius="20">
 
                 <Canvas>
+
                     <Label Content="📦 Itens Vendidos"
                            Canvas.Left="20"
                            Canvas.Top="12"
                            FontSize="18"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="TotalItens"
                            Content="0"
@@ -283,15 +523,20 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                            FontSize="32"
                            FontWeight="Bold"
                            Foreground="#FF3B82F6"/>
+
                 </Canvas>
+
             </Border>
 
+            <!-- ================================================= -->
             <!-- PESQUISA -->
+            <!-- ================================================= -->
+
             <Border Width="360"
                     Height="45"
                     Canvas.Left="1245"
                     Canvas.Top="145"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
                     CornerRadius="12">
 
                 <TextBox x:Name="Pesquisa"
@@ -303,10 +548,13 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                          LostFocus="Pesquisa_LostFocus"
                          TextChanged="Pesquisa_TextChanged"
                          Background="Transparent"
+                         Foreground="White"
                          VerticalContentAlignment="Center"
                          Margin="10,2,10,2"/>
+
             </Border>
 
+            <!-- ABRIR COMPROVANTE -->
             <Button x:Name="BtnComprovante"
                     Content="🖨 Abrir Comprovante"
                     Width="210"
@@ -321,43 +569,54 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     FontSize="15"
                     Cursor="Hand"/>
 
+            <!-- ATUALIZAR -->
             <Button Content="🔄 Atualizar"
                     Width="150"
                     Height="45"
                     Canvas.Left="260"
                     Canvas.Top="145"
                     Click="BotaoAtualizar_Click"
-                    Background="#FF22C55E"
+                    Background="#FF00FF5E"
                     Foreground="White"
                     BorderThickness="0"
                     FontWeight="Bold"
                     FontSize="15"
                     Cursor="Hand"/>
 
+            <!-- ================================================= -->
             <!-- TABELA HISTÓRICO -->
+            <!-- ================================================= -->
+
             <Border Width="1160"
                     Height="640"
                     Canvas.Left="25"
                     Canvas.Top="210"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
+                    BorderBrush="#FF303030"
+                    BorderThickness="1"
                     CornerRadius="20">
 
                 <Border.Effect>
+
                     <DropShadowEffect BlurRadius="25"
                                       ShadowDepth="0"
                                       Opacity="0.15"/>
+
                 </Border.Effect>
 
                 <DataGrid x:Name="Historico1"
+                          Style="{StaticResource DataGridEscuroStyle}"
+                          ColumnHeaderStyle="{StaticResource CabecalhoDataGridEscuroStyle}"
+                          RowStyle="{StaticResource LinhaDataGridEscuroStyle}"
+                          CellStyle="{StaticResource CelulaDataGridEscuroStyle}"
                           AutoGenerateColumns="False"
                           IsReadOnly="True"
-                          BorderThickness="0"
-                          Background="Transparent"
                           FontSize="14"
                           RowHeight="38"
                           SelectionChanged="Historico1_SelectionChanged">
 
                     <DataGrid.Columns>
+
                         <DataGridTextColumn Header="Venda"
                                             Width="90"
                                             Binding="{Binding CodigoVenda}"/>
@@ -389,31 +648,40 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         <DataGridTextColumn Header="Produtos"
                                             Width="*"
                                             Binding="{Binding Produtos}"/>
+
                     </DataGrid.Columns>
+
                 </DataGrid>
+
             </Border>
 
+            <!-- ================================================= -->
             <!-- DETALHES -->
+            <!-- ================================================= -->
+
             <Border Width="390"
                     Height="640"
                     Canvas.Left="1215"
                     Canvas.Top="210"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
                     CornerRadius="20">
 
                 <Border.Effect>
+
                     <DropShadowEffect BlurRadius="25"
                                       ShadowDepth="0"
                                       Opacity="0.15"/>
+
                 </Border.Effect>
 
                 <Canvas>
+
                     <Label Content="Detalhes da Venda"
                            Canvas.Left="25"
                            Canvas.Top="20"
                            FontSize="22"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
                     <Rectangle Width="330"
                                Height="1.5"
@@ -421,12 +689,13 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                Canvas.Left="30"
                                Canvas.Top="70"/>
 
+                    <!-- VENDA -->
                     <Label Content="Venda"
                            Canvas.Left="25"
                            Canvas.Top="95"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="DetalheVenda"
                            Content="Selecione uma venda"
@@ -434,47 +703,50 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                            Canvas.Top="120"
                            FontSize="17"
                            FontWeight="Bold"
-                           Foreground="#FF111827"
+                           Foreground="White"
                            Width="330"/>
 
+                    <!-- PRODUTOS -->
                     <Label Content="Produtos"
                            Canvas.Left="25"
                            Canvas.Top="170"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <TextBlock x:Name="DetalheProduto"
                                Text="-"
                                Canvas.Left="30"
                                Canvas.Top="200"
                                FontSize="15"
-                               Foreground="#FF111827"
+                               Foreground="#FFD1D5DB"
                                Width="330"
                                Height="120"
                                TextWrapping="Wrap"/>
 
+                    <!-- CLIENTE -->
                     <Label Content="Cliente"
                            Canvas.Left="25"
                            Canvas.Top="330"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="DetalheCliente"
                            Content="-"
                            Canvas.Left="25"
                            Canvas.Top="355"
                            FontSize="16"
-                           Foreground="#FF111827"
+                           Foreground="#FFD1D5DB"
                            Width="330"/>
 
+                    <!-- VALOR -->
                     <Label Content="Valor"
                            Canvas.Left="25"
                            Canvas.Top="405"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="DetalheValor"
                            Content="R$ 0,00"
@@ -485,37 +757,44 @@ Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                            Foreground="#FF22C55E"
                            Width="330"/>
 
+                    <!-- DATA -->
                     <Label Content="Data"
                            Canvas.Left="25"
                            Canvas.Top="490"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="DetalheData"
                            Content="-"
                            Canvas.Left="25"
                            Canvas.Top="515"
                            FontSize="16"
-                           Foreground="#FF111827"
+                           Foreground="#FFD1D5DB"
                            Width="330"/>
 
+                    <!-- PAGAMENTO -->
                     <Label Content="Pagamento"
                            Canvas.Left="25"
                            Canvas.Top="560"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF64748B"/>
+                           Foreground="White"/>
 
                     <Label x:Name="DetalhePagamento"
                            Content="-"
                            Canvas.Left="25"
                            Canvas.Top="585"
                            FontSize="16"
-                           Foreground="#FF111827"
+                           Foreground="#FFD1D5DB"
                            Width="330"/>
+
                 </Canvas>
+
             </Border>
+
         </Canvas>
+
     </Canvas>
+
 </Page>

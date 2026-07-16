@@ -3,231 +3,355 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="TelaClientes">
 
+    <Page.Resources>
+
+        <!-- BOTÕES DO MENU -->
+        <Style x:Key="BotaoMenuStyle"
+               TargetType="{x:Type Button}">
+
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="55"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF707070"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="12"
+                                      ShadowDepth="0"
+                                      Opacity="0.25"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <!-- CAMPOS DE TEXTO -->
+        <Style x:Key="CampoEscuroStyle"
+               TargetType="{x:Type TextBox}">
+
+            <Setter Property="Background" Value="#FF181818"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="SelectionBrush" Value="#FF7C3AED"/>
+            <Setter Property="BorderBrush" Value="#FF404040"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
+
+        <!-- DATAGRID PRINCIPAL -->
+        <Style x:Key="DataGridEscuroStyle"
+               TargetType="{x:Type DataGrid}">
+
+            <Setter Property="Background" Value="#FF131111"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="RowBackground" Value="#FF131111"/>
+            <Setter Property="AlternatingRowBackground" Value="#FF181818"/>
+            <Setter Property="AlternationCount" Value="2"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FF404040"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#FF404040"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+
+        </Style>
+
+        <!-- CABEÇALHO DO DATAGRID -->
+        <Style x:Key="CabecalhoDataGridEscuroStyle"
+               TargetType="{x:Type DataGridColumnHeader}">
+
+            <Setter Property="Background" Value="#FF131111"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="BorderBrush" Value="#FF505050"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
+
+        <!-- LINHAS DO DATAGRID -->
+        <Style x:Key="LinhaDataGridEscuroStyle"
+               TargetType="{x:Type DataGridRow}">
+
+            <Setter Property="Background" Value="#FF131111"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF404040"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="AlternationIndex"
+                         Value="1">
+
+                    <Setter Property="Background"
+                            Value="#FF181818"/>
+
+                </Trigger>
+
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF252525"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                </Trigger>
+
+                <Trigger Property="IsSelected"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF7C3AED"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+        <!-- CÉLULAS DO DATAGRID -->
+        <Style x:Key="CelulaDataGridEscuroStyle"
+               TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF404040"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsSelected"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FF7C3AED"/>
+
+                    <Setter Property="Foreground"
+                            Value="White"/>
+
+                    <Setter Property="BorderBrush"
+                            Value="#FF9B6AF3"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+    </Page.Resources>
+
     <Canvas Background="#FF0F172A"
             Width="1920"
             Height="1080"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
 
+        <!-- FUNDO -->
+        <Rectangle Width="1920"
+                   Height="1080">
+
+            <Rectangle.Fill>
+
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+
+                    <GradientStop Color="#FF0F172A"
+                                  Offset="0"/>
+
+                    <GradientStop Color="#FF1E293B"
+                                  Offset="1"/>
+
+                </LinearGradientBrush>
+
+            </Rectangle.Fill>
+
+        </Rectangle>
+
+        <!-- MENU LATERAL -->
         <Border Width="280"
                 Height="1080"
                 Canvas.Left="0"
                 Canvas.Top="0"
-                Background="#FF111827">
+                Background="#FF131111">
 
-
-            <!-- MENU LATERAL -->
             <Border Width="280"
-        Visibility="Visible"
-        Height="1080"
-        Background="#CC111827"
-        CornerRadius="0,24,24,0">
+                    Visibility="Visible"
+                    Height="1080"
+                    Background="#FF131111"
+                    CornerRadius="0,24,24,0">
+
                 <Border.Effect>
+
                     <DropShadowEffect BlurRadius="30"
-                          ShadowDepth="0"
-                          Opacity="0.25"/>
+                                      ShadowDepth="0"
+                                      Opacity="0.25"/>
+
                 </Border.Effect>
 
                 <Canvas>
+
                     <!-- LOGO -->
                     <Label Content="WRV CONTROL"
-               Canvas.Left="15"
-               Canvas.Top="45"
-               FontWeight="Bold"
-               FontSize="32"
-               Foreground="White"
-               HorizontalAlignment="Center"
-               Height="55"
-               VerticalAlignment="Top"
-               Width="250"/>
+                           Canvas.Left="15"
+                           Canvas.Top="45"
+                           FontWeight="Bold"
+                           FontSize="32"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Height="55"
+                           VerticalAlignment="Top"
+                           Width="250"/>
 
                     <Label Content="Sistema Inteligente"
-               Canvas.Left="25"
-               Canvas.Top="90"
-               FontSize="15"
-               Foreground="#FF9CA3AF"/>
+                           Canvas.Left="25"
+                           Canvas.Top="90"
+                           FontSize="15"
+                           Foreground="#FF9CA3AF"/>
 
-                    <!-- LINHA -->
                     <Rectangle Width="220"
-                   Height="1.5"
-                   Fill="#33FFFFFF"
-                   Canvas.Left="30"
-                   Canvas.Top="130"/>
+                               Height="1.5"
+                               Fill="#33FFFFFF"
+                               Canvas.Left="30"
+                               Canvas.Top="130"/>
 
-                    <!-- BOTÃO ESTOQUE -->
+                    <!-- ESTOQUE -->
                     <Button x:Name="BotaoEstoque"
-                Content="📦 Estoque"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-                Canvas.Top="175"
-                Click="IrEstoque_Click"
-                Background="#FF1F2937"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="📦 Estoque"
+                            Canvas.Left="30"
+                            Canvas.Top="175"
+                            Click="IrEstoque_Click"/>
 
-                    <!-- BOTÃO VENDAS -->
+                    <!-- VENDAS -->
                     <Button x:Name="BotaoVendas"
-                Content="🛒 Vendas"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-                Canvas.Top="245"
-                Click="IrVendas_Click"
-                Background="#FF1F2937"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="🛒 Vendas"
+                            Canvas.Left="30"
+                            Canvas.Top="245"
+                            Click="IrVendas_Click"/>
 
-                    <!-- BOTÃO CLIENTES -->
+                    <!-- CLIENTES -->
                     <Button x:Name="BotaoClientes"
-                Content="👥 Clientes"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-               Canvas.Top="523"
-                Click="BotaoClientes_Click"
-                Background="#FF7C3AED"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="👥 Clientes"
+                            Canvas.Left="30"
+                            Canvas.Top="523"
+                            Click="BotaoClientes_Click"
+                            Background="#FF7C3AED"
+                            BorderBrush="#FF9B6AF3"/>
 
-                    <!-- BOTÃO HISTÓRICO -->
+                    <!-- HISTÓRICO -->
                     <Button x:Name="BotaoHistorico"
-                Content="🧾 Histórico"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-                Canvas.Top="315"
-                Click="IrHistorico_Click"
-                Background="#FF1F2937"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="🧾 Histórico"
+                            Canvas.Left="30"
+                            Canvas.Top="315"
+                            Click="IrHistorico_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"/>
 
-                    <!-- BOTÃO FINANCEIRO -->
+                    <!-- FINANCEIRO -->
                     <Button x:Name="BotaoFinanceiro"
-                Content="   💰 Financeiro"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-                  Canvas.Top="385"
-                Click="IrFinanceiro_Click"
-                Background="#FF1F2937"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="   💰 Financeiro"
+                            Canvas.Left="30"
+                            Canvas.Top="385"
+                            Click="IrFinanceiro_Click"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"/>
 
-                    <!-- BOTÃO EMPRESA -->
+                    <!-- EMPRESA -->
                     <Button x:Name="BotaoEmpresa"
-                Content="⚙️ Empresa"
-                Width="220"
-                Height="55"
-                Canvas.Left="30"
-               Canvas.Top="455"
-                Click="IrEmpresa_Click"
-                Background="#FF1F2937"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand">
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="12"
-                                  ShadowDepth="0"
-                                  Opacity="0.25"/>
-                        </Button.Effect>
-                    </Button>
+                            Style="{StaticResource BotaoMenuStyle}"
+                            Content="⚙️ Empresa"
+                            Canvas.Left="30"
+                            Canvas.Top="455"
+                            Click="IrEmpresa_Click"/>
 
-                    <!-- CARD INFO -->
+                    <!-- CARD PREMIUM -->
                     <Border Width="220"
- Height="100"
- Canvas.Left="30"
-Canvas.Top="594"
- Background="#11FFFFFF"
- CornerRadius="16"
- BorderBrush="#22FFFFFF"
- BorderThickness="1.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            Height="100"
+                            Canvas.Left="30"
+                            Canvas.Top="594"
+                            Background="#11FFFFFF"
+                            CornerRadius="16"
+                            BorderBrush="#22FFFFFF"
+                            BorderThickness="1.5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+
                         <Canvas>
+
                             <Label Content="⚡ WRV Premium"
-        Canvas.Left="18"
-        Canvas.Top="15"
-        FontWeight="Bold"
-        FontSize="16"
-        Foreground="White"/>
+                                   Canvas.Left="18"
+                                   Canvas.Top="15"
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Foreground="White"/>
+
                             <Label Content="Sistema moderno&#x0a;e otimizado"
-        Canvas.Left="18"
-        Canvas.Top="45"
-        FontSize="13"
-        Foreground="#FFD1D5DB"/>
+                                   Canvas.Left="18"
+                                   Canvas.Top="45"
+                                   FontSize="13"
+                                   Foreground="#FFD1D5DB"/>
+
                         </Canvas>
+
                     </Border>
 
-                    <!-- BOTÃO SAIR -->
+                    <!-- SAIR -->
                     <Button Content="🚪 Sair"
-                Width="220"
-                Height="50"
-                Canvas.Left="30"
-                Canvas.Top="975"
-                Background="#FFDC2626"
-                Foreground="White"
-                BorderThickness="0"
-                FontWeight="Bold"
-                FontSize="16"
-                Cursor="Hand"
-                Click="Sair_Click"/>
+                            Width="220"
+                            Height="50"
+                            Canvas.Left="30"
+                            Canvas.Top="975"
+                            Background="Red"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            FontSize="16"
+                            Cursor="Hand"
+                            Click="Sair_Click"/>
+
                 </Canvas>
+
             </Border>
+
         </Border>
 
+        <!-- CABEÇALHO -->
         <Border Width="1640"
                 Height="70"
                 Canvas.Left="280"
                 Canvas.Top="0"
-                Background="#FF1E293B">
+                Background="#FF131111"
+                BorderBrush="#22FFFFFF"
+                BorderThickness="0,0,0,1.5">
 
             <Canvas>
+
                 <Label Content="Cadastro de Clientes"
                        Canvas.Left="30"
                        Canvas.Top="13"
@@ -240,149 +364,175 @@ Canvas.Top="594"
                        Canvas.Top="22"
                        FontSize="15"
                        Foreground="#FFCBD5E1"/>
+
             </Canvas>
+
         </Border>
 
+        <!-- ÁREA PRINCIPAL -->
         <Canvas Width="1640"
                 Height="1010"
                 Canvas.Left="280"
-                Canvas.Top="70">
+                Canvas.Top="70"
+                Background="Black">
 
+            <!-- FORMULÁRIO DO CLIENTE -->
             <Border Width="620"
                     Height="940"
                     Canvas.Left="25"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
+                    BorderBrush="#FF303030"
+                    BorderThickness="1"
                     CornerRadius="20">
 
                 <Canvas>
+
                     <Label Content="Dados do Cliente"
                            Canvas.Left="25"
                            Canvas.Top="20"
                            FontSize="24"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
+                    <!-- NOME -->
                     <Label Content="Nome"
                            Canvas.Left="25"
                            Canvas.Top="75"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtNome"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="560"
                              Height="38"
                              Canvas.Left="25"
                              Canvas.Top="105"
                              FontSize="15"/>
 
+                    <!-- CPF -->
                     <Label Content="CPF"
                            Canvas.Left="25"
                            Canvas.Top="150"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtCpf"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="260"
                              Height="38"
                              Canvas.Left="25"
                              Canvas.Top="180"
                              FontSize="15"/>
 
+                    <!-- TELEFONE -->
                     <Label Content="Telefone"
                            Canvas.Left="315"
                            Canvas.Top="150"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtTelefone"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="270"
                              Height="38"
                              Canvas.Left="315"
                              Canvas.Top="180"
                              FontSize="15"/>
 
+                    <!-- E-MAIL -->
                     <Label Content="E-mail"
                            Canvas.Left="25"
                            Canvas.Top="225"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtEmail"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="560"
                              Height="38"
                              Canvas.Left="25"
                              Canvas.Top="255"
                              FontSize="15"/>
 
+                    <!-- ENDEREÇO -->
                     <Label Content="Endereço"
                            Canvas.Left="25"
                            Canvas.Top="300"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtEndereco"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="390"
                              Height="38"
                              Canvas.Left="25"
                              Canvas.Top="330"
                              FontSize="15"/>
 
+                    <!-- NÚMERO -->
                     <Label Content="Número"
                            Canvas.Left="440"
                            Canvas.Top="300"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtNumero"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="145"
                              Height="38"
                              Canvas.Left="440"
                              Canvas.Top="330"
                              FontSize="15"/>
 
+                    <!-- BAIRRO -->
                     <Label Content="Bairro"
                            Canvas.Left="25"
                            Canvas.Top="375"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtBairro"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="260"
                              Height="38"
                              Canvas.Left="25"
                              Canvas.Top="405"
                              FontSize="15"/>
 
+                    <!-- CIDADE -->
                     <Label Content="Cidade"
                            Canvas.Left="315"
                            Canvas.Top="375"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtCidade"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="270"
                              Height="38"
                              Canvas.Left="315"
                              Canvas.Top="405"
                              FontSize="15"/>
 
+                    <!-- UF -->
                     <Label Content="UF"
                            Canvas.Left="25"
                            Canvas.Top="450"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtEstado"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="90"
                              Height="38"
                              Canvas.Left="25"
@@ -390,69 +540,78 @@ Canvas.Top="594"
                              FontSize="15"
                              MaxLength="2"/>
 
+                    <!-- CEP -->
                     <Label Content="CEP"
                            Canvas.Left="145"
                            Canvas.Top="450"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtCep"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="200"
                              Height="38"
                              Canvas.Left="145"
                              Canvas.Top="480"
                              FontSize="15"/>
 
+                    <!-- OBSERVAÇÃO -->
                     <Label Content="Observação"
                            Canvas.Left="25"
                            Canvas.Top="525"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#FF374151"/>
+                           Foreground="#FFD1D5DB"/>
 
                     <TextBox x:Name="TxtObservacao"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="560"
                              Height="95"
                              Canvas.Left="25"
                              Canvas.Top="555"
                              FontSize="15"
+                             Padding="10"
                              TextWrapping="Wrap"
-                             AcceptsReturn="True"/>
+                             AcceptsReturn="True"
+                             VerticalContentAlignment="Top"/>
 
+                    <!-- SALVAR -->
                     <Button Content="💾 Salvar Cliente"
                             Width="560"
                             Height="50"
                             Canvas.Left="25"
                             Canvas.Top="690"
                             Click="BotaoSalvar_Click"
-                            Background="#FF22C55E"
+                            Background="#FF00FF5E"
                             Foreground="White"
                             BorderThickness="0"
                             FontSize="16"
                             FontWeight="Bold"
                             Cursor="Hand"/>
 
+                    <!-- LIMPAR -->
                     <Button Content="🧹 Novo / Limpar"
                             Width="270"
                             Height="46"
                             Canvas.Left="25"
                             Canvas.Top="755"
                             Click="BotaoNovo_Click"
-                            Background="#FF3B82F6"
+                            Background="#FF0061FF"
                             Foreground="White"
                             BorderThickness="0"
                             FontSize="15"
                             FontWeight="Bold"
                             Cursor="Hand"/>
 
+                    <!-- EXCLUIR -->
                     <Button Content="🗑 Excluir Cliente"
                             Width="270"
                             Height="46"
                             Canvas.Left="315"
                             Canvas.Top="755"
                             Click="BotaoExcluir_Click"
-                            Background="#FFDC2626"
+                            Background="Red"
                             Foreground="White"
                             BorderThickness="0"
                             FontSize="15"
@@ -465,26 +624,34 @@ Canvas.Top="594"
                            Canvas.Top="830"
                            Width="560"
                            FontSize="14"
-                           Foreground="#FF64748B"/>
+                           Foreground="#FFD1D5DB"/>
+
                 </Canvas>
+
             </Border>
 
+            <!-- LISTA DE CLIENTES -->
             <Border Width="945"
                     Height="940"
                     Canvas.Left="670"
                     Canvas.Top="25"
-                    Background="#CCFFFFFF"
+                    Background="#FF131111"
+                    BorderBrush="#FF303030"
+                    BorderThickness="1"
                     CornerRadius="20">
 
                 <Canvas>
+
                     <Label Content="Lista de Clientes"
                            Canvas.Left="25"
                            Canvas.Top="20"
                            FontSize="24"
                            FontWeight="Bold"
-                           Foreground="#FF1E293B"/>
+                           Foreground="White"/>
 
+                    <!-- PESQUISA -->
                     <TextBox x:Name="TxtPesquisa"
+                             Style="{StaticResource CampoEscuroStyle}"
                              Width="620"
                              Height="40"
                              Canvas.Left="25"
@@ -505,24 +672,24 @@ Canvas.Top="594"
                             FontWeight="Bold"
                             Cursor="Hand"/>
 
+                    <!-- DATAGRID -->
                     <DataGrid x:Name="Clientes1"
+                              Style="{StaticResource DataGridEscuroStyle}"
+                              ColumnHeaderStyle="{StaticResource CabecalhoDataGridEscuroStyle}"
+                              RowStyle="{StaticResource LinhaDataGridEscuroStyle}"
+                              CellStyle="{StaticResource CelulaDataGridEscuroStyle}"
                               Width="895"
                               Height="770"
                               Canvas.Left="25"
                               Canvas.Top="140"
                               AutoGenerateColumns="False"
-                              CanUserAddRows="False"
                               IsReadOnly="True"
-                              SelectionMode="Single"
                               SelectionChanged="Clientes1_SelectionChanged"
                               FontSize="14"
-                              RowHeight="38"
-                              HeadersVisibility="Column"
-                              GridLinesVisibility="None"
-                              Background="White"
-                              BorderThickness="0">
+                              RowHeight="38">
 
                         <DataGrid.Columns>
+
                             <DataGridTextColumn Header="ID"
                                                 Width="60"
                                                 Binding="{Binding Id}"/>
@@ -546,10 +713,17 @@ Canvas.Top="594"
                             <DataGridTextColumn Header="UF"
                                                 Width="70"
                                                 Binding="{Binding Estado}"/>
+
                         </DataGrid.Columns>
+
                     </DataGrid>
+
                 </Canvas>
+
             </Border>
+
         </Canvas>
+
     </Canvas>
+
 </Page>

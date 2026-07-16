@@ -503,7 +503,7 @@
                 <!-- Financeiro -->
 
                 <Button x:Name="BotaoFinanceiro"
-                        Content="💰 Financeiro"
+                        Content="   💰 Financeiro"
                         Width="220"
                         Height="55"
                         Canvas.Left="30"
@@ -1060,7 +1060,7 @@
                             Height="40"
                             Canvas.Left="280"
                             Canvas.Top="125"
-                            Background="Black"
+                            Background="#FF181818"
                             CornerRadius="10">
 
                         <TextBox x:Name="DescontoGeral"
@@ -1196,7 +1196,7 @@
                             Height="40"
                             Canvas.Left="160"
                             Canvas.Top="495"
-                            Background="Black"
+                            Background="#FF181818"
                             CornerRadius="10">
 
                         <TextBox x:Name="ValorRecebido"
@@ -1240,7 +1240,7 @@
                             Canvas.Left="30"
                             Canvas.Top="600"
                             Click="BtnFinalizar_Click"
-                            Background="#FF22C55E"
+                            Background="#FF00B342"
                             Foreground="White"
                             BorderThickness="0"
                             FontWeight="Bold"

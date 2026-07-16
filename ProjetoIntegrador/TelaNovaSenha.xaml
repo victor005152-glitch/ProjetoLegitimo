@@ -20,8 +20,8 @@
         <Grid>
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
+                    <GradientStop Color="#FF131111" Offset="0"/>
+                    <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
@@ -31,7 +31,7 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
                      Margin="-150,-120,0,0"
-                     Fill="#227C3AED"
+                     Fill="#222B2B2B"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
 
             <Ellipse Width="350"
@@ -39,7 +39,7 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Margin="0,0,-70,-70"
-                     Fill="#223B82F6"
+                     Fill="#22929292"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
 
             <Ellipse Width="280"
@@ -47,7 +47,7 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Margin="650,0,0,0"
-                     Fill="#113B82F6"
+                     Fill="#11969696"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
         </Grid>
 
@@ -151,7 +151,7 @@
 
                 <Border Width="500"
                         Height="600"
-                        Background="#CCFFFFFF"
+                          Background="#FF131111"
                         CornerRadius="24"
                         BorderBrush="#33FFFFFF"
                         BorderThickness="1.5"
@@ -182,14 +182,14 @@
                                    HorizontalAlignment="Center"
                                    FontSize="34"
                                    FontWeight="Bold"
-                                   Foreground="Black"/>
+                                   Foreground="White"/>
 
                         <TextBlock Text="Digite e confirme sua nova senha"
                                    Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    Margin="0,12,0,0"
                                    FontSize="18"
-                                   Foreground="#FF64748B"/>
+                                   Foreground="White"/>
 
                         <!-- NOVA SENHA -->
                         <TextBlock Text="Nova senha"
@@ -197,22 +197,22 @@
                                    Margin="0,35,0,8"
                                    FontWeight="SemiBold"
                                    FontSize="15"
-                                   Foreground="#FF1E293B"/>
+                                   Foreground="White"/>
 
                         <Border Grid.Row="3"
                                 Height="55"
-                                Background="#FFF8FAFC"
+                             Background="#FF131111"
                                 CornerRadius="12"
-                                BorderBrush="#FFE2E8F0"
+                                BorderBrush="#FF8A8A8A"
                                 BorderThickness="1.5">
 
                             <PasswordBox x:Name="NovaSenhaDigitada"
                                          VerticalAlignment="Center"
-                                         Margin="12,0"
+                                         Margin="12,0,12,0"
                                          BorderThickness="0"
                                          Background="Transparent"
                                          FontSize="16"
-                                         VerticalContentAlignment="Center"/>
+                                         VerticalContentAlignment="Center" Height="35" Foreground="White"/>
                         </Border>
 
                         <!-- CONFIRMAR SENHA -->
@@ -221,23 +221,23 @@
                                    Margin="0,20,0,8"
                                    FontWeight="SemiBold"
                                    FontSize="15"
-                                   Foreground="#FF1E293B"/>
+                                   Foreground="White"/>
 
                         <Border Grid.Row="5"
                                 Height="55"
-                                Background="#FFF8FAFC"
+                               Background="#FF131111"
                                 CornerRadius="12"
-                                BorderBrush="#FFE2E8F0"
+                                BorderBrush="#FF8A8A8A"
                                 BorderThickness="1.5">
 
                             <PasswordBox x:Name="ConfirmarSenhaDigitada"
                                          VerticalAlignment="Center"
-                                         Margin="12,0"
+                                         Margin="12,0,12,0"
                                          BorderThickness="0"
                                          Background="Transparent"
                                          FontSize="16"
                                          VerticalContentAlignment="Center"
-                                         KeyDown="ConfirmarSenhaDigitada_KeyDown"/>
+                                         KeyDown="ConfirmarSenhaDigitada_KeyDown" Height="35" Foreground="White"/>
                         </Border>
 
                         <!-- BOTÕES -->
@@ -271,7 +271,7 @@
                                     Grid.Row="1"
                                     Height="45"
                                     Margin="0,18,0,0"
-                                    Background="#FFEF4444"
+                                    Background="Red"
                                     Foreground="White"
                                     BorderThickness="0"
                                     FontWeight="Bold"

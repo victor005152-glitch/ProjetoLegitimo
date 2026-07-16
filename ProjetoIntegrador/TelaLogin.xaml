@@ -20,8 +20,8 @@
         <Grid>
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF0F172A" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
+                    <GradientStop Color="#FF131111" Offset="0"/>
+                    <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
@@ -31,7 +31,7 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
                      Margin="-150,-120,0,0"
-                     Fill="#227C3AED"
+                     Fill="#222B2B2B"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
 
             <Ellipse Width="350"
@@ -39,7 +39,7 @@
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
                      Margin="0,0,-70,-70"
-                     Fill="#223B82F6"
+                     Fill="#22929292"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
 
             <!-- CÍRCULO DECORATIVO ADICIONAL NO CENTRO -->
@@ -48,7 +48,7 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Margin="650,0,0,0"
-                     Fill="#113B82F6"
+                     Fill="#11969696"
                      RenderOptions.BitmapScalingMode="HighQuality"/>
         </Grid>
 
@@ -150,7 +150,7 @@
         Height="600"
         Canvas.Left="1050"
         Canvas.Top="240"
-        Background="#CCFFFFFF"
+        Background="#FF131111"
         CornerRadius="24"
         BorderBrush="#33FFFFFF"
         BorderThickness="1.5" Margin="-250,-10,250,10">
@@ -179,14 +179,14 @@
                                    HorizontalAlignment="Center"
                                    FontSize="34"
                                    FontWeight="Bold"
-                                   Foreground="Black"/>
+                                   Foreground="White"/>
 
                         <TextBlock Text="Faça login para continuar"
                                    Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    Margin="0,12,0,0"
                                    FontSize="18"
-                                   Foreground="#FF64748B"/>
+                                   Foreground="White"/>
 
                         <!-- USUÁRIO -->
                         <TextBlock Text="Usuário"
@@ -194,13 +194,13 @@
                                    Margin="0,35,0,8"
                                    FontWeight="SemiBold"
                                    FontSize="15"
-                                   Foreground="#FF1E293B"/>
+                                   Foreground="White"/>
 
                         <Border Grid.Row="3"
                                 Height="55"
-                                Background="#FFF8FAFC"
+                              Background="#FF131111"
                                 CornerRadius="12"
-                                BorderBrush="#FFE2E8F0"
+                              BorderBrush="#FF8A8A8A"
                                 BorderThickness="1.5">
                             <TextBox x:Name="User1"
                                      VerticalAlignment="Center"
@@ -208,7 +208,7 @@
                                      BorderThickness="0"
                                      Background="Transparent"
                                      FontSize="16"
-                                     VerticalContentAlignment="Center"/>
+                                     VerticalContentAlignment="Center" Foreground="White"/>
                         </Border>
 
                         <!-- SENHA -->
@@ -217,13 +217,13 @@
                                    Margin="0,20,0,8"
                                    FontWeight="SemiBold"
                                    FontSize="15"
-                                   Foreground="#FF1E293B"/>
+                                   Foreground="White"/>
 
                         <Border Grid.Row="5"
                                 Height="55"
-                                Background="#FFF8FAFC"
+                               Background="#FF131111"
                                 CornerRadius="12"
-                                BorderBrush="#FFE2E8F0"
+                              BorderBrush="#FF8A8A8A"
                                 BorderThickness="1.5">
                             <PasswordBox x:Name="Senha1"
                                          VerticalAlignment="Center"
@@ -231,7 +231,7 @@
                                          BorderThickness="0"
                                          Background="Transparent"
                                          FontSize="16"
-                                         KeyDown="Senha1_KeyDown"/>
+                                         KeyDown="Senha1_KeyDown" Foreground="White"/>
                         </Border>
 
                         <!-- BOTÕES E LINK -->
@@ -282,7 +282,7 @@
                                         Width="150"
                                         Height="50"
                                         Margin="35,0,0,0"
-                                        Background="#FF22C55E"
+                                        Background="#FF00FF5E"
                                         Foreground="White"
                                         BorderThickness="0"
                                         FontWeight="Bold"

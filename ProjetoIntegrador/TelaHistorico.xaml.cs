@@ -276,7 +276,7 @@ namespace ProjetoIntegrador
         private void ResetarBotoes()
         {
             SolidColorBrush corPadrao =
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1F2937"));
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF000000"));
 
             BotaoEstoque.Background = corPadrao;
             BotaoVendas.Background = corPadrao;
