@@ -34,7 +34,7 @@ CREATE TABLE `usuario` (
   `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Nome` (`Nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (4,'Franchini','Nba2k23.','victor005152@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(5,'Luciano','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(6,'1','1','1',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(7,'rai','r@iedu77','rai316004@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(8,'lucianovm','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31');
+INSERT INTO `usuario` VALUES (4,'Franchini','1234','victor005152@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(5,'Luciano','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(6,'1','1','1',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(7,'rai','r@iedu77','rai316004@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(8,'lucianovm','123456789','lucianovmuhlen@gmail.com',NULL,NULL,'Operador',1,'2026-06-30 20:14:31'),(10,'2','$2a$11$diXm/wsNtFQQLYNVjFdSp..2rmcsSbcPgzw41rit1NPU9kattX30q','2',NULL,NULL,'Operador',1,'2026-07-14 21:18:51'),(11,'GUI','$2a$11$TUcnxu6X8sDL6YxqpNGGieKIeZXQMPQpK40FEiSUZiCimaBNN8noq','guilhermebeffart989@gmail.com','475392','2026-07-27 20:01:55','Operador',1,'2026-07-27 19:51:17'),(12,'Nicolas','$2a$11$t6kdvE9okdQOjdQOQt5sRuauG2AyoXJlKbuPBR5UuPLxiPclcRIje','tnicoolas698@gmail.com','454902','2026-08-10 19:48:50','Operador',1,'2026-08-10 19:37:54'),(13,'victor','$2a$11$FNrpsc4aufvDrkQr5sSzde12D7rQEWMbf3KxnlB.8iiBFBiXIoDDy','victormatheus3535@gmail.com',NULL,NULL,'Operador',1,'2026-08-10 19:42:15');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-01 20:19:17
+-- Dump completed on 2026-08-21 19:19:51

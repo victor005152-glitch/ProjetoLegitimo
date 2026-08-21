@@ -30,8 +30,10 @@ CREATE TABLE `gastos` (
   `data_gasto` date NOT NULL,
   `observacao` varchar(255) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
+  `documento_nome` varchar(255) DEFAULT NULL,
+  `documento_path` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +42,7 @@ CREATE TABLE `gastos` (
 
 LOCK TABLES `gastos` WRITE;
 /*!40000 ALTER TABLE `gastos` DISABLE KEYS */;
+INSERT INTO `gastos` VALUES (1,'Salario do Funcionario = RAI','SALARIOS',1900.00,'2026-07-05','','2026-07-01 21:14:02',NULL,NULL),(2,'Salario do Funcionario = GUI','SALARIO',590.00,'2026-07-05','Jovem Aprendiz não tem vez','2026-07-01 21:24:18',NULL,NULL),(4,'energia','dispesas',500.00,'2026-08-10','','2026-08-10 19:50:11','','');
 /*!40000 ALTER TABLE `gastos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-01 20:19:17
+-- Dump completed on 2026-08-21 19:19:51
