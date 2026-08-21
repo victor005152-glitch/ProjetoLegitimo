@@ -16,7 +16,7 @@ namespace ProjetoIntegrador
 
         // CONFIGURAÇÃO DO E-MAIL QUE VAI ENVIAR OS CÓDIGOS
         private const string EMAIL_SISTEMA = "yakkededits@gmail.com";
-        private const string SENHA_APP = "ojutqdsyxujbpgkg";
+        private const string SENHA_APP = "owrxmhtaulxsmzsy";
 
         public TelaRecuperacao()
         {
